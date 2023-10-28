@@ -19,7 +19,7 @@ Integrantes del grupo:
 1. Steven Navarro: Hola, soy estudiante de ingenieria, me gustan los juegos y anime, y mi meta actual es poder
 ser un buen desarrollador web.
 
-2. Antonela Gomez:
+2. Antonela Gomez: Hola, soy Tecnica en Desarrollo de Software, recibida hace casi un año. Mi objetivo es poder finalizar el curso con muchos conocimientos y buenas practicas.
 
 3. Ezequiel Lazzara:
 
