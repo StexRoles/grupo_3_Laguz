@@ -21,7 +21,7 @@ ser un buen desarrollador web.
 
 2. Antonela Gomez: Hola, soy Tecnica en Desarrollo de Software, recibida hace casi un año. Mi objetivo es poder finalizar el curso con muchos conocimientos y buenas practicas.
 
-3. Ezequiel Lazzara: Hola, actualemnte estoy estudiando la carrera de ingenieria en sistemas en la UAI, trabajo en la parte de Retail para la empresa NCR hace una año y medio, me gusta mucho el futbol y mi intencion es capacitarme y evolucionar en el mundo de la programacion.
+3. Ezequiel Lazzara: Hola, actualemnte estoy estudiando la carrera de ingenieria en sistemas en la UAI, trabajo en soporte e implementacion en la parte de Retail para la empresa NCR hace una año y medio, me gusta mucho el futbol y mi intencion es capacitarme y evolucionar en el mundo de la programacion.
 
 4. Eduardo Rodriguez:
 
