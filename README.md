@@ -1,17 +1,17 @@
 Buen dia, esta es la tematica decidida por nuestro grupo:
 
-1. ¿Qué productos o servicios brindara nuestro sitio?
--Nuestro sitio se centra en la venta de computadores de distintos ambitos,
-ya sea para estudiantes, oficinistas y gamers, ademas tambien tendran algunos
+1. ¿Qué productos o servicios brindara nuestro sitio?  
+-Nuestro sitio se centra en la venta de computadores de distintos ambitos,  
+ya sea para estudiantes, oficinistas y gamers, ademas tambien tendran algunos  
 accesorios que puedan ser utiles para este tipo de personas.
 
-2. ¿Quien sera nuestra audiencia objetivo?
--Nuestra pagina web se centrara en las categorias ya mencionadas: estudiantes, trabajadores y gamers, 
-las cuales en la actualidad son la audiencia que mas necesita y requiere estas 
+2. ¿Quien sera nuestra audiencia objetivo?  
+-Nuestra pagina web se centrara en las categorias ya mencionadas: estudiantes, trabajadores y gamers,  
+las cuales en la actualidad son la audiencia que mas necesita y requiere estas  
 herramientas ya sea para ocio, trabajo o estudio.
 
-3. ¿Como ajustaremos nuestra oferta a ese publico?
--Nuestro sitio tiene como objetivo ser lo mas accesible posible para poder recibir 
+3. ¿Como ajustaremos nuestra oferta a ese publico?  
+-Nuestro sitio tiene como objetivo ser lo mas accesible posible para poder recibir  
 cualquier tipo de audiencia la cual necesite una computadora.
 
 Integrantes del grupo:
@@ -28,3 +28,28 @@ ser un buen desarrollador web.
 5. Javier Ramirez:
 
 6. Lucas Campos:
+
+Inspiración en referentes del mercado:  
+1. https://www.ryrcomputacion.com/  
+Este sitio presenta un orden muy similar a lo que planeamos para nuestra pagina y algo que nos llamo la  
+atencion fue que presentara las marcas con las que trabaja en la parte inferior de la pagina de inicio.  
+
+2. https://www.ktronix.com/  
+Este sitio presenta simpleza pero ofrece una gran cantidad de catalogo y productos similares a los  
+que deseamos ofrecer.  
+
+3. https://gorilagames.com/  
+Este sitio es bastante organizado y permite diferenciar muy bien los productos, ademas, muestra unos efectos  
+al bajar en la pagina, que podria llamar la atencion de los clientes.  
+
+4. https://www.shipin.ar/?gad_source=1  
+Este sitio cuenta con un orden que es muy similar a lo que deseamos en nuestra pagina web, por lo cual pordia ser una  
+muy buena referencia en cuestiones de diseño y elemetos.  
+
+5. https://www.compugarden.com.ar  
+Este sitio cuenta con elementos muy particulares como los logos de accesorios ademas de un mapa para localizar un  
+punto de compra.  
+
+6. https://goldentechstore.com.ar/  
+Este sitio cuenta con un estilo muy particular, con colores que destacan, una mascota y logos que combinan muy bien, ademas  
+de efectos que permite que los productos se muestren deslizando.
