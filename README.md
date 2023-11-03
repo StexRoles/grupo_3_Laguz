@@ -31,25 +31,19 @@ ser un buen desarrollador web.
 
 Inspiración en referentes del mercado:  
 1. https://www.ryrcomputacion.com/  
-Este sitio presenta un orden muy similar a lo que planeamos para nuestra pagina y algo que nos llamo la  
-atencion fue que presentara las marcas con las que trabaja en la parte inferior de la pagina de inicio.  
+Este sitio presenta un orden muy similar a lo que planeamos para nuestra pagina y algo que nos llamo la  atencion fue que presentara las marcas con las que trabaja en la parte inferior de la pagina de inicio con un estilo bastante utilizado el cual es un slider y/o carrusel. Ademas tambien notamos que al pasar por arriba de cada una de esas marcas aparece el color de cada logo. 
 
 2. https://www.ktronix.com/  
-Este sitio presenta simpleza pero ofrece una gran cantidad de catalogo y productos similares a los  
-que deseamos ofrecer.  
+Este sitio presenta simpleza pero ofrece una gran cantidad y/o variedad de catalogo y productos similares a los que deseamos ofrecer en nuestra pagina.  
 
 3. https://gorilagames.com/  
-Este sitio es bastante organizado y permite diferenciar muy bien los productos, ademas, muestra unos efectos  
-al bajar en la pagina, que podria llamar la atencion de los clientes.  
+Este sitio es bastante organizado y permite diferenciar muy bien los productos, ademas, muestra unos efectos al bajar en la pagina, que podria llamar la atencion de los clientes.  
 
 4. https://www.shipin.ar/?gad_source=1  
-Este sitio cuenta con un orden que es muy similar a lo que deseamos en nuestra pagina web, por lo cual pordia ser una 
-muy buena referencia en cuestiones de diseño y elemetos.  
+Este sitio cuenta con un orden que es muy similar a lo que deseamos en nuestra pagina web, por lo cual pordia ser una muy buena referencia en cuestiones de diseño y elemetos ayudando a mantener el enfoque en los productos que se venden.  
 
 5. https://www.compugarden.com.ar  
-Este sitio cuenta con elementos muy particulares como los logos de accesorios ademas de un mapa para localizar un 
-punto de compra.  
+Este sitio cuenta con elementos muy particulares como los logos de accesorios ademas de un mapa para localizar un punto de compra. La tipografía es legible y se utiliza de manera consistente en todo el sitio
 
 6. https://goldentechstore.com.ar/  
-Este sitio cuenta con un estilo muy particular, con colores que destacan, una mascota y logos que combinan muy bien, ademas 
-de efectos que permite que los productos se muestren deslizando.
+Este sitio cuenta con un estilo muy particular y minimalista, con colores que destacan, una mascota, logos que combinan muy bien, ademas de efectos que permite que los productos se muestren deslizando. El diseño es limpio y fácil de navegar, lo que permite a los usuarios encontrar rápidamente lo que buscan. La página principal presenta una selección de productos destacados, con imágenes grandes y llamativas que llaman la atención del usuario.
