@@ -29,6 +29,8 @@ ser un buen desarrollador web.
 
 6. Lucas Campos:
 
+7. Tomás Weimberg: Hola! soy estudiante de Informática y Desarrollo de software. Me gusta el futbol, la musica y el mundo de la programación.
+
 Inspiración en referentes del mercado:  
 1. https://www.ryrcomputacion.com/  
 Este sitio presenta un orden muy similar a lo que planeamos para nuestra pagina y algo que nos llamo la  atencion fue que presentara las marcas con las que trabaja en la parte inferior de la pagina de inicio con un estilo bastante utilizado el cual es un slider y/o carrusel. Ademas tambien notamos que al pasar por arriba de cada una de esas marcas aparece el color de cada logo. 
