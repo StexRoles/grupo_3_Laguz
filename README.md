@@ -25,11 +25,7 @@ ser un buen desarrollador web.
 
 4. Eduardo Rodriguez: Hola, actualmente me encuentro realizando una tecnicatura en programacion en la Universidad Tecnologica de Cordoba. A su vez he realizado algunos cursos ya que me gusta aprender cosas nuevas y mejorar mis habilidades.
 
-5. Javier Ramirez:
-
-6. Lucas Campos:
-
-7. Tomás Weimberg: Hola! soy estudiante de Informática y Desarrollo de software. Me gusta el futbol, la musica y el mundo de la programación.
+5. Tomás Weimberg: Hola! soy estudiante de Informática y Desarrollo de software. Me gusta el futbol, la musica y el mundo de la programación.
 
 Inspiración en referentes del mercado:  
 1. https://www.ryrcomputacion.com/  
