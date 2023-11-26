@@ -1,0 +1,17 @@
+{
+  "name": "proyecto_integrador",
+  "version": "1.0.0",
+  "description": "Buen dia, esta es la tematica decidida por nuestro grupo:",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon src/app.js",
+    "start": "node src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1"
+  }
+}
