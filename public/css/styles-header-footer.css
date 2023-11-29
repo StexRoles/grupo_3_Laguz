@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*----------- ESTILOS DEL HEADER -------------------*/
+
+header {
+    background-color: white;
+    padding-bottom: 0.1rem;
+}
+
+.mensaje-sup {
+    background-color: #001F54;
+    font-weight: bold;
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+    /*------  PARTE SUPERIOR DEL HEADER ---------*/
+
+    .contenedor-logo {
+        width: 35%;
+    }
+
+    .login-icon, .cart-icon {
+        width: 12.5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.3rem;
+    }
+
+    .login-icon a, .cart-icon a {
+        text-decoration: none;
+        color: #001F54;
+    }
+
+    .menu-sup {
+        display: flex;
+    }
+
+    .contenedor-logo img {
+        width: 100%;
+    }
+
+    .barra-buscar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40%;
+    }
+
+    .barra-buscar input {
+        width: 100%;
+        height: 1.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid #001F54;
+        padding: 0.5rem;
+    }
+
+    .barra-buscar form {
+        width: 90%;
+        margin: 0.5rem;
+        display: flex;
+        position: relative;
+        align-items: center;
+    }
+
+    .barra-buscar button {
+        position: absolute;
+        background: none;
+        border: none;
+        right: 0.6rem;
+    }
+
+    /*-----------  BARRA DE NAVEGACION -------------*/
+
+    .nav-categorias {
+        display: none;
+    }
+
+    .button-categorias {
+        padding: 0.5rem 0;
+        background-color: #92DCE5;
+        margin: 1rem 20%;
+        border-radius: 1rem;
+    }
+
+    .button-categorias p {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .button-categorias button {
+        border: none;
+        background: none;
+        width: 100%;
+    }
+
+/*----------- MEDIA QUERIES DEL HEADER -------------------*/
+
+@media (min-width: 768px) {
+    .login-icon, register-icon, .cart-icon {
+        width: 10%;
+        font-size: 1.5rem;
+    }
+
+    .barra-buscar {
+        width: 45%;
+        padding: 0 2rem;
+    }
+
+    .barra-buscar input {
+        height: 2rem;
+    }
+
+    .barra-buscar form {
+        width: 100%;
+    }
+
+    .button-categorias {
+        display: none;
+    }
+
+    .nav-categorias {
+        display: block;
+    }
+
+    .nav-categorias ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .nav-categorias li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid 1px #CACFD2;
+        width: 20%;
+        height: 2rem;
+    }
+
+    .nav-categorias a {
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .contenedor-logo {
+        width: 25%;
+    }
+
+    .menu-sup {
+        padding: 0 3rem;
+    }
+
+    .barra-buscar {
+        width: 60%;
+    }
+
+    .barra-buscar form {
+        width: 80%;
+    }
+}
+
+/*----------- ESTILOS DEL FOOTER -------------------*/
+
+.contenedor-logo-footer, .enlaces, .redes-sociales, .mensaje-inf {
+        width: 100%;
+}
+
+footer {
+    padding: 1rem;
+    background-color: white;
+}
+
+    /*-----------  LOGO  -------------*/	
+
+    .contenedor-logo-footer img {
+        width: 60%;
+        margin: 0 20%;
+    }
+
+    /*-----------  ENLACES -------------*/
+
+    .enlaces {
+        display: flex;
+    }
+
+    .enlaces article {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        padding-left: 1rem;
+    }
+
+    .enlaces a {
+        text-decoration: none;
+        color: black;
+        font-size: 1rem;
+        margin: 0.3rem;
+    }
+
+    /*-----------  REDES SOCIALES -------------*/
+
+    .redes-sociales {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contactanos {
+        font-weight: bold;
+        font-size: 1.3rem;
+    }
+
+    .iconos-redes {
+        width: 80%;
+        margin: 1rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 1.5rem;
+    }
+
+    .iconos-redes a {
+        text-decoration: none;
+        color: white;
+    }
+    
+    .iconos-redes div {
+        background-color: #001F54;
+        padding: 0.6rem;
+        border-radius: 50%;
+    }
+
+    .mensaje-inf {
+        font-style: italic;
+        text-align: center;
+    }
+
+/*----------- MEDIA QUERIES DEL FOOTER -------------------*/
+
+@media (min-width: 768px) {
+    footer {
+        display: flex;
+        align-items: center;
+    }
+
+    .enlaces a {
+        font-size: 0.8rem;
+    }
+
+    .redes-sociales {
+        margin-top: 0;
+    }
+
+    .iconos-redes {
+        font-size: 1rem;
+    }
+}

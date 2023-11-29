@@ -13,10 +13,18 @@ app.listen(port, () => {
 
 /* METODO PARA ELEMTOS ESTATICOS */
 
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 /* METODOS GET */
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/index.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, '/views/login.html'));
+});
+
+app.get('/productCart', (req, res) => {
+    res.sendFile(path.join(__dirname, '/views/productCart.html'));
 });
