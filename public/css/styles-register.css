@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+main{
+    display: flex;
+    align-items: center;
+    text-align:center ;
+}
+
+.register{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 375px;
+    border: solid;
+    border-width: 1px;
+}
+
+.btn {
+    background-color: lightblue;
+    color: black;
+    padding: 5px 20px;
+    text-decoration: none;
+  }
+
+  .password{
+    font-style: italic;
+    color: blue; 
+    font-size: 13px;
+  }
+
+  .acceder{
+    font-weight: bold;
+  }
