@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+main {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Estilos para las imagenes pequenas, a modo ilustraqtivo ya que no poseo las imagenes */
+.imagenes-pequeñas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.imagen-pequeña {
+    border: 3px solid black;
+    margin-bottom: 10px;
+    position: relative;
+    width: 50%;
+}
+
+/* Imagen seleccionada  */
+
+.imagen-seleccionada {
+    border: 1px solid #ccc;
+    width: 40%; /* Ajusta el ancho según sea necesario */
+    margin-left: auto; /* Empuja la imagen seleccionada hacia la derecha */
+    margin-right: 0; /* Asegura que no haya margen derecho */
+    padding: 10%;
+}
+
+/* Estilos para la sección de detalle del producto */
+.producto-detalle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.descripcion-producto {
+    max-width: 60%; /* Ajustar el ancho máximo según sea necesario */
+}
+
+.descripcion-producto h2 {
+    font-size: 1.5em; /* Tamaño de fuente más grande para el título */
+}
+
+.descripcion-producto p {
+    font-size: 1em; /* Tamaño de fuente normal para la descripción y precio */
+}
+
+.cantidad button {
+    background-color: orange; /* Fondo naranja para los botones de cantidad y agregar al carrito */
+    color: white; /* Texto blanco */
+    padding: 8px 12px; /* Ajustar según sea necesario */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    margin-right: 5px;
+}
+
+/* Estilos adicionales para hacer el botón de cantidad desplegable */
+.cantidad select {
+    background-color: orange;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+/* Redondear los bordes del botón "Agregar al carrito" */
+.cantidad button:last-child {
+    border-radius: 5px;
+}
