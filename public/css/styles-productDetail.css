@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+main {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Estilos para las imagenes pequenas, a modo ilustraqtivo ya que no poseo las imagenes */
+.imagenes-pequeñas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.imagen-pequeña {
+    border: 3px solid black;
+    margin-bottom: 10px;
+    position: relative;
+    width: 50%;
+}
+
+/* Imagen seleccionada  */
+
+.imagen-seleccionada {
+    border: 1px solid black;
+    width: 40%; 
+    margin-left: auto; 
+    margin-right: 0; 
+    padding: 10%;
+}
+
+/* Estilos para la sección de detalle del producto */
+.producto-detalle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.descripcion-producto {
+    max-width: 60%; 
+}
+
+.descripcion-producto h2 {
+    font-size: 1.5em; 
+}
+
+.descripcion-producto p {
+    font-size: 1em;
+}
+
+.cantidad button {
+    background-color: orange; /* Fondo  botones de cantidad y agregar al carrito */
+    color: white; 
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px; /* Bordes redondeados botones */
+    margin-right: 5px;
+}
+
