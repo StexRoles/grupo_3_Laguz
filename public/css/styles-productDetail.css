@@ -27,10 +27,10 @@ main {
 /* Imagen seleccionada  */
 
 .imagen-seleccionada {
-    border: 1px solid #ccc;
-    width: 40%; /* Ajusta el ancho según sea necesario */
-    margin-left: auto; /* Empuja la imagen seleccionada hacia la derecha */
-    margin-right: 0; /* Asegura que no haya margen derecho */
+    border: 1px solid black;
+    width: 40%; 
+    margin-left: auto; 
+    margin-right: 0; 
     padding: 10%;
 }
 
@@ -42,37 +42,23 @@ main {
 }
 
 .descripcion-producto {
-    max-width: 60%; /* Ajustar el ancho máximo según sea necesario */
+    max-width: 60%; 
 }
 
 .descripcion-producto h2 {
-    font-size: 1.5em; /* Tamaño de fuente más grande para el título */
+    font-size: 1.5em; 
 }
 
 .descripcion-producto p {
-    font-size: 1em; /* Tamaño de fuente normal para la descripción y precio */
+    font-size: 1em;
 }
 
 .cantidad button {
-    background-color: orange; /* Fondo naranja para los botones de cantidad y agregar al carrito */
-    color: white; /* Texto blanco */
-    padding: 8px 12px; /* Ajustar según sea necesario */
-    border: none;
-    border-radius: 5px; /* Bordes redondeados */
-    margin-right: 5px;
-}
-
-/* Estilos adicionales para hacer el botón de cantidad desplegable */
-.cantidad select {
-    background-color: orange;
-    color: white;
+    background-color: orange; /* Fondo  botones de cantidad y agregar al carrito */
+    color: white; 
     padding: 8px 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 5px; /* Bordes redondeados botones */
     margin-right: 5px;
 }
 
-/* Redondear los bordes del botón "Agregar al carrito" */
-.cantidad button:last-child {
-    border-radius: 5px;
-}
