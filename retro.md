@@ -1,7 +1,7 @@
 RETROSPECTIVA PRIMER SPRINT
 De acuerdo con la reunion realizada en grupo, se hizo retrospectiva del trabajo realizado anteriormente,
 tambien se tuvo en cuenta el hecho de que faltaran dos integrantes del grupo y el como esto pudo haber afectado 
-el trabajo.
+el trabajo. Teniendo en cuenta lo mencionado anteriormente, pasamos a describir brevemente los items que consideramos se hicieron mal, lo que debemos mejorar o bien seguir haciendo. 
 
 COSAS QUE SE HICIERON BIEN
 - Completar el sprint
@@ -12,3 +12,9 @@ COSAS QUE SE HICIERON MAL
 - Falta de comunicacion
 - No organizar minimo una reunion por semana
 - No acordar el trabajo a realizar
+  
+COSAS QUE SE VA A COMENZAR A HACER
+- Reuniones de al menos 1 vez por semana como minimo
+- Mejorar la comunicacion del equipo
+- Pornernos al dia para tener en tiempo y forma los que nos soliciten
+- Ser responsable del trabajo que nos toque
