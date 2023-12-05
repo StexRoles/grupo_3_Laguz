@@ -1,0 +1,196 @@
+/* --- CONFIGURACION DE USO DE REM --- */
+html{
+    font-size: 62.5%;
+}
+
+/* --- ESTILO DE LA CAJA PRINCIPAL --- */
+.contenedor-carrito{
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* --- ESTILO DEL ENCABEZADO --- */
+.contenedor-carrito h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* --- ESTILO DE LA CAJA SECUNDARIA --- */
+.contenedor-lista-carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border: solid 1px #000000;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+/* --- ESTILO DE IMAGEN VISTA CELULAR --- */
+.producto-img{
+    display: none;
+}
+
+/* --- ESTILO DE LISTA DE CARRITO VISTA CELULAR --- */
+.titulo-lista-carrito{
+    display: none;
+}
+
+/* --- SECCION DEL PRODUCTO --- */
+.producto{
+    display: grid;
+    grid-template-columns:30% 30% 30%;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: .5rem;
+    background-color: #d8d7d6;
+    border-radius: 1rem;
+    border: solid 1px #000000;
+}
+
+/* --- SECCION NOMBRE DEL PRODUCTO --- */
+.producto .detalle-nombre{
+    grid-column: 1/4;
+    font-size: 2rem;
+}
+
+/* --- SECCION CANTIDAD */
+.detalle-cantidad{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    margin: 0 auto;
+}
+
+/* --- SECCION DE CASILLA DE CANTIDAD --- */
+.detalle-cantidad input{
+    width: 30%;
+}
+
+/* LE DAMOS ESTILO AL BOTON DE + Y - */
+.detalle-cantidad button {
+    width: 2rem;
+    background-color: #52DEE5;
+    border: solid 1px;
+    height: 2rem;
+}
+
+/* --- TAMAÑO PRECIO --- */
+.detalle-precio {
+    font-size: 2rem;
+}
+
+/* --- ESTILO PARA SECCION BORRAR PRODUCTO --- */
+.producto button#borrar-producto{
+    width: 4rem;
+    background-color: #52DEE5;
+    border: solid 1px;
+    height: 2rem;
+    margin: 0 auto;
+}
+
+/* --- DETALLE PRECIO ---*/
+
+.contenedor-precio-final {
+    padding: 3rem;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border: solid 1px #000000;
+    border-radius: 1rem;
+}
+
+.detalle-precio-total {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.precio-total p {
+    color: #000000;
+    font-weight: bold;
+    text-align: left;
+}
+
+.btn-comprar {
+    height: 5rem;
+    background-color: #52DEE5;
+    border: solid 1px #001F54;
+    border-radius: 2rem;
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* --- CONFIGURACION MEDIA PARA DISTINTOS DISPOSITIVOS --- */
+
+@media (min-width: 860px) {
+
+    .contenedor-carrito{
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .contenedor-carrito h1 {
+        width: 100%;
+    }
+
+    .contenedor-lista-carrito{
+        width: 70%;
+    }
+    
+    .titulo-lista-carrito {
+        display: block;
+    }
+
+    .titulo-lista-carrito table {
+        width: 82%;
+    }
+
+    .titulo-lista-carrito table thead tr th:nth-child(1){
+        width: 55%;
+        text-align: end;
+    }
+
+    .titulo-lista-carrito table thead tr th:nth-child(2){
+        width: 33%;
+        text-align: end;
+    }
+
+    .titulo-lista-carrito table thead tr th:nth-child(3){
+        text-align: end;
+    }
+
+    .producto-img {
+        display: block;
+    }
+
+    .producto-img img {
+        width: 100%;
+    }
+
+    .producto {
+        grid-template-columns: 20% 40% 10% 10% 10%;
+    }
+
+    .producto .detalle-nombre {
+        grid-column: 2/3;
+    }
+
+    .detalle-cantidad {
+        grid-column: 3/4;
+    }
+    .contenedor-precio-final {
+        width: 25%;
+        height: 30rem;
+    }
+
+
+
+}
