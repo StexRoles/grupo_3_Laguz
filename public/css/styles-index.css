@@ -1,0 +1,271 @@
+/* ESTILOS DEL BANNER DE IMAGENES */
+
+.slider-box {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider-box ul {
+    display: flex;
+    padding: 0;
+    width: 500%;
+    animation: slide 15s infinite alternate ease-in-out;
+}
+
+.slider-box li {
+    width: 100%;
+    list-style: none;
+}
+
+.slider-box img {
+    width: 100%;
+    height: 100%;
+}
+
+.banner-imagenes {
+    display: none;
+}
+
+@keyframes slide {
+    0% {margin-left: 0;}
+    16% {margin-left: 0;}
+
+    21% {margin-left: -100%;}
+    36% {margin-left: -100%;}
+
+    42% {margin-left: -200%;}
+    57% {margin-left: -200%;}
+
+    63% {margin-left: -300%;}
+    78% {margin-left: -300%;}
+
+    84% {margin-left: -400%;}
+    100% {margin-left: -400%;}
+}
+
+/* MEDIA QUERIES DEL BANNER */
+
+    @media (min-width: 768px) {
+        .banner-imagenes {
+            display: block;
+            margin: 0 3rem;
+        }
+
+        .banner-imagenes-movil {
+            display: none;
+        } 
+    }
+
+    @media (min-width: 1200px) {
+        
+        .banner-imagenes {
+            margin: 0 6rem;
+        }
+
+    }
+
+
+/* ESTILOS DE LOS PRODUCTOS */
+
+.contenedor-productos-destacados, .contenedor-productos-ofertas {
+    background-color: white;
+    margin: 2rem 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem black;
+}
+
+.contenedor-productos {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.producto {
+    width: 50%;
+    padding: 1rem;
+    border: solid 1px #E5E7E9;
+}
+
+.producto h4 {
+    margin-bottom: 0.3rem;
+}
+
+.contenedor-productos img {
+    width: 100%;
+    height: 100%;
+}
+
+.titulo-contenedor {
+    margin: 0.3rem;
+}
+
+.descuento {
+    display: inline-block;
+    background-color: #52DEE5;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    color: white;
+    margin-left: 1rem;
+    font-size: 0.8rem;
+}
+
+.ver-mas {
+    margin: 0.5rem 5% 0.5rem 70%;
+    text-align: center;
+    font-weight: bold;
+    background-color: #52DEE5;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+    color: white;
+}
+
+.ver-mas a {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+/* MEDIA QUERIES DE LOS PRODUCTOS */
+
+    @media (min-width: 768px) {
+
+        .contenedor-productos {
+            flex-wrap: nowrap;
+        } 
+
+        .contenedor-productos-destacados, .contenedor-productos-ofertas {
+            margin: 2rem 3rem;
+        }
+
+        .ver-mas {
+            margin: 0.5rem 5% 0.5rem 80%;
+        }
+    }
+
+    @media (min-width: 1200px) {
+
+        .contenedor-productos-destacados, .contenedor-productos-ofertas {
+            margin: 2rem 6rem;
+        }
+
+    }
+
+
+/* ESTILOS NOTICIAS */
+
+.noticias {
+    background-color: white;
+    margin: 2rem 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem black;
+}
+
+.noticias img {
+    width: 100%;
+    height: 100%;
+}
+
+.img-noticia {
+    margin-bottom: 0.5rem;
+}
+
+
+.ver-mas-noticias {
+    margin: 1rem 5% 0.5rem 60%;
+    text-align: center;
+    font-weight: bold;
+    background-color: #52DEE5;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+    color: white;
+}
+
+.ver-mas-noticias a {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+/* MEDIA QUERIES DE LAS NOTICIAS */
+
+    @media (min-width: 768px) {
+        .contenedor-noticias {
+            display: flex;
+            margin: 0 2rem;
+        }
+
+        .noticias {
+            width: 50%;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .contenedor-noticias {
+            margin: 0 5rem;
+        }
+    }
+
+
+/* ESTILOS BANNER DE MARCAS */
+
+.slider-box-marcas {
+    width: 100%;
+    overflow: hidden;
+    background-color: white;
+}
+
+.slider-box-marcas ul {
+    display: flex;
+    padding: 0;
+    width: 300%;
+    animation: slide 9s infinite alternate ease-in-out;
+}
+
+.slider-box-marcas li {
+    width: 33.3%;
+    padding: 2rem;
+    list-style: none;
+}
+
+.slider-box-marcas img {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes slide {
+    0% {margin-left: 0;}
+    30% {margin-left: 0;}
+
+    35% {margin-left: -100%;}
+    65% {margin-left: -100%;}
+
+    70% {margin-left: -200%;}
+    100% {margin-left: -200%;}
+}
+
+
+/* MEDIA QUERIES DEL BANNER DE MARCAS */
+
+    @media (min-width: 768px) {
+        
+        .slider-box-marcas ul {
+            width: 100%;
+            animation: none;
+        }
+
+        .slider-box-marcas li {
+            width: 11%;
+            padding: 1rem;
+        }
+
+    }
+
+    @media (min-width: 1200px) {
+
+        .slider-box-marcas li {
+            padding: 2.5rem;
+        }
+
+    }
+

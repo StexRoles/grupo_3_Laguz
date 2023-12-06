@@ -176,6 +176,7 @@ header {
 }
 
 @media (min-width: 1200px) {
+    
     .contenedor-logo {
         width: 25%;
     }
@@ -191,6 +192,7 @@ header {
     .barra-buscar form {
         width: 80%;
     }
+
 }
 
 /*----------- ESTILOS DEL FOOTER -------------------*/
