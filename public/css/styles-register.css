@@ -1,38 +1,120 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+/* ESTILOS DEL CONTENEDOR DEL REGISTER */
+
+.fondo-register {
+  background-image: url(/img/fondo-login-register.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
-main{
-    display: flex;
-    align-items: center;
-    text-align:center ;
+.contenedor-register {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  width: 80vw;
 }
 
-.register{
-    display: block;
-    justify-content: center;
-    align-items: center;
-    width: 375px;
-    border: solid;
-    border-width: 1px;
+.contenedor-register form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-.btn {
-    background-color: lightblue;
-    color: black;
-    padding: 5px 20px;
-    text-decoration: none;
+.contenedor-register label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+
+}
+
+.contenedor-register input {
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ced4da;
+  height: 2.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.contenedor-register input:focus {
+  outline: solid 3px rgba(146, 220, 229, 0.5 );
+}
+
+.contenedor-register a {
+  text-align: center;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: #001F54;
+}
+
+.titulo-register {
+  text-align: center;
+  margin-bottom: 2rem !important;
+  font-size: 2rem;
+  font-family: 'Fjalla One', sans-serif;
+  color: black !important;
+}
+
+.registrarse {
+  display: flex;
+  background-color: #001F54;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
+  padding: 1rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.frase-register p {
+  text-align: center;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 1.4rem;
+  color: white;
+  margin-top: 1rem;
+}
+
+/* MEDIA QUERIES DEL LOGIN */
+
+@media (min-width: 768px) {
+  
+  .fondo-register {
+      flex-direction: row-reverse;
+      padding: 7rem 3rem;
   }
 
-  .password{
-    font-style: italic;
-    color: blue; 
-    font-size: 13px;
+  .frase-register {
+      padding-right: 2rem;
   }
 
-  .acceder{
-    font-weight: bold;
+  .contenedor-register {
+      width: 60vw;
   }
+}
+
+@media (min-width: 1200px) {
+  
+  .contenedor-register {
+      width: 30vw;
+  }
+
+  .frase-register {
+      padding-right: 4rem;
+  }
+
+  .frase-register p {
+      font-size: 1.8rem;
+  }
+
+  .acceder:hover {
+      background-color: #034078;
+  }
+}
