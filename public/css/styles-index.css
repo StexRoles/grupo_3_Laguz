@@ -72,7 +72,7 @@
     margin: 2rem 1rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
-    box-shadow: 0 0 0.5rem black;
+    box-shadow: 0 0 0.5rem rgba(0, 0,0, 0.3);
 }
 
 .contenedor-productos {
@@ -82,8 +82,14 @@
 
 .producto {
     width: 50%;
-    padding: 1rem;
     border: solid 1px #E5E7E9;
+}
+
+.producto a {
+    text-decoration: none;
+    display: block;
+    color: black;
+    padding: 1rem;
 }
 
 .producto h4 {
@@ -146,8 +152,30 @@
 
         .contenedor-productos-destacados, .contenedor-productos-ofertas {
             margin: 2rem 6rem;
+            background-color: transparent;
+            box-shadow: none;
         }
 
+        .titulo-contenedor {
+            margin-bottom: 2rem;
+            font-size: 1.3rem;
+        }
+
+        .producto {
+            margin: 0.5rem;
+            border-radius: 0.5rem;
+            background-color: white;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .producto:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 1rem rgba(0, 0,0, 0.3);
+        }
+
+        .noticias {
+            margin: 2rem 3rem !important;
+        }
     }
 
 
@@ -158,7 +186,7 @@
     margin: 2rem 1rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
-    box-shadow: 0 0 0.5rem black;
+    box-shadow: 0 0 0.5rem rgba(0, 0,0, 0.3);
 }
 
 .noticias img {

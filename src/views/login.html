@@ -8,7 +8,8 @@
     <!-- TIPOGRAFIA -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
 
     <!-- ESTILOS -->
     <link rel="stylesheet" href="/css/styles-login.css">
@@ -31,7 +32,9 @@
         <section class="menu-sup">
 
             <article class="contenedor-logo">
-                <img src="/img/logo.webp" alt="Logo laguz">
+                <a href="/">
+                    <img src="/img/logo.webp" alt="Logo laguz">
+                </a>
             </article>
 
             <!--------------- FORMULARIO DE BUSQUEDA ------------------>
@@ -79,31 +82,27 @@
     </header>
 
     <main>
-                <div >
-                    <form class="login">
-                        <h3 class="acceder">Acceder</h3>
-                        <br>
-                        <label for="nombre">Nombre de usuario</label>
-                        <br>
-                        <ol><il><input type="text"></ol></il>
-                        <br>
-                        <label for="nombre">Contraseña</label>
-                        <br>
-                        <ol><il><input type="password"></ol></il>
-                        <br>
-                        <button type="submit" class="btn"> Acceder</button>
-                        <br>
-                        <br>
-                        <a href="#" class="password">Olvidaste tu contraseña?</a> 
-                        <br>
-                        <br>
-                        <button type="submit" class="btn" href="/register.html" > Crea tu cuenta!</button>
-                        <br>
-                        
-                        
-                    </form>
-                </div>
-            <br>
+        <section class="fondo-login">
+            <article class="contenedor-login">
+                <form action="" method="post">
+                    <label class="titulo-login">Mi Cuenta</label>
+
+                    <label for="usuario">Usuario o email</label>
+                    <input type="text" id="usuario">
+
+                    <label for="contrasenia">Contraseña</label>
+                    <input type="password" id="contrasenia">
+
+                    <a href="/register">¿Olvidaste tu contraseña?</a>
+
+                    <button type="submit" class="acceder">Acceder</button>
+                </form>
+            </article>
+
+            <article class="frase-login">
+                <p>Descubre la tecnología en un océano de posibilidades.</p>
+            </article>
+        </section>
     </main>
 
     <footer>

@@ -5,6 +5,11 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+main {
+    background-color:  #f5f5f5;
+    padding-top: 1px;
+}
+
 /*----------- ESTILOS DEL HEADER -------------------*/
 
 header {
@@ -111,9 +116,14 @@ header {
         font-size: 1.5rem;
     }
 
+    .contenedor-logo {
+        width: 25%;
+        margin: 0 5%;
+    }
+
     .barra-buscar {
         width: 45%;
-        padding: 0 2rem;
+        padding-right: 2rem;
     }
 
     .barra-buscar input {
@@ -121,7 +131,7 @@ header {
     }
 
     .barra-buscar form {
-        width: 100%;
+        width: 70%;
     }
 
     .button-categorias {
@@ -178,19 +188,12 @@ header {
 @media (min-width: 1200px) {
     
     .contenedor-logo {
-        width: 25%;
+        width: 20%;
+        margin: 0 7.5%;
     }
 
     .menu-sup {
         padding: 0 3rem;
-    }
-
-    .barra-buscar {
-        width: 60%;
-    }
-
-    .barra-buscar form {
-        width: 80%;
     }
 
 }
