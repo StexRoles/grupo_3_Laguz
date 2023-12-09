@@ -1,64 +1,205 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+/* ESTILOS DE DETALLE DE PRODUCTO */
+
+
+/* IMAGENES EN MINIATURA */
+.contenedor-imagenes-pequeñas {
+    display: none;   
 }
 
-main {
+
+/* IMAGEN PRINCIPAL */
+.contenedor-imagen-principal {
+    padding: 1rem;
+    margin: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+
+.contenedor-imagen-principal img {
+    width: 100%;
+}
+
+
+/* INFORMACION DEL PRODUCTO */
+.contenedor-detalles-producto {
+    padding: 1.5rem 1rem;
+}
+
+.informacion-producto p, h3 {
+    margin: 3rem 0;
+}
+
+.informacion-producto h3 {
+    font-size: 1.6rem;
+}
+
+.marca {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: grey;
+}
+
+.precio {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+
+/* BOTONES CANTIDAD Y FAVORITOS */
+.contenedor-cantidad-favoritos {
     display: flex;
-    align-items: flex-start;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2rem 0;
 }
 
-/* Estilos para las imagenes pequenas, a modo ilustraqtivo ya que no poseo las imagenes */
-.imagenes-pequeñas {
+/* BOTON CANTIDAD */
+.boton-cantidad {
+    width: 60%;
+    display: flex;
+    align-items: center;
+}
+
+.boton-cantidad p {
+    display: inline;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+
+.boton-cantidad button, input {
+    height: 2rem;
+    border: none;
+}
+
+.boton-cantidad input {
+    width: 2rem;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.boton-cantidad button {
+    width: 2rem;
+    font-size: 1.5rem;
+}
+
+/* BOTON FAVORITOS */
+.boton-favoritos {
+    width: 40%;
+}
+
+.boton-favoritos p {
+    display: inline;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.boton-favoritos button {
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+
+/* BOTONES COMPRAR Y CARRITO */
+.botones-comprar-carrito {
+    margin: 1rem 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
 }
 
-.imagen-pequeña {
-    border: 3px solid black;
-    margin-bottom: 10px;
-    position: relative;
-    width: 50%;
-}
-
-/* Imagen seleccionada  */
-
-.imagen-seleccionada {
-    border: 1px solid black;
-    width: 40%; 
-    margin-left: auto; 
-    margin-right: 0; 
-    padding: 10%;
-}
-
-/* Estilos para la sección de detalle del producto */
-.producto-detalle {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.descripcion-producto {
-    max-width: 60%; 
-}
-
-.descripcion-producto h2 {
-    font-size: 1.5em; 
-}
-
-.descripcion-producto p {
-    font-size: 1em;
-}
-
-.cantidad button {
-    background-color: orange; /* Fondo  botones de cantidad y agregar al carrito */
-    color: white; 
-    padding: 8px 12px;
+.botones-comprar-carrito button {
+    width: 100%;
+    margin: 1rem 0;
     border: none;
-    border-radius: 5px; /* Bordes redondeados botones */
-    margin-right: 5px;
+    height: 3rem;
+    padding: 0.5rem;
+    color: white;
+    background-color: #52DEE5;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
 }
 
+/* MEDIA QUERIES DEL DETALLE DE PRODUCTO */
+@media (min-width: 768px) {
+    
+    /* CONTENIDO COMPLETO */
+    main {
+        display: flex;
+        padding: 3rem !important;
+    }
+
+    /* CONTENEDOR DE IMAGENES */
+    .imagenes-producto {
+        display: flex;
+        width: 50%;
+        height: 50%;
+    }
+
+    /* IMAGENES EN MINIATURA */
+    .contenedor-imagenes-pequeñas {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 20%;
+        margin: 1rem 0;
+    }
+
+    .contenedor-imagenes-pequeñas img {
+        width: 100%;
+        border-radius: 0.5rem;
+    }
+
+    
+    /* IMAGEN PRINCIPAL */
+    .contenedor-imagen-principal {
+        width: 80%;
+    }
+
+
+    /* INFORMACION DEL PRODUCTO */
+    .contenedor-detalles-producto {
+        width: 50%;
+        margin-top: 1rem;
+        background-color: white;
+        border-radius: 0.5rem;
+    }
+
+    .informacion-producto p, h3 {
+        margin: 1rem 0;
+    }
+
+    /* BOTONES CANTIDAD Y FAVORITOS */
+    .contenedor-cantidad-favoritos {
+        margin: 1rem 0;
+    }
+
+    /* BOTONES COMPRAR Y CARRITO */
+    .botones-comprar-carrito {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* BOTON CANTIDAD */
+    .boton-cantidad input {
+        background-color: #f5f5f5;
+    }
+
+    .boton-cantidad button {
+        background-color: gainsboro;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    .informacion-producto p, h3 {
+        margin: 2rem 0;
+    }
+}

@@ -81,26 +81,44 @@
     </header>
 
     <main>
-        <!-- imagenes pequeñas -->
-        <section class="imagenes-pequeñas">
-            <div class="imagen-pequeña"><img src="imagen1.jpg" alt="imagen 1 de producto"></div>
-            <div class="imagen-pequeña"><img src="imagen2.jpg" alt="imagen 2 de producto"></div>
-            <div class="imagen-pequeña"><img src="imagen3.jpg" alt="imagen 3 de producto"></div>
+        <section class="imagenes-producto">
+            <article class="contenedor-imagenes-pequeñas">
+                <div><img src="/img/productos/producto-1.webp" alt=""></div>
+                <div><img src="/img/productos/producto-1.webp" alt=""></div>
+                <div><img src="/img/productos/producto-1.webp" alt=""></div>
+                <div><img src="/img/productos/producto-1.webp" alt=""></div>
+            </article>
+
+            <article class="contenedor-imagen-principal">
+                <img src="/img/productos/producto-1.webp" alt="">
+            </article>
         </section>
-        <!-- Imagen seleccionada -->
-        <div class="imagen-seleccionada"><img src="imagen1.jpg" alt="Producto 1"></div>
-        
-        <!--descripción del producto -->
-        <section class="producto-detalle">
-            <div class="descripcion-producto">
-                <h2>Nombre del Producto</h2>
-                <p>Precio: $XX.XX</p>
-                <p>Descripción: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <div class="cantidad">
-                    <button>Añadir al carrito</button>
-                    <button>Cantidad</button> <!-- Este botón abriría una ventana/modal para seleccionar la cantidad -->
-                </div>
-            </div>
+
+        <section class="contenedor-detalles-producto">
+            <article class="informacion-producto">
+                <p class="marca">HKC</p>
+                <h3>Monitor HKC ANTTEQ F2145M 21.45" 75hz</h3>
+                <p class="precio">$ 78.000</p>
+
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis assumenda corrupti 
+                nulla voluptate, itaque architecto velit at asperiores, accusamus earum distinctio quia, 
+                porro aut hic incidunt? Deserunt reiciendis assumenda nisi!</p>
+            </article>
+            
+            <article class="contenedor-cantidad-favoritos">
+                <article class="boton-cantidad">
+                    <p>Cantidad:</p> <button>-</button><input type="text"><button>+</button> 
+                </article>
+
+                <article class="boton-favoritos">
+                    <button><i class="fa-regular fa-heart"></i></button><p>Favoritos</p>
+                </article>
+            </article>
+
+            <article class="botones-comprar-carrito">
+                <button>Agregar al carrito</button>
+                <button>Comprar ahora</button>
+            </article>
         </section>
     </main>
 
