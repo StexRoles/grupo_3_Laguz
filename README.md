@@ -1,3 +1,6 @@
+Link render:
+https://grupo-3-laguz.onrender.com
+
 Buen dia, esta es la tematica decidida por nuestro grupo:
 
 1. ¿Qué productos o servicios brindara nuestro sitio?  
