@@ -122,6 +122,17 @@
     font-size: 1rem;
 }
 
+/* ANIMACIONES */
+@keyframes splash {
+    0% {
+        box-shadow: 0 0 0 rgba(138, 227, 252, 0.89);
+    }
+    100% {
+        box-shadow: 0 0 0 20px rgba(0, 0, 255, 0);
+    }
+}
+
+
 /* MEDIA QUERIES DEL DETALLE DE PRODUCTO */
 @media (min-width: 768px) {
     
@@ -183,6 +194,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    .botones-comprar-carrito button:hover {
+        animation: splash 0.8s;
     }
 
     /* BOTON CANTIDAD */

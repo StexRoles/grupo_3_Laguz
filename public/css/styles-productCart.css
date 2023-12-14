@@ -93,11 +93,13 @@
     width: 2rem;
     padding: 0.5rem;
     text-align: center;
+    background-color: #f5f5f5;
 }
 
 .boton-cantidad button {
     width: 2rem;
     font-size: 1.5rem;
+    background-color: rgb(186, 184, 184);
 }
 
 /* BOTON DE ELIMINAR PRODUCTO */
@@ -139,6 +141,16 @@
     font-size: 1rem;
 }
 
+/* ANIMACIONES */
+@keyframes splash {
+    0% {
+        box-shadow: 0 0 0 rgba(138, 227, 252, 0.89);
+    }
+    100% {
+        box-shadow: 0 0 0 20px rgba(0, 0, 255, 0);
+    }
+}
+
 
 /* MEDIA QUERIES DEL CARRITO DE COMPRA */
 
@@ -165,6 +177,10 @@
     /* BOTON FINALIZAR */
     .boton-finalizar-compra button {
         width: 100%;
+    }
+
+    .boton-finalizar-compra button:hover {
+        animation: splash 0.8s;
     }
 
     /* CONTENEDOR DE LOS PRODUCTOS */

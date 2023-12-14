@@ -7,7 +7,7 @@
 
 main {
     background-color:  #f5f5f5;
-    padding: 1px 0;
+    padding: 0.1px 0;
 }
 
 /*----------- ESTILOS DEL HEADER -------------------*/
@@ -31,19 +31,6 @@ header {
 
     .contenedor-logo {
         width: 35%;
-    }
-
-    .login-icon, .cart-icon {
-        width: 12.5%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.3rem;
-    }
-
-    .login-icon a, .cart-icon a {
-        text-decoration: none;
-        color: #001F54;
     }
 
     .menu-sup {
@@ -84,6 +71,25 @@ header {
         right: 0.6rem;
     }
 
+    /*------  ICONOS DEL HEADER ---------*/
+
+    .login-icon, .cart-icon, .favorites-icon {
+        width: 12.5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.3rem;
+    }
+
+    .login-icon a, .cart-icon a, .favorites-icon a {
+        text-decoration: none; 
+        color: #001F54;
+    }
+
+    .favorites-icon {
+        display: none;
+    }
+
     /*-----------  BARRA DE NAVEGACION -------------*/
 
     .nav-categorias {
@@ -111,16 +117,32 @@ header {
 /*----------- MEDIA QUERIES DEL HEADER -------------------*/
 
 @media (min-width: 768px) {
-    .login-icon, register-icon, .cart-icon {
+
+    /*------  ICONOS DEL HEADER ---------*/
+    .login-icon, .cart-icon, .favorites-icon {
         width: 10%;
         font-size: 1.5rem;
     }
 
+    .favorites-icon {
+        display: flex;
+    }
+
+    .login-icon a, .cart-icon a, .favorites-icon a {
+        transition: all 0.3s ease;
+    }
+
+    .login-icon a:hover, .cart-icon a:hover, .favorites-icon a:hover {
+        color: #52DEE5;
+    }
+
+    /*-----------  LOGO DEL HEADER -------------*/
     .contenedor-logo {
         width: 25%;
         margin: 0 5%;
     }
 
+    /*------  BARRA DE BUSQUEDA ---------*/
     .barra-buscar {
         width: 45%;
         padding-right: 2rem;
@@ -138,6 +160,7 @@ header {
         display: none;
     }
 
+    /*-----------  BARRA DE NAVEGACION -------------*/
     .nav-categorias {
         display: block;
     }
@@ -148,7 +171,7 @@ header {
         align-items: center;
         list-style: none;
         width: 100%;
-        padding: 0.3rem 10%;
+        padding: 0rem 10%;
         border: solid 1px #CACFD2;
     }
 
@@ -162,11 +185,10 @@ header {
 
     .nav-categorias li {
         display: flex;
+        flex-direction: column;
         width: 20%;
         height: 2rem;
         border-left: solid 1px #CACFD2;
-        border-bottom: solid 0.3rem transparent;
-        transition: all 0.3s;
     }
 
     .nav-categorias li:last-child {
@@ -180,9 +202,21 @@ header {
         font-size: 1rem;
     }
 
-    .nav-categorias li:hover {
-        border-bottom: solid 0.3rem #92DCE5;
+    /*-----------  EFECTO DE GRADIENT -------------*/
+    .nav-gradient {
+        width: 100%;
+        height: 0.4rem;
+        background-color: transparent;
+        transition: all 0.5s ease;
     }
+
+    .nav-categorias li:hover {
+        .nav-gradient {
+            background: rgb(2,0,36);
+            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(5,93,177,1) 62%, rgba(3,140,208,1) 86%, rgba(0,212,255,1) 100%);
+        }
+    }
+    
 }
 
 @media (min-width: 1200px) {
@@ -294,6 +328,15 @@ footer {
 
     .iconos-redes {
         font-size: 1rem;
+    }
+
+    .iconos-redes div {
+        transition: all 0.3s ease;
+    }
+
+    .iconos-redes div:hover {
+        background-color: #92DCE5;
+        color: black;
     }
 }
 
