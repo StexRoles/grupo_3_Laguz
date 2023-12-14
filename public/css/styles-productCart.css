@@ -1,196 +1,197 @@
-/* --- CONFIGURACION DE USO DE REM --- */
-html{
-    font-size: 62.5%;
+/* ESTILOS DEL CARRITO DE COMPRA */
+
+/* TITULO DEL MAIN */
+.titulo {
+    margin: 1rem 0;
 }
 
-/* --- ESTILO DE LA CAJA PRINCIPAL --- */
-.contenedor-carrito{
-    padding: 1rem;
+.titulo h3 {
+    font-family: 'Fjalla One', sans-serif;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    font-size: 2.5rem;
 }
 
-/* --- ESTILO DEL ENCABEZADO --- */
-.contenedor-carrito h1 {
-    font-size: 3rem;
+/* CONTENEDOR DE LOS PRODUCTOS */
+.contenedor-productos {
+    background-color: white;
+    box-shadow: 0 0 0.5rem rgba(0, 0,0, 0.3);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+/* PARTE SUPERIOR DEL CONTENEDOR, NOMBRE - CANTIDAD - PRECIO */
+.encabezado-productos {
+    display: flex;
+    margin-bottom: 1rem;
+    margin-left: 32%;
+}
+
+.encabezado-productos p {
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 1.2rem;
+}
+
+.encabezado-productos div {
+    width: 33%;
+    
+}
+
+/* CONTENEDOR DE LA INFORMACION DEL PRODUCTO */
+.informacion-producto {
+    display: flex;
+    align-items: center;
+    border: solid 1px gray;
+    border-radius: 0.5rem;
     margin-bottom: 1rem;
 }
 
-/* --- ESTILO DE LA CAJA SECUNDARIA --- */
-.contenedor-lista-carrito {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    border: solid 1px #000000;
-    border-radius: 1rem;
-    padding: 1rem;
+.imagen-producto {
+    width: 20%;
+    border-radius: 0.5rem 0 0 0.5rem;
 }
 
-/* --- ESTILO DE IMAGEN VISTA CELULAR --- */
-.producto-img{
-    display: none;
+.imagen-producto img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem 0 0 0.5rem;
 }
 
-/* --- ESTILO DE LISTA DE CARRITO VISTA CELULAR --- */
-.titulo-lista-carrito{
-    display: none;
-}
-
-/* --- SECCION DEL PRODUCTO --- */
-.producto{
-    display: grid;
-    grid-template-columns:30% 30% 30%;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    padding: .5rem;
-    background-color: #d8d7d6;
-    border-radius: 1rem;
-    border: solid 1px #000000;
-}
-
-/* --- SECCION NOMBRE DEL PRODUCTO --- */
-.producto .detalle-nombre{
-    grid-column: 1/4;
-    font-size: 2rem;
-}
-
-/* --- SECCION CANTIDAD */
-.detalle-cantidad{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .5rem;
-    margin: 0 auto;
-}
-
-/* --- SECCION DE CASILLA DE CANTIDAD --- */
-.detalle-cantidad input{
+.nombre-producto {
     width: 30%;
+    text-align: center;
+    padding: 0.5rem;
+    font-weight: bold;
 }
 
-/* LE DAMOS ESTILO AL BOTON DE + Y - */
-.detalle-cantidad button {
+.precio-producto {
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.boton-eliminar-producto {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+/* BOTON DE CANTIDAD */
+.boton-cantidad {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boton-cantidad button, input {
+    height: 2rem;
+    border: none;
+}
+
+.boton-cantidad input {
     width: 2rem;
-    background-color: #52DEE5;
-    border: solid 1px;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.boton-cantidad button {
+    width: 2rem;
+    font-size: 1.5rem;
+}
+
+/* BOTON DE ELIMINAR PRODUCTO */
+.boton-eliminar-producto button {
+    width: 2rem;
     height: 2rem;
+    border: none;
+    background-color: transparent;
+    color: #52DEE5;
+    font-size: 1.5rem;
 }
 
-/* --- TAMAÑO PRECIO --- */
-.detalle-precio {
-    font-size: 2rem;
-}
-
-/* --- ESTILO PARA SECCION BORRAR PRODUCTO --- */
-.producto button#borrar-producto{
-    width: 4rem;
-    background-color: #52DEE5;
-    border: solid 1px;
-    height: 2rem;
-    margin: 0 auto;
-}
-
-/* --- DETALLE PRECIO ---*/
-
-.contenedor-precio-final {
-    padding: 3rem;
-    font-size: 2rem;
+/* CONTENEDOR PRECIOS Y BOTON DE COMPRAR */
+.contenedor-precio-total {
+    background-color: white;
+    box-shadow: 0 0 0.5rem rgba(0, 0,0, 0.3);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem;
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    border: solid 1px #000000;
-    border-radius: 1rem;
-}
-
-.detalle-precio-total {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .precio-total p {
-    color: #000000;
-    font-weight: bold;
-    text-align: left;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 1.5rem;
 }
 
-.btn-comprar {
-    height: 5rem;
+/* BOTON FINALIZAR */
+.boton-finalizar-compra button {
+    border: none;
+    height: 3rem;
+    padding: 0.5rem;
+    color: white;
     background-color: #52DEE5;
-    border: solid 1px #001F54;
-    border-radius: 2rem;
-    width: 70%;
-    margin: 0 auto;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
 }
 
-/* --- CONFIGURACION MEDIA PARA DISTINTOS DISPOSITIVOS --- */
 
-@media (min-width: 860px) {
+/* MEDIA QUERIES DEL CARRITO DE COMPRA */
 
-    .contenedor-carrito{
-        flex-direction: row;
-        flex-wrap: wrap;
-        max-width: 1200px;
-        margin: 0 auto;
+@media (min-width: 768px) {
+
+    /* CONTENEDOR PRECIOS Y BOTON DE COMPRAR */
+    .contenedor-precio-total {
+        flex-direction: column;
+        width: 30%;
+        height: 1%;
+        padding: 1.5rem;
+        align-items: normal;
     }
 
-    .contenedor-carrito h1 {
+    .contenedor-precio-total h4 {
+        margin-bottom: 0.5rem;
+    } 
+
+    .precio-total {
+        margin: 0.6rem 0;
+    }
+
+
+    /* BOTON FINALIZAR */
+    .boton-finalizar-compra button {
         width: 100%;
     }
 
-    .contenedor-lista-carrito{
+    /* CONTENEDOR DE LOS PRODUCTOS */
+    .contenedor-productos {
         width: 70%;
     }
-    
-    .titulo-lista-carrito {
-        display: block;
+
+
+    /* CONTENEDOR DE LOS PRINCIPAL Y FORMULARIO */
+    .contenedor-principal {
+        margin: 2rem 1rem 4rem 1rem;
     }
 
-    .titulo-lista-carrito table {
-        width: 82%;
+    .contenedor-principal form {
+        display: flex;
     }
 
-    .titulo-lista-carrito table thead tr th:nth-child(1){
-        width: 55%;
-        text-align: end;
+    /* TITULO DEL MAIN */
+    .titulo {
+        margin: 2rem 0;
     }
+}
 
-    .titulo-lista-carrito table thead tr th:nth-child(2){
-        width: 33%;
-        text-align: end;
+@media (min-width: 1200px) {
+
+    /* CONTENEDOR DE LOS PRINCIPAL Y FORMULARIO */
+    .contenedor-principal {
+        padding: 0 8rem;
     }
-
-    .titulo-lista-carrito table thead tr th:nth-child(3){
-        text-align: end;
-    }
-
-    .producto-img {
-        display: block;
-    }
-
-    .producto-img img {
-        width: 100%;
-    }
-
-    .producto {
-        grid-template-columns: 20% 40% 10% 10% 10%;
-    }
-
-    .producto .detalle-nombre {
-        grid-column: 2/3;
-    }
-
-    .detalle-cantidad {
-        grid-column: 3/4;
-    }
-    .contenedor-precio-final {
-        width: 25%;
-        height: 30rem;
-    }
-
-
-
 }

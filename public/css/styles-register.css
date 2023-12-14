@@ -1,5 +1,6 @@
 /* ESTILOS DEL CONTENEDOR DEL REGISTER */
 
+/* FONDO DEL REGISTER */
 .fondo-register {
   background-image: url(/img/fondo-login-register.jpg);
   background-size: cover;
@@ -12,6 +13,7 @@
   justify-content: space-around;
 }
 
+/* CONTENEDOR DEL REGISTER */
 .contenedor-register {
   background-color: white;
   border-radius: 0.5rem;
@@ -51,6 +53,7 @@
   color: #001F54;
 }
 
+/* TITULO DEL REGISTER */
 .titulo-register {
   text-align: center;
   margin-bottom: 2rem !important;
@@ -59,6 +62,7 @@
   color: black !important;
 }
 
+/* BOTON DE REGISTRO */
 .registrarse {
   display: flex;
   background-color: #001F54;
@@ -74,6 +78,7 @@
   transition: all 0.3s ease-in-out;
 }
 
+/* FRASE DEL REGISTER */
 .frase-register p {
   text-align: center;
   font-family: 'Fjalla One', sans-serif;
@@ -86,35 +91,41 @@
 
 @media (min-width: 768px) {
   
-  .fondo-register {
-      flex-direction: row-reverse;
-      padding: 7rem 3rem;
-  }
+    /* FONDO DEL REGISTER */
+    .fondo-register {
+        flex-direction: row-reverse;
+        padding: 7rem 3rem;
+    }
 
-  .frase-register {
-      padding-right: 2rem;
-  }
+    /* FRASE DEL REGISTER */
+    .frase-register {
+        padding-right: 2rem;
+    }
 
-  .contenedor-register {
-      width: 60vw;
-  }
+    /* CONTENEDOR DEL REGISTER */
+    .contenedor-register {
+        width: 60vw;
+    }
 }
 
 @media (min-width: 1200px) {
   
-  .contenedor-register {
-      width: 30vw;
-  }
+    /* FONDO DEL REGISTER */
+    .contenedor-register {
+        width: 30vw;
+    }
 
-  .frase-register {
-      padding-right: 4rem;
-  }
+    /* FRASE DEL REGISTER */
+    .frase-register {
+        padding-right: 4rem;
+    }
 
-  .frase-register p {
-      font-size: 1.8rem;
-  }
+    .frase-register p {
+        font-size: 1.8rem;
+    }
 
-  .acceder:hover {
-      background-color: #034078;
-  }
+    /* TRANSICION BOTON DE REGISTRO */
+    .acceder:hover {
+        background-color: #034078;
+    }
 }

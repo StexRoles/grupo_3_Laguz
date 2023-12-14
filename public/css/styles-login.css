@@ -1,5 +1,6 @@
 /* ESTILOS DEL CONTENEDOR DE LOGIN */
 
+/* FONDO DEL LOGIN */
 .fondo-login {
     background-image: url(/img/fondo-login-register.jpg);
     background-size: cover;
@@ -12,6 +13,7 @@
     justify-content: space-around;
 }
 
+/* CONTENEDOR DEL LOGIN */
 .contenedor-login {
     background-color: white;
     border-radius: 0.5rem;
@@ -53,6 +55,7 @@
     margin-bottom: 1rem;
 }
 
+/* TITULO DEL LOGIN */
 .titulo-login {
     text-align: center;
     margin-bottom: 2rem !important;
@@ -61,6 +64,7 @@
     color: black !important;
 }
 
+/* BOTON DE ACCEDER */
 .acceder {
     display: flex;
     background-color: #001F54;
@@ -76,6 +80,7 @@
     transition: all 0.3s ease-in-out;
 }
 
+/* FRASE DEL LOGIN */
 .frase-login p {
     text-align: center;
     font-family: 'Fjalla One', sans-serif;
@@ -88,15 +93,18 @@
 
 @media (min-width: 768px) {
     
+    /* FONDO DEL LOGIN */
     .fondo-login {
         flex-direction: row-reverse;
         padding: 7rem 3rem;
     }
 
+    /* FRASE DEL LOGIN */
     .frase-login {
         padding-right: 2rem;
     }
 
+    /* CONTENEDOR DEL LOGIN */
     .contenedor-login {
         width: 60vw;
     }

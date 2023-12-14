@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
 
     <!-- ESTILOS -->
     <link rel="stylesheet" href="/css/styles-productCart.css">
@@ -21,7 +22,6 @@
     <script src="https://kit.fontawesome.com/3f4ccc7b29.js" crossorigin="anonymous"></script>
 
 </head>
-
 
 <body>
     <header>
@@ -79,100 +79,91 @@
         </section>
 
     </header>
-<!-- CONTENEDOR PRINCIPAL -->
+    
     <main>
-        <section class="contenedor-carrito">
-            <h1>Mi Carrito</h1>
-            <div class="contenedor-lista-carrito">
-<!-- DETALLE DEL CARRITO -->
-                <div class="titulo-lista-carrito">
-                    <table>
-                        <thead>
-                             <tr>
-                                 <th>Nombre</th>
-                                 <th>Cantidad</th>
-                                 <th>Precio</th>
-                             </tr>
-                        </thead>
-                    </table>
-                </div>
-<!-- IMAGEN DEL PRODUCTO -->
-                <div class="producto">
-                    <div class="producto-img">
-                        <img src="https://www.mink.com.ar/qloud/ryr/fotos/19607-0.jpg" alt="">
-                    </div>
-                    <div class="detalle-nombre">
-                        <p>Auricular Gamers</p>
-                    </div>
-<!-- SECCION CANTIDAD DEL PRODUCTO -->
-                    <div class="detalle-cantidad">
-                        <button id="boton-sumar">+</button>
-                        <input type="number">
-                        <button id="boton-restar">-</button>
-                    </div>
-<!-- PRECIO DEL PRODUCTO -->
-                    <div class="detalle-precio">
-                        <p>$9.88</p>
-                    </div>
-<!-- ELIMINA EL PRODUCTO -->
-                    <button id="borrar-producto">X</button>
-                </div>
-<!-- IMAGEN DEL PRODUCTO -->
-                <div class="producto">
-                    <div class="producto-img">
-                        <img src="https://www.mink.com.ar/qloud/ryr/fotos/19607-0.jpg" alt="">
-                    </div>
-                    <div class="detalle-nombre">
-                        <p>Auricular Gamers</p>
-                    </div>
-<!-- SECCION CANTIDAD DEL PRODUCTO -->
-                    <div class="detalle-cantidad">
-                        <button id="boton-sumar">+</button>
-                        <input type="number">
-                        <button id="boton-restar">-</button>
-                    </div>
-                    <div class="detalle-precio">
-                        <p>$9.88</p>
-                    </div>
-<!-- ELIMINA EL PRODUCTO -->
-                    <button id="borrar-producto">X</button>
-                </div>
-<!-- IMAGEN DEL PRODUCTO -->
-                <div class="producto">
-                    <div class="producto-img">
-                        <img src="https://www.mink.com.ar/qloud/ryr/fotos/19607-0.jpg" alt="">
-                    </div>
-                    <div class="detalle-nombre">
-                        <p>Auricular Gamers</p>
-                    </div>
-<!-- SECCION CANTIDAD DEL PRODUCTO -->
-                    <div class="detalle-cantidad">
-                        <button id="boton-sumar">+</button>
-                        <input type="number">
-                        <button id="boton-restar">-</button>
-                    </div>
-                    <div class="detalle-precio">
-                        <p>$9.88</p>
-                    </div>
-<!-- ELIMINA EL PRODUCTO -->
-                    <button id="borrar-producto">X</button>
-                </div>
-            </div>
-<!-- SECCION DE PRECIO FINAL -->
-            <div class="contenedor-precio-final">
-                <p>Precio Total:</p>
-                <div class="detalle-precio-total">
-                    <p>$ 9.88</p>
-                    <p>$ 23.99</p>
-                    <p>$ 9.88</p>
-                </div>
-                <div class="precio-total">
-                    <p>$43.75</p>
-                </div>
-<!-- BOTON DE FINALIZAR COMPRA -->
-                <button class="btn-comprar">Finalizar Compra</button>
-            </div>
-            
+        <!----------------- TITULO ------------------------>
+        <section class="titulo">
+            <h3>Mi Carrito</h3>
+        </section>
+
+        <!----------------- PRODUCTOS Y FINALIZAR COMPRA ------------------------>
+        <section class="contenedor-principal">
+            <!-------------- SE CREA UN FORMULARIO PARA PODER ENVIAR TODOS LOS PRODUCTOS AL BACKEND -------->
+            <form action="" method="post">
+                <!----------------- CONTIENE LOS PRODUCTOS QUE SE VAN A COMPRAR ------------------------>
+                <article class="contenedor-productos">
+                    <article class="encabezado-productos">
+                        <div><p>Nombre</p></div>
+                        <div><p>Cantidad</p></div>
+                        <div><p>Precio</p></div>
+                    </article>
+
+                    <!------------ AQUI SE VAN A IR INGRESANDO LOS PRODUCTOS DEL CARRITO -------------->
+                    <article class="informacion-producto">
+                        <div class="imagen-producto">
+                            <img src="/img/productos/producto-1.webp" alt="">
+                        </div>
+
+                        <div class="nombre-producto">
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </div>
+
+                        <div class="boton-cantidad">
+                            <button>-</button><input type="text" value="1"><button>+</button>
+                        </div>
+
+                        <div class="precio-producto">
+                            <p>$10.99</p>
+                        </div>
+
+                        <div class="boton-eliminar-producto">
+                            <button><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    </article>
+
+                    <article class="informacion-producto">
+                        <div class="imagen-producto">
+                            <img src="/img/productos/producto-2.webp" alt="">
+                        </div>
+
+                        <div class="nombre-producto">
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </div>
+
+                        <div class="boton-cantidad">
+                            <button>-</button><input type="text" value="1"><button>+</button>
+                        </div>
+
+                        <div class="precio-producto">
+                            <p>$10.99</p>
+                        </div>
+
+                        <div class="boton-eliminar-producto">
+                            <button><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    </article>
+                </article>
+                
+                <!----------------- CONTIENE EL PRECIO TOTAL Y EL BOTON PARA ENVIAR EL FORMULARIO ---------->
+                <article class="contenedor-precio-total">
+                    <article>
+                        <h4>Precio Total:</h4>
+
+                        <p>$2.99</p>
+                        <p>$2.99</p>
+                        <p>$2.99</p>
+                    </article>
+
+                    <article class="precio-total">
+                        <p>$ 9.97</p>
+                    </article>
+                    
+                    <!----------------- BOTON PARA FINALIZAR COMPRA Y ENVIAR FORMULARIO ------------------------>
+                    <article class="boton-finalizar-compra">
+                        <button type="submit">Finalizar Compra</button>
+                    </article>
+                </article>
+            </form>
         </section>
     </main>
 
