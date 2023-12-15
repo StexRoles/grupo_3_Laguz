@@ -50,7 +50,7 @@
             </article>
 
             <article class="favorites-icon">
-                <a href="/favorites"><i class="fa-solid fa-heart"></i></a>
+                <a href="/product/productsList/favorites"><i class="fa-solid fa-heart"></i></a>
             </article>
             
             <article class="cart-icon">
@@ -74,23 +74,23 @@
             <nav class="nav-categorias">
                 <ul>
                     <li>
-                        <a href="">Laptops</a>
+                        <a href="/product/productsCategories/laptops">Laptops</a>
                         <div class="nav-gradient"></div>
                     </li>
                     <li>
-                        <a href="">Oficina</a>
+                        <a href="/product/productsCategories/oficina">Oficina</a>
                         <div class="nav-gradient"></div>
                     </li>
                     <li>
-                        <a href="">Estudiantes</a>
+                        <a href="/product/productsCategories/estudiantes">Estudiantes</a>
                         <div class="nav-gradient"></div>
                     </li>
                     <li>
-                        <a href="">Accesorios</a>
+                        <a href="/product/productsCategories/accesorios">Accesorios</a>
                         <div class="nav-gradient"></div>
                     </li>
                     <li>
-                        <a href="">Gamer</a>
+                        <a href="/product/productsCategories/gamer">Gamer</a>
                         <div class="nav-gradient"></div>
                     </li>
                 </ul>
@@ -144,7 +144,7 @@
                                 </div>
         
                                 <div>
-                                    <h4>$ <%= featuredProducts[i].price %></h4>
+                                    <h4>$ <%= featuredProducts[i].price %> <div class="descuento"><%= featuredProducts[i].discount %>% Off</div></h4>
                                     <p><%= featuredProducts[i].name %></p>
                                 </div>
                             </a>
@@ -156,14 +156,14 @@
 
             <!----------------- BOTON PARA VER MAS PRODUCTOS; DEBERIA LLEVAR A OTRA VISTA ------------------------>
             <article class="ver-mas">
-                <a href="">Ver más <i class="fa-solid fa-chevron-right"></i></a>
+                <a href="/product/productsList/featured">Ver más <i class="fa-solid fa-chevron-right"></i></a>
             </article>
         </section>
 
         <!----------------- AQUI ESTAN LOS PRODUCTOS EN OFERTA PARA EL USUARIO ------------------------>
         <section class="contenedor-productos-ofertas">
             <article class="titulo-contenedor">
-                <h3>Ofertas</h3>
+                <h3>Ofertas Destacadas</h3>
             </article>
 
             <!----------------- AQUI ESTAN LOS PRODUCTOS EN OFERTA PARA MOSTRAR EN EL HOME ------------------------>
@@ -191,7 +191,7 @@
 
             <!----------------- BOTON PARA VER MAS PRODUCTOS; DEBERIA LLEVAR A OTRA VISTA ------------------------>
             <article class="ver-mas">
-                <a href="">Ver más <i class="fa-solid fa-chevron-right"></i></a>
+                <a href="/product/productsList/in-sale">Ver más <i class="fa-solid fa-chevron-right"></i></a>
             </article>
         </section>
 

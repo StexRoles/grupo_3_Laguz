@@ -9,10 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
 
     <!-- ESTILOS -->
-    <link rel="stylesheet" href="/css/styles-productCart.css">
+    <link rel="stylesheet" href="/css/styles-listProducts.css">
     <link rel="stylesheet" href="/css/styles-header-footer.css">
 
     <!-- ICONO DE LA PESTAÑA -->
@@ -98,72 +97,53 @@
         </section>
 
     </header>
-    
+
     <main>
-        <!----------------- TITULO ------------------------>
-        <section class="titulo">
-            <h3>Mi Carrito</h3>
+        <!----------------- AQUI ESTAN LOS PRODUCTOS DESTACADOS DEL USUARIO ------------------------>
+        <section class="contenedor-productos-destacados">
+            <article class="titulo-contenedor">
+                <h3><%= listTitle %></h3>
+            </article>
+
+            <!----------------- AQUI ESTAN LOS PRODUCTOS DESTACADOS, EN OFERTA Y FAVORITOS PARA MOSTRAR ------------------------>
+            <article>
+                <article class="contenedor-productos">
+                    <!----------------- CICLO FOR PARA MOSTRAR LOS PRODUCTOS  ------------------------>
+                    <% for( let i = 0; i < productsCategory.length; i++ ) { %>
+                        <div class="producto">
+                            <a href="/product/productDetail/<%= productsCategory[i].id %>">
+                                <div>
+                                    <img src="/img/productos/<%= productsCategory[i].image %>" alt="Imagen de los productos destacados">
+                                </div>
+        
+                                <div>
+                                    <h4>$ <%= productsCategory[i].price %> <div class="descuento"><%= productsCategory[i].discount %>% Off</div></h4>
+                                    <p><%= productsCategory[i].name %></p>
+                                </div>
+                            </a>
+                        </div>
+                    <% } %>
+
+                </article>
+            </article>
         </section>
 
-        <!----------------- PRODUCTOS Y FINALIZAR COMPRA ------------------------>
-        <section class="contenedor-principal">
-            <!-------------- SE CREA UN FORMULARIO PARA PODER ENVIAR TODOS LOS PRODUCTOS AL BACKEND -------->
-            <form action="" method="post">
-                <!----------------- CONTIENE LOS PRODUCTOS QUE SE VAN A COMPRAR ------------------------>
-                <article class="contenedor-productos">
-                    <article class="encabezado-productos">
-                        <div><p>Nombre</p></div>
-                        <div><p>Cantidad</p></div>
-                        <div><p>Precio</p></div>
-                    </article>
 
-                    <!------------ AQUI SE VAN A IR INGRESANDO LOS PRODUCTOS DEL CARRITO -------------->
-                    <% for( let i = 0; i < cartProducts.length; i++ ) { %>
-                        <article class="informacion-producto">
-                            <div class="imagen-producto">
-                                <img src="/img/productos/<%= cartProducts[i].image %>" alt="Imagen del producto">
-                            </div>
-    
-                            <div class="nombre-producto">
-                                <p><%= cartProducts[i].name %></p>
-                            </div>
-    
-                            <div class="boton-cantidad">
-                                <button>-</button><input type="text" value="1"><button>+</button>
-                            </div>
-    
-                            <div class="precio-producto">
-                                <p>$ <%= cartProducts[i].price %></p>
-                            </div>
-    
-                            <div class="boton-eliminar-producto">
-                                <button><i class="fa-solid fa-xmark"></i></button>
-                            </div>
-                        </article>
-                    <% } %>
-                </article>
-                
-                <!----------------- CONTIENE EL PRECIO TOTAL Y EL BOTON PARA ENVIAR EL FORMULARIO ---------->
-                <article class="contenedor-precio-total">
-                    <article>
-                        <h4>Precio Total:</h4>
-
-                        <% for( let i = 0; i < cartProducts.length; i++ ) { %>
-                            <p>$ <%= cartProducts[i].price %></p>
-                        <% } %>
-    
-                    </article>
-
-                    <article class="precio-total">
-                        <p>$ <%= precioTotal %></p>
-                    </article>
-                    
-                    <!----------------- BOTON PARA FINALIZAR COMPRA Y ENVIAR FORMULARIO ------------------------>
-                    <article class="boton-finalizar-compra">
-                        <button type="submit">Finalizar Compra</button>
-                    </article>
-                </article>
-            </form>
+        <!----------------- AQUI ESTAN LAS MARCAS DE LOS PRODUCTOS; SOLO SE MUEVE EN VERSION MOVIL ------------------------>
+        <section class="banner-marcas">
+            <article class="slider-box-marcas">
+                <ul>
+                    <li><img src="/img/marcas/marca-1.svg"></li>
+                    <li><img src="/img/marcas/marca-2.svg"></li>
+                    <li><img src="/img/marcas/marca-3.svg"></li>
+                    <li><img src="/img/marcas/marca-4.svg"></li>
+                    <li><img src="/img/marcas/marca-5.svg"></li>
+                    <li><img src="/img/marcas/marca-6.svg"></li>
+                    <li><img src="/img/marcas/marca-7.svg"></li>
+                    <li><img src="/img/marcas/marca-8.svg"></li>
+                    <li><img src="/img/marcas/marca-2.svg"></li>
+                </ul>
+            </article>
         </section>
     </main>
 
