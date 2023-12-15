@@ -12,9 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
 
     <!-- ESTILOS -->
-    <link rel="stylesheet" href="/css/styles-login.css">
+    <link rel="stylesheet" href="/css/styles-productCart.css">
     <link rel="stylesheet" href="/css/styles-header-footer.css">
-    <link rel="stylesheet" href="/css/styles-login.css">
+
     <!-- ICONO DE LA PESTAÑA -->
     <link rel="icon" href="/img/icono.png">
 
@@ -22,7 +22,6 @@
     <script src="https://kit.fontawesome.com/3f4ccc7b29.js" crossorigin="anonymous"></script>
 
 </head>
-
 
 <body>
     <header>
@@ -47,7 +46,7 @@
 
             <!------------------ LOGIN Y REGISTER --------------------->
             <article class="login-icon">
-                <a href="/login"><i class="fa-solid fa-user"></i></a>
+                <a href="/user/login"><i class="fa-solid fa-user"></i></a>
             </article>
 
             <article class="favorites-icon">
@@ -55,7 +54,7 @@
             </article>
             
             <article class="cart-icon">
-                <a href="/productcart"><i class="fa-solid fa-cart-arrow-down"></i></a>
+                <a href="/product/productcart"><i class="fa-solid fa-cart-arrow-down"></i></a>
             </article>
 
         </section>
@@ -99,35 +98,72 @@
         </section>
 
     </header>
-
+    
     <main>
-        <!----------------- FORMULARIO DE LOGIN ------------------------>
-        <section class="fondo-login">
-            <article class="contenedor-login">
-                <form action="" method="post">
+        <!----------------- TITULO ------------------------>
+        <section class="titulo">
+            <h3>Mi Carrito</h3>
+        </section>
 
-                    <!----------------- TITULO DEL FORMULARIO ------------------------>
-                    <label class="titulo-login">Acceder</label>
+        <!----------------- PRODUCTOS Y FINALIZAR COMPRA ------------------------>
+        <section class="contenedor-principal">
+            <!-------------- SE CREA UN FORMULARIO PARA PODER ENVIAR TODOS LOS PRODUCTOS AL BACKEND -------->
+            <form action="" method="post">
+                <!----------------- CONTIENE LOS PRODUCTOS QUE SE VAN A COMPRAR ------------------------>
+                <article class="contenedor-productos">
+                    <article class="encabezado-productos">
+                        <div><p>Nombre</p></div>
+                        <div><p>Cantidad</p></div>
+                        <div><p>Precio</p></div>
+                    </article>
 
-                    <!----------------- CAMPOS DEL FORMULARIO ------------------------>
-                    <label for="usuario">Usuario o email</label>
-                    <input type="text" id="usuario" required>
+                    <!------------ AQUI SE VAN A IR INGRESANDO LOS PRODUCTOS DEL CARRITO -------------->
+                    <% for( let i = 0; i < productCart.length; i++ ) { %>
+                        <article class="informacion-producto">
+                            <div class="imagen-producto">
+                                <img src="/img/productos/<%= productCart[i].image %>" alt="Imagen del producto">
+                            </div>
+    
+                            <div class="nombre-producto">
+                                <p><%= productCart[i].name %></p>
+                            </div>
+    
+                            <div class="boton-cantidad">
+                                <button>-</button><input type="text" value="1"><button>+</button>
+                            </div>
+    
+                            <div class="precio-producto">
+                                <p>$ <%= productCart[i].price %></p>
+                            </div>
+    
+                            <div class="boton-eliminar-producto">
+                                <button><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        </article>
+                    <% } %>
+                </article>
+                
+                <!----------------- CONTIENE EL PRECIO TOTAL Y EL BOTON PARA ENVIAR EL FORMULARIO ---------->
+                <article class="contenedor-precio-total">
+                    <article>
+                        <h4>Precio Total:</h4>
 
-                    <label for="contrasenia">Contraseña</label>
-                    <input type="password" id="contrasenia" required>
+                        <% for( let i = 0; i < productCart.length; i++ ) { %>
+                            <p>$ <%= productCart[i].price %></p>
+                        <% } %>
+    
+                    </article>
 
-                    <!----------------- LINKS DEL FORMULARIO ------------------------>
-                    <p><a href="">¿Olvidaste tu contraseña?</a> | <a href="/register">Crear cuenta</a></p>
-
-                    <!----------------- BOTON PARA ENVIAR EL FORMULARIO ------------------------>
-                    <button type="submit" class="acceder">Acceder</button>
-                </form>
-            </article>
-
-            <!----------------- FRASE DEL LOGIN PARA RECIBIR A LOS USUARIOS ------------------------>
-            <article class="frase-login">
-                <p>Navega hacia la innovación al ingresar a un océano de oportunidades tecnológicas.</p>
-            </article>
+                    <article class="precio-total">
+                        <p>$ <%= precioTotal %></p>
+                    </article>
+                    
+                    <!----------------- BOTON PARA FINALIZAR COMPRA Y ENVIAR FORMULARIO ------------------------>
+                    <article class="boton-finalizar-compra">
+                        <button type="submit">Finalizar Compra</button>
+                    </article>
+                </article>
+            </form>
         </section>
     </main>
 

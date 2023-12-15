@@ -12,9 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
 
     <!-- ESTILOS -->
-    <link rel="stylesheet" href="/css/styles-productCart.css">
+    <link rel="stylesheet" href="/css/styles-login.css">
     <link rel="stylesheet" href="/css/styles-header-footer.css">
-
+    <link rel="stylesheet" href="/css/styles-login.css">
     <!-- ICONO DE LA PESTAÑA -->
     <link rel="icon" href="/img/icono.png">
 
@@ -22,6 +22,7 @@
     <script src="https://kit.fontawesome.com/3f4ccc7b29.js" crossorigin="anonymous"></script>
 
 </head>
+
 
 <body>
     <header>
@@ -46,7 +47,7 @@
 
             <!------------------ LOGIN Y REGISTER --------------------->
             <article class="login-icon">
-                <a href="/login"><i class="fa-solid fa-user"></i></a>
+                <a href="/user/login"><i class="fa-solid fa-user"></i></a>
             </article>
 
             <article class="favorites-icon">
@@ -54,7 +55,7 @@
             </article>
             
             <article class="cart-icon">
-                <a href="/productcart"><i class="fa-solid fa-cart-arrow-down"></i></a>
+                <a href="/product/productcart"><i class="fa-solid fa-cart-arrow-down"></i></a>
             </article>
 
         </section>
@@ -98,91 +99,35 @@
         </section>
 
     </header>
-    
+
     <main>
-        <!----------------- TITULO ------------------------>
-        <section class="titulo">
-            <h3>Mi Carrito</h3>
-        </section>
+        <!----------------- FORMULARIO DE LOGIN ------------------------>
+        <section class="fondo-login">
+            <article class="contenedor-login">
+                <form action="" method="post">
 
-        <!----------------- PRODUCTOS Y FINALIZAR COMPRA ------------------------>
-        <section class="contenedor-principal">
-            <!-------------- SE CREA UN FORMULARIO PARA PODER ENVIAR TODOS LOS PRODUCTOS AL BACKEND -------->
-            <form action="" method="post">
-                <!----------------- CONTIENE LOS PRODUCTOS QUE SE VAN A COMPRAR ------------------------>
-                <article class="contenedor-productos">
-                    <article class="encabezado-productos">
-                        <div><p>Nombre</p></div>
-                        <div><p>Cantidad</p></div>
-                        <div><p>Precio</p></div>
-                    </article>
+                    <!----------------- TITULO DEL FORMULARIO ------------------------>
+                    <label class="titulo-login">Acceder</label>
 
-                    <!------------ AQUI SE VAN A IR INGRESANDO LOS PRODUCTOS DEL CARRITO -------------->
-                    <article class="informacion-producto">
-                        <div class="imagen-producto">
-                            <img src="/img/productos/producto-1.webp" alt="">
-                        </div>
+                    <!----------------- CAMPOS DEL FORMULARIO ------------------------>
+                    <label for="usuario">Usuario o email</label>
+                    <input type="text" id="usuario" required>
 
-                        <div class="nombre-producto">
-                            <p>Lorem ipsum dolor sit amet.</p>
-                        </div>
+                    <label for="contrasenia">Contraseña</label>
+                    <input type="password" id="contrasenia" required>
 
-                        <div class="boton-cantidad">
-                            <button>-</button><input type="text" value="1"><button>+</button>
-                        </div>
+                    <!----------------- LINKS DEL FORMULARIO ------------------------>
+                    <p><a href="">¿Olvidaste tu contraseña?</a> | <a href="/user/register">Crear cuenta</a></p>
 
-                        <div class="precio-producto">
-                            <p>$10.99</p>
-                        </div>
+                    <!----------------- BOTON PARA ENVIAR EL FORMULARIO ------------------------>
+                    <button type="submit" class="acceder">Acceder</button>
+                </form>
+            </article>
 
-                        <div class="boton-eliminar-producto">
-                            <button><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                    </article>
-
-                    <article class="informacion-producto">
-                        <div class="imagen-producto">
-                            <img src="/img/productos/producto-2.webp" alt="">
-                        </div>
-
-                        <div class="nombre-producto">
-                            <p>Lorem ipsum dolor sit amet.</p>
-                        </div>
-
-                        <div class="boton-cantidad">
-                            <button>-</button><input type="text" value="1"><button>+</button>
-                        </div>
-
-                        <div class="precio-producto">
-                            <p>$10.99</p>
-                        </div>
-
-                        <div class="boton-eliminar-producto">
-                            <button><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                    </article>
-                </article>
-                
-                <!----------------- CONTIENE EL PRECIO TOTAL Y EL BOTON PARA ENVIAR EL FORMULARIO ---------->
-                <article class="contenedor-precio-total">
-                    <article>
-                        <h4>Precio Total:</h4>
-
-                        <p>$2.99</p>
-                        <p>$2.99</p>
-                        <p>$2.99</p>
-                    </article>
-
-                    <article class="precio-total">
-                        <p>$ 9.97</p>
-                    </article>
-                    
-                    <!----------------- BOTON PARA FINALIZAR COMPRA Y ENVIAR FORMULARIO ------------------------>
-                    <article class="boton-finalizar-compra">
-                        <button type="submit">Finalizar Compra</button>
-                    </article>
-                </article>
-            </form>
+            <!----------------- FRASE DEL LOGIN PARA RECIBIR A LOS USUARIOS ------------------------>
+            <article class="frase-login">
+                <p>Navega hacia la innovación al ingresar a un océano de oportunidades tecnológicas.</p>
+            </article>
         </section>
     </main>
 

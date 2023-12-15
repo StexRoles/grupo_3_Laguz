@@ -46,7 +46,7 @@
 
             <!------------------ LOGIN Y REGISTER --------------------->
             <article class="login-icon">
-                <a href="/login"><i class="fa-solid fa-user"></i></a>
+                <a href="/user/login"><i class="fa-solid fa-user"></i></a>
             </article>
 
             <article class="favorites-icon">
@@ -54,7 +54,7 @@
             </article>
             
             <article class="cart-icon">
-                <a href="/productcart"><i class="fa-solid fa-cart-arrow-down"></i></a>
+                <a href="/product/productcart"><i class="fa-solid fa-cart-arrow-down"></i></a>
             </article>
 
         </section>
@@ -99,7 +99,6 @@
 
     </header>
 
-    
     <main>
         <!----------------- BANNER DE IMAGENES PARA LA VERSION MOVIL ------------------------>
         <section class="banner-imagenes-movil">
@@ -136,57 +135,21 @@
             <!----------------- AQUI ESTAN LOS PRODUCTOS DESTACADOS PARA MOSTRAR EN EL HOME ------------------------>
             <article>
                 <article class="contenedor-productos">
-                    <div class="producto">
-                        <a href="/productDetail">
-                            <div>
-                                <img src="/img/productos/producto-1.webp" alt="">
-                            </div>
-    
-                            <div>
-                                <h4>$ 78.000</h4>
-                                <p>Monitor HKC ANTTEQ F2145M 21.45" 75hz</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="producto">
-                        <a href="/productDetail">
-                            <div>
-                                <img src="/img/productos/producto-2.webp" alt="">
-                            </div>
-    
-                            <div>
-                                <h4>$ 84.000</h4>
-                                <p>Monitor HKC ANTTEQ F238M 23.8" IPS 75hz</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="producto">
-                        <a href="/productDetail">
-                            <div>
-                                <img src="/img/productos/producto-3.webp" alt="">
-                            </div>
-    
-                            <div>
-                                <h4>$ 85.000</h4>
-                                <p>Watercooling - Refirigeración Líquida para CPU/p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="producto">
-                        <a href="/productDetail">
-                            <div>
-                                <img src="/img/productos/producto-4.webp" alt="">
-                            </div>
-    
-                            <div>
-                                <h4>$ 44.000</h4>
-                                <p>Coolers para CPU Redragon Effect RGB Air 120mm CC-2000</p>
-                            </div>
-                        </a>
-                    </div>
+                    <!----------------- CICLO FOR PARA MOSTRAR PRIMEROS 4 PRODUCTOS  ------------------------>
+                    <% for( let i = 0; i < 4; i++ ) { %>
+                        <div class="producto">
+                            <a href="/product/productDetail/<%= featuredProducts[i].id %>">
+                                <div>
+                                    <img src="/img/productos/<%= featuredProducts[i].image %>" alt="Imagen de los productos destacados">
+                                </div>
+        
+                                <div>
+                                    <h4>$ <%= featuredProducts[i].price %></h4>
+                                    <p><%= featuredProducts[i].name %></p>
+                                </div>
+                            </a>
+                        </div>
+                    <% } %>
 
                 </article>
             </article>
@@ -207,57 +170,21 @@
             <article>
                 <article class="contenedor-productos">
 
-                    <div class="producto">
-                        <a href="/productDetail">
-                            <div>
-                                <img src="/img/productos/oferta-1.webp" alt="">
-                            </div>
-    
-                            <div>
-                                <h4>$ 78.000 <div class="descuento">20% Off</div></h4>
-                                <p>Smartwatch Amazfit Bip 3 Pink</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="producto">
-                        <a href="/productDetail">
-                            <div>
-                                <img src="/img/productos/oferta-2.webp" alt="">
-                            </div>
-    
-                            <div>
-                                <h4>$ 200.000 <div class="descuento">17% Off</div></h4>
-                                <p>XP-PEN Artist 22R PRO</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="producto">
-                        <a href="/productDetail">
-                            <div>
-                                <img src="/img/productos/oferta-3.webp" alt="">
-                            </div>
-    
-                            <div>
-                                <h4>$ 130.000 <div class="descuento">25% Off</div></h4>
-                                <p>Monitor Philips 272V8LA/55 27'' FULL HD</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="producto">
-                        <a href="/productDetail">
-                            <div>
-                                <img src="/img/productos/oferta-4.webp" alt="">
-                            </div>
-    
-                            <div>
-                                <h4>$ 65.000 <div class="descuento">15% Off</div></h4>
-                                <p>Auricular Redragon Zeus X White H510W-RGB</p>
-                            </div>
-                        </a>
-                    </div>
+                    <!----------------- CICLO FOR PARA MOSTRAR PRIMEROS 4 PRODUCTOS  ------------------------>
+                    <% for( let i = 0; i < 4; i++ ) { %>
+                        <div class="producto">
+                            <a href="/product/productDetail/<%= inSaleProducts[i].id %>">
+                                <div>
+                                    <img src="/img/productos/<%= inSaleProducts[i].image %>" alt="Imagen de los productos en oferta">
+                                </div>
+        
+                                <div>
+                                    <h4>$ <%= inSaleProducts[i].price %> <div class="descuento"><%= inSaleProducts[i].discount %>% Off</div></h4>
+                                    <p><%= inSaleProducts[i].name %></p>
+                                </div>
+                            </a>
+                        </div>
+                    <% } %>
 
                 </article>
             </article>

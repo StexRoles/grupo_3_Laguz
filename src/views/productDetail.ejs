@@ -9,10 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
 
     <!-- ESTILOS -->
-    <link rel="stylesheet" href="/css/styles-register.css">
+    <link rel="stylesheet" href="/css/styles-productDetail.css">
     <link rel="stylesheet" href="/css/styles-header-footer.css">
 
     <!-- ICONO DE LA PESTAÑA -->
@@ -22,7 +21,6 @@
     <script src="https://kit.fontawesome.com/3f4ccc7b29.js" crossorigin="anonymous"></script>
 
 </head>
-
 
 <body>
     <header>
@@ -47,7 +45,7 @@
 
             <!------------------ LOGIN Y REGISTER --------------------->
             <article class="login-icon">
-                <a href="/login"><i class="fa-solid fa-user"></i></a>
+                <a href="/user/login"><i class="fa-solid fa-user"></i></a>
             </article>
 
             <article class="favorites-icon">
@@ -55,7 +53,7 @@
             </article>
             
             <article class="cart-icon">
-                <a href="/productcart"><i class="fa-solid fa-cart-arrow-down"></i></a>
+                <a href="/product/productcart"><i class="fa-solid fa-cart-arrow-down"></i></a>
             </article>
 
         </section>
@@ -101,39 +99,54 @@
     </header>
 
     <main>
-        
-        <!----------------- FORMULARIO DE REGISTRO ------------------------>
-        <section class="fondo-register">
-            <article class="contenedor-register">
-                <form action="" method="post">
 
-                    <!----------------- TITULO DEL FORMULARIO ------------------------>
-                    <label class="titulo-register">Registrarse</label>
+        <!----------------- CONTENEDOR DE LAS IMAGENES DEL DETALLE DE PRODUCTO ------------------------>
+        <section class="imagenes-producto">
 
-                    <!----------------- CAMPOS DEL FORMULARIO ------------------------>
-                    <label for="usuario">Usuario</label>
-                    <input type="text" id="usuario" required>
-
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
-
-                    <label for="contrasenia">Contraseña</label>
-                    <input type="password" id="contrasenia" required>
-
-                    <label for="confirmar-contrasenia">Confirmar contraseña</label>
-                    <input type="password" id="confirmar-contrasenia" required>
-
-                    <!----------------- VOLVER A LA PAGINA DE LOGIN ------------------------>
-                    <a href="/login">¿Ya tienes cuenta? Ingresa</a>
-
-                    <!----------------- BOTON DE REGISTRARSE ------------------------>
-                    <button type="submit" class="registrarse">Registrarse</button>
-                </form>
+            <!----------------- IMAGENES MINIATURA DEL PRODUCTO ------------------------>
+            <article class="contenedor-imagenes-pequeñas">
+                <div><img src="/img/productos/<%= singleProduct.image %>" alt="Imagenes de muestra"></div>
+                <div><img src="/img/productos/<%= singleProduct.image %>" alt="Imagenes de muestra"></div>
+                <div><img src="/img/productos/<%= singleProduct.image %>" alt="Imagenes de muestra"></div>
+                <div><img src="/img/productos/<%= singleProduct.image %>" alt="Imagenes de muestra"></div>
             </article>
 
-            <!----------------- FRASE PARA RECIBIR A LOS USUARIOS QUE SE REGISTRAN ------------------------>
-            <article class="frase-register">
-                <p>Explora un mar de posibilidades tecnológicas al abrir la puerta a nuestro mundo digital.</p>
+            <!----------------- IMAGEN PRINCIPAL DEL PRODUCTO ------------------------>
+            <article class="contenedor-imagen-principal">
+                <img src="/img/productos/<%= singleProduct.image %>" alt="Imagen principal">
+            </article>
+        </section>
+
+        <!----------------- CONTENEDOR DE LA INFORMACION DEL PRODUCTO JUNTO A LOS BOTONES DE ACCION ------------------------>
+        <section class="contenedor-detalles-producto">
+
+            <!----------------- INFORMACION DEL PRODUCTO ------------------------>
+            <article class="informacion-producto">
+                <p class="marca"><%= singleProduct.brand %></p>
+                <h3><%= singleProduct.name %></h3>
+                <p class="precio">$ <%= singleProduct.price %></p>
+
+                <p><%= singleProduct.description %></p>
+            </article>
+            
+            <!----------------- AQUI ESTAN LOS BOTONES DE CANTIDAD Y FAVORITOS ------------------------>
+            <article class="contenedor-cantidad-favoritos">
+
+                <!----------------- BOTONES PARA AÑADIR LA CANTIDAD DESEADA ------------------------>
+                <article class="boton-cantidad">
+                    <p>Cantidad:</p> <button>-</button><input type="text" value="1"><button>+</button> 
+                </article>
+
+                <!----------------- BOTON PARA AGREGAR A FAVORITOS; FALTA AÑADIR ESA SECCION ------------------------>
+                <article class="boton-favoritos">
+                    <button><i class="fa-regular fa-heart"></i></button><p>Favoritos</p>
+                </article>
+            </article>
+
+            <!----------------- BOTONES PARA AGREGAR AL CARRITO Y COMPRAR ------------------------>
+            <article class="botones-comprar-carrito">
+                <button>Agregar al carrito</button>
+                <button>Comprar ahora</button>
             </article>
         </section>
     </main>

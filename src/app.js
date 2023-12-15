@@ -1,38 +1,36 @@
-/* MODULOS REQUERIDOS */
-
+/* REQUERIMOS EXPRESS Y LO GUARDAMOS EN LA VARIABLE APP */
 const express = require('express');
 const app = express();
+
+// REQUERIMOS PATH PARA UTILIZAR RUTAS COMPLETAS O DE FICHERO 
 const path = require('path');
 
-/* SERVIDOR */
-
+// SERVIDOR EN PUERTO 3000
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Servidor ejecutandose en http://localhost:${port}`);
 });
 
-/* METODO PARA ELEMTOS ESTATICOS */
-
+// METODO PARA RECURSOS ESTATICOS Y PUBLICOS 
 app.use(express.static(path.join(__dirname, '../public')));
 
-/* METODOS GET */
+// CONFIGURAR MOTOR DE PLANTILLAS ENGINE JAVA SCRIPT
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/index.html'));
-});
 
-app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/login.html'));
-});
+// REQUERIMOS ROUTER EN CADA VARIABLE DONDE SE USARA: APP.JS --> ROUTER --> CONTROLLER
+const mainRouter = require('./routers/mainRouter.js');
+const userRouter = require('./routers/userRouter.js');
+const productRouter = require('./routers/productRouter.js');
 
-app.get('/register', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/register.html'));
-});
+// USAMOS EL ROUTER EN LA RUTA BASE
+app.use('/', mainRouter);
 
-app.get('/productCart', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/productCart.html'));
-});
+// USAMOS EL ROUTER PARA EL USUARIO
+app.use('/user', userRouter);
 
-app.get('/productDetail', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/productDetail.html'));
-});
+// USAMOS EL ROUTER PARA LOS PRODUCTOS
+app.use('/product', productRouter);
+
+
