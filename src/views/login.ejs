@@ -1,104 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laguz</title>
-
-    <!-- TIPOGRAFIA -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
-
-    <!-- ESTILOS -->
-    <link rel="stylesheet" href="/css/styles-login.css">
-    <link rel="stylesheet" href="/css/styles-header-footer.css">
-    <link rel="stylesheet" href="/css/styles-login.css">
-    <!-- ICONO DE LA PESTAÑA -->
-    <link rel="icon" href="/img/icono.png">
-
-    <!-- ICONOS -->
-    <script src="https://kit.fontawesome.com/3f4ccc7b29.js" crossorigin="anonymous"></script>
-
-</head>
-
+<!-- Paritials head -->
+ 
+<%- include('./partials/head.ejs', { extraFont: "https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap", stylesheetPath: "/css/styles-login.css" }) %>
 
 <body>
-    <header>
-        <article class="mensaje-sup">Elige el camino que te lleve a nuevas profundidades digitales</article>
-        
-        <!---------------- PARTE SUPERIOR DEL HEADER ------------------------->
-        <section class="menu-sup">
-
-            <article class="contenedor-logo">
-                <a href="/">
-                    <img src="/img/logo.webp" alt="Logo laguz">
-                </a>
-            </article>
-
-            <!--------------- FORMULARIO DE BUSQUEDA ------------------>
-            <article class="barra-buscar">
-                <form action="">
-                    <input type="text" placeholder="Buscar" id="buscar" name="buscar">
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                </form>
-            </article>
-
-            <!------------------ LOGIN Y REGISTER --------------------->
-            <article class="login-icon">
-                <a href="/user/login"><i class="fa-solid fa-user"></i></a>
-            </article>
-
-            <article class="favorites-icon">
-                <a href="/favorites"><i class="fa-solid fa-heart"></i></a>
-            </article>
-            
-            <article class="cart-icon">
-                <a href="/product/productcart"><i class="fa-solid fa-cart-arrow-down"></i></a>
-            </article>
-
-        </section>
-
-        <!-------------------- BARRA DE NAVEGACION ------------------------->
-        <section class="nav-bar">
-
-            <!----------------- BOTON DESPLEGABLE ------------------------>
-            <article class="button-categorias">
-                <button name="categorias" id="categorias">
-                    <p>Categorias <i class="fa-solid fa-bars"></i></p>
-                </button>
-            </article>
-
-
-            <!---------------------- CATEGORIAS -------------------------->
-            <nav class="nav-categorias">
-                <ul>
-                    <li>
-                        <a href="/product/productsCategories/laptops">Laptops</a>
-                        <div class="nav-gradient"></div>
-                    </li>
-                    <li>
-                        <a href="/product/productsCategories/oficina">Oficina</a>
-                        <div class="nav-gradient"></div>
-                    </li>
-                    <li>
-                        <a href="/product/productsCategories/estudiantes">Estudiantes</a>
-                        <div class="nav-gradient"></div>
-                    </li>
-                    <li>
-                        <a href="/product/productsCategories/accesorios">Accesorios</a>
-                        <div class="nav-gradient"></div>
-                    </li>
-                    <li>
-                        <a href="/product/productsCategories/gamer">Gamer</a>
-                        <div class="nav-gradient"></div>
-                    </li>
-                </ul>
-            </nav>
-        </section>
-
-    </header>
+    <!--Partials header -->
+    <%- include('./partials/header.ejs') %>
 
     <main>
         <!----------------- FORMULARIO DE LOGIN ------------------------>
@@ -131,59 +37,7 @@
         </section>
     </main>
 
-    <footer>
-        <!----------------- LOGO FOOTER ------------------------>
-        <section class="contenedor-logo-footer">
-            <img src="/img/logo.webp" alt="Logo pie de pagina">
-        </section>
-
-        <!----------------- LINKS DEL FOOTER ------------------------>
-        <section class="enlaces">
-            <article>
-                <a href="" target="_blank">Cambios y devoluciones</a>
-                <a href="" target="_blank">Envíos y entregas</a>
-                <a href="" target="_blank">Políticas de garantías</a>
-                <a href="" target="_blank">Términos y condiciones</a>
-            </article>
-
-            <article>
-                <a href="" target="_blank">Nosotros</a>
-                <a href="" target="_blank">Políticas de privacidad</a>
-                <a href="" target="_blank">Preguntas frecuentes</a>
-                <a href="" target="_blank">Trabaja con nosotros</a>
-            </article>
-        </section>
-
-        <!----------------- REDES SOCIALES ------------------------>
-        <section class="redes-sociales">
-            <article class="contactanos">Contactanos</article>
-
-            <article class="iconos-redes">
-                <a href="https://www.youtube.com/" target="_blank"><div>
-                    <i class="fa-brands fa-youtube"></i>
-                </div></a>
-
-                <a href="https://www.facebook.com/" target="_blank"><div>
-                    <i class="fa-brands fa-square-facebook"></i>
-                </div></a>
-
-                <a href="https://www.instagram.com/" target="_blank"><div>
-                    <i class="fa-brands fa-instagram"></i>
-                </div></a>
-
-                <a href="https://www.twitter.com/" target="_blank"><div>
-                    <i class="fa-brands fa-twitter"></i>
-                </div></a>
-
-                <a href="https://www.linkedin.com/" target="_blank"><div>
-                    <i class="fa-brands fa-linkedin"></i>
-                </div></a>
-            </article>
-
-            <article class="mensaje-inf">
-                <p>Tu brújula en el vasto océano tecnológico.</p>
-            </article>
-        </section>
-    </footer>
+    <!--Partials footer  -->
+    <%- include('./partials/footer.ejs') %>
 </body>
 </html>
