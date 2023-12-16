@@ -8,16 +8,16 @@ const productController = require('../controllers/productController.js');
 //---------------------------------------------------------------//
 
 //RUTA PARA EL DETALLE DE PRODUCTO
-router.get('/productDetail/:id?', productController.productDetail);
+router.get('/products/productDetail/:id?', productController.productDetail);
 
 // RUTA PARA EL CARRITO DE COMPRAS
-router.get('/productCart', productController.productCart);
+router.get('/products/productCart', productController.productCart);
 
 // RUTA PARA LA LISTA DE PRODUCTOS DESTACADOS, EN OFERTA Y FAVORITOS
-router.get('/productsList/:status', productController.productsList);
+router.get('/products/productsList/:status', productController.productsList);
 
 // RUTA PARA LA LISTA DE DE PRODUCTOS POR CATEGORIAS
-router.get('/productsCategories/:category', productController.productsCategories);
+router.get('/products/productsCategories/:category', productController.productsCategories);
 
 
 //---------------------------------------------------------------//
