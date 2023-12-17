@@ -8,10 +8,10 @@ const userController = require('../controllers/userController.js');
 //---------------------------------------------------------------//
 
 //RUTA PARA EL LOGIN
-router.get('/users/login', userController.login);
+router.get('/login', userController.login);
 
 //RUTA PARA EL REGISTRO
-router.get('/users/register', userController.register);
+router.get('/register', userController.register);
 
 //---------------------------------------------------------------//
 // EXPORTAR ROUTER

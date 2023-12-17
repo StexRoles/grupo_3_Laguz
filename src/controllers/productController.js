@@ -23,7 +23,7 @@ const productController = {
         let singleProduct = products.find(product => product.id == id);
 
         // RENDERIZAMOS LA VISTA PRODUCTDETAIL.EJS Y LE PASAMOS LOS PRODUCTOS
-        res.render('productDetail', {singleProduct});
+        res.render('products/productDetail', {singleProduct});
     },
     productCart: (req, res) => {
 
@@ -40,7 +40,7 @@ const productController = {
         }
 
         // RENDERIZAMOS LA VISTA PRODUCTCART.EJS
-        res.render('productCart', {cartProducts, precioTotal});
+        res.render('products/productCart', {cartProducts, precioTotal});
     },
     productsList: (req, res) => {
 
@@ -80,7 +80,7 @@ const productController = {
         }
 
         // RENDERIZAMOS LA VISTA DE PRODUCTLIST.EJS
-        res.render('productsList', {productsToShow, listTitle});
+        res.render('products/productsList', {productsToShow, listTitle});
     },
     productsCategories: (req, res) => {
         
@@ -153,7 +153,7 @@ const productController = {
 
 
         // RENDERIZAMOS LA VISTA DE PRODUCTLIST.EJS
-        res.render('productsCategories', {productsCategory, listTitle});
+        res.render('products/productsCategories', {productsCategory, listTitle});
     }
 };
 

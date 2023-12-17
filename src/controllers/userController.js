@@ -6,13 +6,13 @@ const userController = {
     login: (req, res) => {
 
         // RENDERIZAMOS LA VISTA LOGIN.EJS
-        res.render('login');
+        res.render('user/login');
 
     },
     register: (req, res) => {
 
         // RENDERIZAMOS LA VISTA REGISTER.EJS
-        res.render('register');
+        res.render('user/register');
 
     },
 };

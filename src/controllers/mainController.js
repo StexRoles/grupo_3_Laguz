@@ -20,7 +20,7 @@ const mainController = {
 		const inSaleProducts = products.filter((product) => product.status == "in-sale");
 
         // RENDERIZAMOS LA VISTA INDEX.EJS
-        res.render('index', {featuredProducts, inSaleProducts});
+        res.render('main/index', {featuredProducts, inSaleProducts});
     },
 };
 

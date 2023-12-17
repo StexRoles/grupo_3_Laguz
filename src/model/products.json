@@ -8,8 +8,8 @@
         "discount": "10",
         "brand": "HKC",
         "status": "featured",
-        "addToCart": "true",
-        "favorite": "true",
+        "addToCart": "false",
+        "favorite": "false",
         "categories": "[ \"oficina\", \"estudiantes\" ]"
     },
     {
@@ -21,7 +21,7 @@
         "discount": "0",
         "brand": "HKC",
         "status": "featured",
-        "addToCart": "true",
+        "addToCart": "false",
         "favorite": "true",
         "categories": "[ \"oficina\", \"estudiantes\" ]"
     },
@@ -47,7 +47,7 @@
         "discount": "0",
         "brand": "Redragon",
         "status": "featured",
-        "addToCart": "true",
+        "addToCart": "false",
         "favorite": "false",
         "categories": "[ \"accesorios\", \"gamer\" ]"
     },
@@ -60,7 +60,7 @@
         "discount": "20",
         "brand": "Amazfit",
         "status": "in-sale",
-        "addToCart": "true",
+        "addToCart": "false",
         "favorite": "true",
         "categories": "[ \"oficina\", \"accesorios\" ]"
     },
