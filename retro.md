@@ -20,3 +20,22 @@ COSAS QUE SE VA A COMENZAR A HACER
 - Mejorar la comunicacion del equipo.
 - Pornernos al dia para tener en tiempo y forma los que nos soliciten.
 - Ser responsable del trabajo que nos toque.
+
+
+RETROSPECTIVA SEGUNDO SPRINT
+
+COSAS QUE SE HICIERON BIEN
+- Completar el sprint.
+- La organizacion del trello.
+- Dividir las tareas a realizar de manera ordenada.
+- Tener una reunion una vez por semana.
+- Llegar a entregar todo lo pactado en tiempo y forma.
+
+COSAS QUE SE HICIERON MAL
+- Falta de comunicacion.
+- Manejarnos mal con el github.
+- Dejar todo para el final.
+  
+COSAS QUE SE VA A COMENZAR A HACER
+- Mejorar la comunicacion del equipo.
+
