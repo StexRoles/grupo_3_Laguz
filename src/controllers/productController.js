@@ -154,7 +154,20 @@ const productController = {
 
         // RENDERIZAMOS LA VISTA DE PRODUCTLIST.EJS
         res.render('products/productsCategories', {productsCategory, listTitle});
-    }
+    }, 
+    editProduct: (req, res) => {
+        // RENDERIZAMOS LA VISTA PRODUCTDETAIL.EJS Y LE PASAMOS LOS PRODUCTOS
+        res.render('products/editProduct');
+    },
+
+    newProduct: (req, res) => {
+        // RENDERIZAMOS LA VISTA PRODUCTDETAIL.EJS Y LE PASAMOS LOS PRODUCTOS
+        res.render('products/newProduct');
+    },
+
+    processCreate: (req, res) => {
+        console.log(req.body);
+    },
 };
 
 // EXPORTANDO EL OBJETO LITERAL PARA PODER USAR LAS FUNCIONES EN EL ROUTER

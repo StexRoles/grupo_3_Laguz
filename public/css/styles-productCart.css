@@ -211,3 +211,63 @@
         padding: 0 8rem;
     }
 }
+
+/* ESTILO DEL FORMULARIO DE CREACION DEL PRODUCTO */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.products-wrapper {
+    background-color: white;
+    padding: 20px;
+    margin: 10px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.products-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.product-detail {
+    display:contents;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form-label {
+    display:flex;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.buy-now-button {
+    display: inline-block;
+    background-color: #52DEE5;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}

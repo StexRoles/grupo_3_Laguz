@@ -19,6 +19,14 @@ router.get('/productsList/:status', productController.productsList);
 // RUTA PARA LA LISTA DE DE PRODUCTOS POR CATEGORIAS
 router.get('/productsCategories/:category', productController.productsCategories);
 
+//RUTA PARA CARGAR PRODUCTO
+router.get('/newProduct', productController.newProduct);
+router.post('/newProduct', productController.processCreate);
+
+// RUTA PARA EDITAR EL PRODUCTO 
+router.get('/editProduct', productController.editProduct);
+
+
 
 //---------------------------------------------------------------//
 // EXPORTAR ROUTER
