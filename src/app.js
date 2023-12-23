@@ -6,12 +6,6 @@ const methodOverride = require('method-override');
 // REQUERIMOS PATH PARA UTILIZAR RUTAS COMPLETAS O DE FICHERO 
 const path = require('path');
 
-// SERVIDOR EN PUERTO 3000
-const port = process.env.PORT || 3020;
-app.listen(port, () => {
-    console.log(`Servidor ejecutandose en http://localhost:${port}`);
-});
-
 // METODO PARA RECURSOS ESTATICOS Y PUBLICOS 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({extended: false})); //TOMA LOS DATOS DEL BODY
@@ -28,6 +22,8 @@ const mainRouter = require('./routers/mainRouter.js');
 const userRouter = require('./routers/userRouter.js');
 const productRouter = require('./routers/productRouter.js');
 
+// ------------------------------------------------------------------------------------------ //
+
 // USAMOS EL ROUTER EN LA RUTA BASE
 app.use('/', mainRouter);
 
@@ -37,4 +33,10 @@ app.use('/user', userRouter);
 // USAMOS EL ROUTER PARA LOS PRODUCTOS
 app.use('/product', productRouter);
 
+// ------------------------------------------------------------------------------------------ //
 
+// SERVIDOR EN PUERTO 3000
+const port = process.env.PORT || 3020;
+app.listen(port, () => {
+    console.log(`Servidor ejecutandose en http://localhost:${port}`);
+});

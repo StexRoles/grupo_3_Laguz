@@ -51,36 +51,17 @@ const productController = {
         const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
         // SEPARAR LOS PRODUCTOS DESTACADOS
-        const featuredProducts = products.filter((product) => product.status == "featured");
+        const filteredProducts = products.filter((product) => product.status == status);
 
-        // SEPARAR LOS PRODUCTOS EN OFERTA
-        const inSaleProducts = products.filter((product) => product.status == "in-sale");
-
-        // SEPARAR LOS PRODUCTOS FAVORITOS
-        const favoriteProducts = products.filter((product) => product.favorite == "true");
-
-        // CREAMOS UNA VARIABLE PARA GUARDAR LOS PRODUCTOS QUE CORRESPONDAN
-        let productsToShow;
-        
-        // CREAMOS UNA VARIABLE PARA GUARDAR EL TITULO DE LA VISTA
+        // VARIABLE PARA EL TITULO
         let listTitle;
-
-        // USAMOS UN CONDICIONAL PARA ENVIAR LOS PRODUCTOS QUE CORRESPONDAN CON EL ESTADO QUE REQUERIMOS
-        if (status == "featured") {
-            productsToShow = featuredProducts;
-            listTitle = "Productos Destacados";
-        }
-        else if (status == "in-sale") {
-            productsToShow = inSaleProducts;
-            listTitle = "Ofertas Destacadas";
-        }
-        else if (status == "favorites") {
-            productsToShow = favoriteProducts;
-            listTitle = "Tus Favoritos";
-        }
+        
+        // CONDICIONAL PARA CAMBIAR EL TITULO DE LA PAGINA
+        if (status == "featured") { listTitle = "Productos Destacados"; }
+        else if (status == "in-sale"){ listTitle = "Ofertas Destacadas"; }
 
         // RENDERIZAMOS LA VISTA DE PRODUCTLIST.EJS
-        res.render('products/productsList', {productsToShow, listTitle});
+        res.render('products/productsList', {filteredProducts, listTitle});
     },
     productsCategories: (req, res) => {
         
@@ -96,64 +77,15 @@ const productController = {
         });
 
         // REVISAR SI LOS PRODUCTOS TIENEN LA CATEGORIA QUE SE REQUIERE
-        const laptopsProducts = products.filter((product) => {
-            return product.categories.includes("laptops");
+        const filteredProducts = products.filter((product) => {
+            return product.categories.includes(category);
         });
 
-        const oficinaProducts = products.filter((product) => {
-            return product.categories.includes("oficina");
-        });
-
-        const estudiantesProducts = products.filter((product) => {
-            return product.categories.includes("estudiantes");
-        });
-
-        const accesoriosProducts = products.filter((product) => {
-            return product.categories.includes("accesorios");
-        });
-
-        const gamerProducts = products.filter((product) => {
-            return product.categories.includes("gamer");
-        });
-        
-        // CREAMOS UNA VARIABLE PARA GUARDAR LOS PRODUCTOS QUE CORRESPONDAN
-        let productsCategory;
-        
-        // CREAMOS UNA VARIABLE PARA GUARDAR EL TITULO DE LA VISTA
-        let listTitle;
-
-        // USAMOS UN CONDICIONAL PARA ENVIAR LOS PRODUCTOS QUE CORRESPONDAN CON EL ESTADO QUE REQUERIMOS
-        switch (category) {
-            case "laptops":
-                productsCategory = laptopsProducts;
-                listTitle = "Laptops";
-                break;
-
-            case "oficina":
-                productsCategory = oficinaProducts;
-                listTitle = "Oficina";
-                break;
-
-            case "estudiantes":
-                productsCategory = estudiantesProducts;
-                listTitle = "Estudiantes";
-                break;
-
-            case "accesorios":
-                productsCategory = accesoriosProducts;
-                listTitle = "Accesorios";
-                break;
-
-            case "gamer":
-                productsCategory = gamerProducts ;
-                listTitle = "Gamer";
-                break;
-    
-        }
-
+        // CONVIERTE LA PRIMERA LETRA EN MAYUSCULA DEL TITULO DE LA CATEGORIA
+        category = category.charAt(0).toUpperCase() + category.slice(1);
 
         // RENDERIZAMOS LA VISTA DE PRODUCTLIST.EJS
-        res.render('products/productsCategories', {productsCategory, listTitle});
+        res.render('products/productsCategories', {filteredProducts, category});
     }, 
     editProduct: (req, res) => {
         // RENDERIZAMOS LA VISTA PRODUCTDETAIL.EJS Y LE PASAMOS LOS PRODUCTOS

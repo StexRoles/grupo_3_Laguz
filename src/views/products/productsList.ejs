@@ -17,16 +17,16 @@
             <article>
                 <article class="contenedor-productos">
                     <!----------------- CICLO FOR PARA MOSTRAR LOS PRODUCTOS  ------------------------>
-                    <% for( let i = 0; i < productsToShow.length; i++ ) { %>
+                    <% for( let i = 0; i < filteredProducts.length; i++ ) { %>
                         <div class="producto">
-                            <a href="/product/productDetail/<%= productsToShow[i].id %>">
+                            <a href="/product/productDetail/<%= filteredProducts[i].id %>">
                                 <div>
-                                    <img src="/img/productos/<%= productsToShow[i].image %>" alt="Imagen de los productos destacados">
+                                    <img src="/img/productos/<%= filteredProducts[i].image %>" alt="Imagen de los productos destacados">
                                 </div>
         
                                 <div>
-                                    <h4>$ <%= productsToShow[i].price %> <div class="descuento"><%= productsToShow[i].discount %>% Off</div></h4>
-                                    <p><%= productsToShow[i].name %></p>
+                                    <h4>$ <%= filteredProducts[i].price %> <div class="descuento"><%= filteredProducts[i].discount %>% Off</div></h4>
+                                    <p><%= filteredProducts[i].name %></p>
                                 </div>
                             </a>
                         </div>

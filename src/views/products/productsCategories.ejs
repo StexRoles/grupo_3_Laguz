@@ -10,23 +10,23 @@
         <!----------------- AQUI ESTAN LOS PRODUCTOS DESTACADOS DEL USUARIO ------------------------>
         <section class="contenedor-productos-destacados">
             <article class="titulo-contenedor">
-                <h3><%= listTitle %></h3>
+                <h3><%= category %></h3>
             </article>
 
             <!----------------- AQUI ESTAN LOS PRODUCTOS DESTACADOS, EN OFERTA Y FAVORITOS PARA MOSTRAR ------------------------>
             <article>
                 <article class="contenedor-productos">
                     <!----------------- CICLO FOR PARA MOSTRAR LOS PRODUCTOS  ------------------------>
-                    <% for( let i = 0; i < productsCategory.length; i++ ) { %>
+                    <% for( let i = 0; i < filteredProducts.length; i++ ) { %>
                         <div class="producto">
-                            <a href="/product/productDetail/<%= productsCategory[i].id %>">
+                            <a href="/product/productDetail/<%= filteredProducts[i].id %>">
                                 <div>
-                                    <img src="/img/productos/<%= productsCategory[i].image %>" alt="Imagen de los productos destacados">
+                                    <img src="/img/productos/<%= filteredProducts[i].image %>" alt="Imagen de los productos destacados">
                                 </div>
         
                                 <div>
-                                    <h4>$ <%= productsCategory[i].price %> <div class="descuento"><%= productsCategory[i].discount %>% Off</div></h4>
-                                    <p><%= productsCategory[i].name %></p>
+                                    <h4>$ <%= filteredProducts[i].price %> <div class="descuento"><%= filteredProducts[i].discount %>% Off</div></h4>
+                                    <p><%= filteredProducts[i].name %></p>
                                 </div>
                             </a>
                         </div>

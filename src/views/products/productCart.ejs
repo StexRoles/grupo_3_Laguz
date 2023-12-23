@@ -15,7 +15,7 @@
         <!----------------- PRODUCTOS Y FINALIZAR COMPRA ------------------------>
         <section class="contenedor-principal">
             <!-------------- SE CREA UN FORMULARIO PARA PODER ENVIAR TODOS LOS PRODUCTOS AL BACKEND -------->
-            <form action="" method="post">
+            <form action="/product/productCart" method="post">
                 <!----------------- CONTIENE LOS PRODUCTOS QUE SE VAN A COMPRAR ------------------------>
                 <article class="contenedor-productos">
                     <article class="encabezado-productos">
@@ -36,7 +36,7 @@
                             </div>
     
                             <div class="boton-cantidad">
-                                <button>-</button><input type="text" value="1"><button>+</button>
+                                <button type="button">-</button><input type="text" value="1"><button type="button">+</button>
                             </div>
     
                             <div class="precio-producto">
@@ -44,7 +44,7 @@
                             </div>
     
                             <div class="boton-eliminar-producto">
-                                <button><i class="fa-solid fa-xmark"></i></button>
+                                <button type="button"><i class="fa-solid fa-xmark"></i></button>
                             </div>
                         </article>
                     <% } %>
