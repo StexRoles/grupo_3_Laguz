@@ -1,0 +1,24 @@
+[
+    {
+        "id": "1",
+        "user": "Stex",
+        "email": "ejemplo@gmail.com",
+        "password": "1234",
+        "image": "image"
+    },
+    {
+        "id": "1",
+        "user": "Stex",
+        "email": "ejemplo@gmail.com",
+        "password": "1234",
+        "image": "image"
+    },
+    {
+        "id": "1",
+        "user": "Stex",
+        "email": "ejemplo@gmail.com",
+        "password": "1234",
+        "image": "image"
+    }
+
+]

@@ -1,0 +1,161 @@
+/* ESTILOS DEL CONTENEDOR PRINCIPAL */
+.contenedor-principal {
+    background-color: white;
+    margin: 2rem;
+    padding: 2rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0,0, 0.3);
+    border-radius: 0.5rem;
+}
+
+/* ESTILOS DEL TITULO */
+.contenedor-titulo h2 {
+    font-family: 'Fjalla One', sans-serif;
+    text-align: center;
+}
+
+.contenedor-titulo {
+    margin-bottom: 1rem;
+}
+
+/* ESTILOS DEL LOS CONTENEDORES DE LOS INPUTS */
+.contenedor-inputs div {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0;
+
+}
+
+/* ESTILOS DE LOS INPUTS Y TEXTAREA */	
+.contenedor-inputs input, .contenedor-inputs select {
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+    height: 2.5rem;
+    padding: 0.5rem;
+    border: solid 1px #ced4da;
+    width: 100%;
+}
+
+.contenedor-inputs textarea {
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+    height: 5rem;
+    padding: 0.5rem;
+    border: solid 1px #ced4da;
+    width: 100%;
+
+}
+
+.contenedor-inputs input:focus, .contenedor-inputs textarea:focus, .contenedor-inputs select:focus {
+    outline: solid 3px rgba(146, 220, 229, 0.5 );
+}
+
+textarea {
+    resize: none;
+}
+
+/* ESTILOS DE LOS LABEL */
+.contenedor-inputs label {
+    font-weight: bold;
+}
+
+/* ESTILOS DE LAS CATEGORIAS */
+
+.contenedor-categorias div {
+    display: inline;
+    margin-left: 1rem;
+}
+
+.contenedor-categorias input {
+    width: auto;
+    height: auto;
+}
+
+/* ESTILOS DEL INPUT DE LA IMAGEN */
+.contenedor-imagen input {
+    border: none;
+    padding: 0.5rem 0rem;
+}
+
+/* ESTILOS DEL BOTON DE CREAR PRODUCTO */
+.boton-guardar button {
+    width: 100%;
+    margin: 1rem 0;
+    border: none;
+    height: 3rem;
+    padding: 0.5rem;
+    color: white;
+    background-color: #52DEE5;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* ANIMACIONES */
+@keyframes splash {
+    0% {
+        box-shadow: 0 0 0 rgba(138, 227, 252, 0.89);
+    }
+    100% {
+        box-shadow: 0 0 0 20px rgba(0, 0, 255, 0);
+    }
+}
+
+/* MEDIA QUERIES DEL FORMULARIO DE CREACION DE PRODUCTO */
+@media (min-width: 768px) {
+
+    /* ESTILOS DEL CONTENEDOR PRINCIPAL */
+    .contenedor-principal {
+        margin: 3rem;
+    }
+
+    /* ESTILOS DE LOS INPUTS */	
+    .contenedor-inputs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .contenedor-inputs div {
+        width: 47.5%;
+    }
+
+    /* ESTILOS DE LAS CATEGORIAS */
+    .contenedor-categorias {
+        width: 100% !important;
+        flex-wrap: wrap;
+        flex-direction: row !important;
+        justify-content: space-between;
+    }
+    
+    .contenedor-categorias label {
+        width: 100%;
+    }
+
+    .contenedor-categorias div {
+        width: 46%;
+    }
+
+    /* ESTILOS DEL BOTON DE CREAR PRODUCTO */
+    .boton-guardar {
+        width: 100% !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .boton-guardar button {
+        width: 50%;
+    }
+
+    .boton-guardar button:hover {
+        animation: splash 0.8s;
+        background-color: #52DEE5;
+    }
+}
+
+@media (min-width: 1200px) {
+    /* ESTILOS DEL CONTENEDOR PRINCIPAL */
+    .contenedor-principal {
+        margin: 3rem 10rem;
+    }
+}

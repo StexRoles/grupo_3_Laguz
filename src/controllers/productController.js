@@ -3,7 +3,6 @@ const path = require('path');
 
 // REQUERIR FS
 const fs = require('fs');
-const { log } = require('console');
 
 // TRAE TODOS LOS PRODUCTOS DEL JSON Y LOS GUARDA EN UNA VARIABLE
 const productsFilePath = path.join(__dirname, '../model/products.json');
@@ -88,15 +87,25 @@ const productController = {
         res.render('products/productsCategories', {filteredProducts, category});
     }, 
     editProduct: (req, res) => {
-        // RENDERIZAMOS LA VISTA PRODUCTDETAIL.EJS Y LE PASAMOS LOS PRODUCTOS
-        res.render('products/editProduct');
-    },
+        
+         // TRAE TODOS LOS PRODUCTOS DEL JSON
+         const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
-    newProduct: (req, res) => {
+         // TRAEMOS EL ID DE LOS PRODUCTOS
+         let id = req.params.id;
+
+         // BUSCAMOS EL PRODUCTO QUE COINCIDA CON EL ID
+        let productToEdit = products.find(product => product.id == id);
+
         // RENDERIZAMOS LA VISTA PRODUCTDETAIL.EJS Y LE PASAMOS LOS PRODUCTOS
+        res.render('products/editProduct', {productToEdit});
+ 
+    },
+    newProduct: (req, res) => {
+
+        // RENDERIZAMOS LA VISTA NEWPRODUCT.EJS
         res.render('products/newProduct');
     },
-
     processCreate: (req, res) => {
         console.log(req.body);
     },

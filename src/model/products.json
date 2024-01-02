@@ -9,7 +9,7 @@
         "brand": "HKC",
         "status": "featured",
         "addToCart": "false",
-        "favorite": "false",
+        "favorite": "true",
         "categories": "[ \"oficina\", \"estudiantes\" ]"
     },
     {
@@ -150,7 +150,7 @@
         "image": "producto-12.jpg",
         "discount": "0",
         "brand": "Victus",
-        "status": "featured",
+        "status": "",
         "addToCart": "true",
         "favorite": "false",
         "categories": "[ \"laptops\", \"gamer\" ]"

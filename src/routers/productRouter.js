@@ -24,7 +24,7 @@ router.get('/newProduct', productController.newProduct);
 router.post('/newProduct', productController.processCreate);
 
 // RUTA PARA EDITAR EL PRODUCTO 
-router.get('/editProduct', productController.editProduct);
+router.get('/editProduct/:id', productController.editProduct);
 
 
 
