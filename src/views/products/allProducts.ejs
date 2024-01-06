@@ -1,32 +1,34 @@
 <!-- Paritials head -->
  
-<%- include('../partials/head.ejs', { extraFont: false, stylesheetPath: '/css/styles-productsList.css' }) %>
+<%- include('../partials/head.ejs', { extraFont: false, stylesheetPath: '/css/styles-allProducts.css' }) %>
 
 <body>
     <!--Partials header -->
     <%- include('../partials/header.ejs') %>
 
     <main>
-        <!----------------- AQUI ESTAN LOS PRODUCTOS DESTACADOS DEL USUARIO ------------------------>
-        <section class="contenedor-productos-destacados">
+        <!----------------- AQUI ESTAN LOS PRODUCTOS DEL USUARIO ------------------------>
+        <section class="contenedor-productos-principal">
             <article class="titulo-contenedor">
-                <h3><%= listTitle %></h3>
+                <h3>Todos los productos</h3>
+
+                <div class="crear-producto"><a href="/product/allProducts/newProduct">Crear producto</a></div>
             </article>
 
-            <!----------------- AQUI ESTAN LOS PRODUCTOS DESTACADOS, EN OFERTA Y FAVORITOS PARA MOSTRAR ------------------------>
+            <!----------------- AQUI ESTAN LOS PRODUCTOS PARA MOSTRAR ------------------------>
             <article>
                 <article class="contenedor-productos">
                     <!----------------- CICLO FOR PARA MOSTRAR LOS PRODUCTOS  ------------------------>
-                    <% for( let i = 0; i < filteredProducts.length; i++ ) { %>
+                    <% for( let i = 0; i < products.length; i++ ) { %>
                         <div class="producto">
-                            <a href="/product/productDetail/<%= filteredProducts[i].id %>">
+                            <a href="/product/allProducts/productDetail/<%= products[i].id %>">
                                 <div>
-                                    <img src="/img/productos/<%= filteredProducts[i].image %>" alt="Imagen de los productos destacados">
+                                    <img src="/img/productos/<%= products[i].image %>" alt="Imagen de los productos destacados">
                                 </div>
         
                                 <div>
-                                    <h4>$ <%= filteredProducts[i].price %> <div class="descuento"><%= filteredProducts[i].discount %>% Off</div></h4>
-                                    <p><%= filteredProducts[i].name %></p>
+                                    <h4>$ <%= products[i].price %> <div class="descuento"><%= products[i].discount %>% Off</div></h4>
+                                    <p><%= products[i].name %></p>
                                 </div>
                             </a>
                         </div>

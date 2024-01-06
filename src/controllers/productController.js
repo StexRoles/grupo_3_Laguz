@@ -21,8 +21,11 @@ const productController = {
         // BUSCAMOS EL PRODUCTO QUE COINCIDA CON EL ID
         let singleProduct = products.find(product => product.id == id);
 
+        // USUARIO ADMINISTRADOR ----> DEBE AJUSTARSE MAS ADELANTE
+        let admin = true;
+    
         // RENDERIZAMOS LA VISTA PRODUCTDETAIL.EJS Y LE PASAMOS LOS PRODUCTOS
-        res.render('products/productDetail', {singleProduct});
+        res.render('products/productDetail', {singleProduct, admin, req});
     },
     productCart: (req, res) => {
 
@@ -86,6 +89,20 @@ const productController = {
         // RENDERIZAMOS LA VISTA DE PRODUCTLIST.EJS
         res.render('products/productsCategories', {filteredProducts, category});
     }, 
+    allProducts: (req, res) => {
+    
+        // TRAE TODOS LOS PRODUCTOS DEL JSON
+        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+
+        // USUARIO ADMINISTRADOR ----> DEBE AJUSTARSE MAS ADELANTE
+        let admin = true;
+    
+        // RENDERIZAMOS LA VISTA DE ALLPRODUCTS.EJS
+        if (admin) {
+            res.render('products/allProducts', {products});
+        }
+        
+    },
     editProduct: (req, res) => {
         
          // TRAE TODOS LOS PRODUCTOS DEL JSON

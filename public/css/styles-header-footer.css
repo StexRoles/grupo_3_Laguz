@@ -204,16 +204,17 @@ header {
 
     /*-----------  EFECTO DE GRADIENT -------------*/
     .nav-gradient {
-        width: 100%;
+        width: 0%;
         height: 0.4rem;
-        background-color: transparent;
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(5,93,177,1) 62%, rgba(3,140,208,1) 86%, rgba(0,212,255,1) 100%);
         transition: all 0.5s ease;
+        overflow: hidden;
     }
 
     .nav-categorias li:hover {
         .nav-gradient {
-            background: rgb(2,0,36);
-            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(5,93,177,1) 62%, rgba(3,140,208,1) 86%, rgba(0,212,255,1) 100%);
+            width: 100%;
         }
     }
     
@@ -301,8 +302,9 @@ footer {
     
     .iconos-redes div {
         background-color: #001F54;
-        padding: 0.6rem;
+        padding: 0.7rem;
         border-radius: 50%;
+        font-size: 0.9rem;
     }
 
     .mensaje-inf {
