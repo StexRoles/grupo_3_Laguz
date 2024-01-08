@@ -12,6 +12,7 @@ router.get('/login', userController.login);
 
 //RUTA PARA EL REGISTRO
 router.get('/register', userController.register);
+router.post('/register', userController.processCreate);
 
 //---------------------------------------------------------------//
 // EXPORTAR ROUTER
