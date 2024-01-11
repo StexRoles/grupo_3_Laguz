@@ -143,7 +143,7 @@
     font-size: 1rem;
 }
 
-.botones-admin a {
+.botones-admin a, form {
     text-decoration: none;
     color: white;
     display: block;

@@ -41,7 +41,8 @@
             <% if (admin && req.originalUrl === '/product/allProducts/productDetail/' + singleProduct.id) { %>
                 <article class="botones-admin">
                     <button><a href="/product/editProduct/<%= singleProduct.id %>">Editar</a></button>
-                    <button class="boton-eliminar"><a href="/products/delete/<%= singleProduct.id %>">Eliminar</a></button>
+                    <form action="/product/delete/<%= singleProduct.id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="boton-eliminar">ELIMINAR</button>
                 </article>
             <% } else { %>
 

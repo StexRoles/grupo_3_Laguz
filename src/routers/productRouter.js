@@ -32,7 +32,8 @@ router.post('/allProducts/newProduct', productController.processCreate);
 // RUTA PARA EDITAR EL PRODUCTO 
 router.get('/editProduct/:id', productController.editProduct);
 
-
+// RUTA PARA ELIMINAR EL PRODUCTO
+router.delete('/delete/:id', productController.destroy);
 
 //---------------------------------------------------------------//
 // EXPORTAR ROUTER

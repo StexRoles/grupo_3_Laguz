@@ -126,6 +126,16 @@ const productController = {
     processCreate: (req, res) => {
         console.log(req.body);
     },
+    //DELETE - ELIMINAR PRODUCTO
+    destroy : (req, res) => {
+        let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+        products = products.filter(product => {
+            return product.id != req.params.id
+        })
+
+        fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ""))
+        res.redirect("/");
+},
 };
 
 // EXPORTANDO EL OBJETO LITERAL PARA PODER USAR LAS FUNCIONES EN EL ROUTER
