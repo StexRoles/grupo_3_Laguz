@@ -22,7 +22,6 @@ const userController = {
         res.render('user/register');
 
     },
-    
     processCreate: (req, res) => {
         console.log(req.body);
     },

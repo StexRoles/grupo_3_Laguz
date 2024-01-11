@@ -134,7 +134,7 @@ const productController = {
         })
 
         fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ""))
-        res.redirect("/");
+        res.redirect("/product/allProducts");
 },
 };
 
