@@ -73,11 +73,6 @@ const productController = {
         // TRAE TODOS LOS PRODUCTOS DEL JSON
         const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
-        // PARSEA TODAS LAS PROPIEDADES CATEGORIES PARA PODER TRABAJAR CON EL ARRAY
-        products.forEach(product => {
-            product.categories = JSON.parse(product.categories);
-        });
-
         // REVISAR SI LOS PRODUCTOS TIENEN LA CATEGORIA QUE SE REQUIERE
         const filteredProducts = products.filter((product) => {
             return product.categories.includes(category);
@@ -118,6 +113,48 @@ const productController = {
         res.render('products/editProduct', {productToEdit});
  
     },
+    processEdit: (req, res) => {
+
+        // TRAE TODOS LOS PRODUCTOS DEL JSON
+        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+
+        // TRAEMOS EL ID DE LOS PRODUCTOS
+        let id = req.params.id;
+
+        // BUSCAMOS EL PRODUCTO QUE COINCIDA CON EL ID
+        let productToEdit = products.find(product => product.id == id);
+
+        // REQUERIMOS LAS CATEGORIAS DEL FORMULARIO
+        let categories = req.body.categories;
+
+        // SI NO ES UN ARRAY LO CONVERTIMOS EN UNO; PARA EVITAR ERRORES EN LA SEPARACION POR CATEGORIAS
+        if (!Array.isArray(categories)) {
+            categories = [categories];
+        }
+
+        // ACTUALIZAMOS EL PRODUCTO CON LA INFORMACION QUE NOS LLEGA POR EL FORMULARIO
+        productToEdit = {
+            id: productToEdit.id,
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.description,
+            image: req.file != undefined ? req.file.filename : productToEdit.image,
+            discount: req.body.discount,
+            brand: req.body.brand,
+            status: req.body.status,
+            categories: categories,
+        }
+
+        // BUSCAMOS EL INDICE DEL PRODUCTO QUE COINCIDA CON EL ID
+        let indice = products.findIndex(product => { return product.id == id});
+
+        products[indice] = productToEdit;
+
+        fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
+        
+        res.redirect('/product/allProducts/productDetail/' + id);
+
+    },
     newProduct: (req, res) => {
 
         // RENDERIZAMOS LA VISTA NEWPRODUCT.EJS
@@ -126,14 +163,20 @@ const productController = {
     processCreate: (req, res) => {
         console.log(req.body);
     },
-    //DELETE - ELIMINAR PRODUCTO
     destroy : (req, res) => {
+
+        // TRAE TODOS LOS PRODUCTOS DEL JSON
         let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+
+        // FILTRAMOS LOS PRODUCTOS QUE NO COINCIDAN CON EL ID
         products = products.filter(product => {
             return product.id != req.params.id
         })
 
-        fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ""))
+        // GUARDAMOS LOS PRODUCTOS EN EL JSON
+        fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '))
+
+        // REDIRECCIONAMOS A LA LISTA DE PRODUCTOS
         res.redirect("/product/allProducts");
 },
 };

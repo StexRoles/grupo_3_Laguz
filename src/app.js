@@ -10,7 +10,7 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({extended: false})); //TOMA LOS DATOS DEL BODY
 app.use(express.json()); //TOMA LOS DATOS DEL BODY
-app.use(methodOverride('_method'));
+app.use(methodOverride('_method')); // PARA PODER USAR PUT Y DELETE
 
 // CONFIGURAR MOTOR DE PLANTILLAS ENGINE JAVA SCRIPT
 app.set('view engine', 'ejs');
@@ -35,7 +35,7 @@ app.use('/product', productRouter);
 
 // ------------------------------------------------------------------------------------------ //
 
-// SERVIDOR EN PUERTO 3000
+// SERVIDOR EN PUERTO 3020
 const port = process.env.PORT || 3020;
 app.listen(port, () => {
     console.log(`Servidor ejecutandose en http://localhost:${port}`);

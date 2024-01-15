@@ -17,7 +17,7 @@
 
             <!-------------- FORMULARIO --------------------->
             <div class="contenedor-formulario">
-                <form action="/product/editProduct/<%= productToEdit.id %>" method="POST">
+                <form action="/product/editProduct/<%= productToEdit.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                     <div class="contenedor-inputs">
                         <div>
                             <label for="name">Nombre del producto:</label>
@@ -41,25 +41,25 @@
 
                         <!------------ CHECKBOX DE LAS CATEGORIAS ---------------->
                         <div class="contenedor-categorias">
-                            <label for="category">Categorias:</label>
+                            <label for="categories">Categorias:</label>
                             <div>
-                                <input type="checkbox" id="laptops" name="category" value="laptops" <% if (productToEdit.categories.includes('laptops')) { %>checked<% } %>>
+                                <input type="checkbox" id="laptops" name="categories" value="laptops" <% if (productToEdit.categories.includes('laptops')) { %>checked<% } %>>
                                 <label for="laptops">Laptops</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="oficina" name="category" value="oficina" <% if (productToEdit.categories.includes('oficina')) { %>checked<% } %>>
+                                <input type="checkbox" id="oficina" name="categories" value="oficina" <% if (productToEdit.categories.includes('oficina')) { %>checked<% } %>>
                                 <label for="oficina">Oficina</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="estudiantes" name="category" value="estudiantes" <% if (productToEdit.categories.includes('estudiantes')) { %>checked<% } %>>
+                                <input type="checkbox" id="estudiantes" name="categories" value="estudiantes" <% if (productToEdit.categories.includes('estudiantes')) { %>checked<% } %>>
                                 <label for="estudiantes">Estudiantes</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="accesorios" name="category" value="accesorios" <% if (productToEdit.categories.includes('accesorios')) { %>checked<% } %>>
+                                <input type="checkbox" id="accesorios" name="categories" value="accesorios" <% if (productToEdit.categories.includes('accesorios')) { %>checked<% } %>>
                                 <label for="accesorios">Accesorios</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="gamer" name="category" value="gamer" <% if (productToEdit.categories.includes('gamer')) { %>checked<% } %>>
+                                <input type="checkbox" id="gamer" name="categories" value="gamer" <% if (productToEdit.categories.includes('gamer')) { %>checked<% } %>>
                                 <label for="gamer">Gamer</label>
                             </div>
                         </div>
