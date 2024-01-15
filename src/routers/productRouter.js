@@ -41,7 +41,7 @@ router.get('/allProducts/productDetail/:id?', productController.productDetail);
 
 //RUTA PARA CREAR NUEVO PRODUCTO
 router.get('/allProducts/newProduct', productController.newProduct);
-router.post('/allProducts/newProduct', productController.processCreate);
+router.post('/allProducts/newProduct', upload.single("image") ,productController.processCreate);
 
 // RUTA PARA EDITAR EL PRODUCTO 
 router.get('/editProduct/:id', productController.editProduct);

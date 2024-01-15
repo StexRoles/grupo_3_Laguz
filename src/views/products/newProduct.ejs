@@ -17,7 +17,7 @@
 
             <!-------------- FORMULARIO --------------------->
             <div class="contenedor-formulario">
-                <form action="/product/allProducts/newProduct" method="POST">
+                <form action="/product/allProducts/newProduct" method="POST" enctype="multipart/form-data">
                     <div class="contenedor-inputs">
                         <div>
                             <label for="name">Nombre del producto:</label>
@@ -41,32 +41,32 @@
 
                         <!------------ CHECKBOX DE LAS CATEGORIAS ---------------->
                         <div class="contenedor-categorias">
-                            <label for="category">Categorias:</label>
+                            <label for="categories">Categorias:</label>
                             <div>
-                                <input type="checkbox" id="laptops" name="category" value="laptops">
+                                <input type="checkbox" id="laptops" name="categories" value="laptops">
                                 <label for="laptops">Laptops</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="oficina" name="category" value="oficina">
+                                <input type="checkbox" id="oficina" name="categories" value="oficina">
                                 <label for="oficina">Oficina</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="estudiantes" name="category" value="estudiantes">
+                                <input type="checkbox" id="estudiantes" name="categories" value="estudiantes">
                                 <label for="estudiantes">Estudiantes</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="accesorios" name="category" value="accesorios">
+                                <input type="checkbox" id="accesorios" name="categories" value="accesorios">
                                 <label for="accesorios">Accesorios</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="gamer" name="category" value="gamer">
+                                <input type="checkbox" id="gamer" name="categories" value="gamer">
                                 <label for="gamer">Gamer</label>
                             </div>
                         </div>
 
                         <div class="contenedor-imagen">
                             <label for="image">Imagen:</label>
-                            <input type="file" id="image" name="image">
+                            <input type="file" id="image" name="image" required>
                         </div>
 
                         <div>

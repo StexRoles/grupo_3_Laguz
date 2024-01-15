@@ -1,5 +1,31 @@
 [
  {
+  "id": "1",
+  "name": "Monitor HKC ANTTEQ F2145M 21.45p 75hz",
+  "price": "78000",
+  "description": "Monitor HKC ANTTEQ F2145M 21.45p 75hz",
+  "image": "producto-1.webp",
+  "discount": "10",
+  "brand": "HKC",
+  "status": "featured",
+  "addToCart": "false",
+  "favorite": "true",
+  "categories": "[ \"oficina\", \"estudiantes\" ]"
+ },
+ {
+  "id": "2",
+  "name": "Monitor HKC ANTTEQ F238M 23.8 IPS 75hz",
+  "price": "84000",
+  "description": "Monitor HKC ANTTEQ F238M 23.8 IPS 75hz",
+  "image": "producto-2.webp",
+  "discount": "0",
+  "brand": "HKC",
+  "status": "featured",
+  "addToCart": "false",
+  "favorite": "true",
+  "categories": "[ \"oficina\", \"estudiantes\" ]"
+ },
+ {
   "id": "3",
   "name": "Watercooling - Refirigeración Líquida para CPU",
   "price": "85000",
@@ -10,6 +36,19 @@
   "status": "featured",
   "addToCart": "true",
   "favorite": "true",
+  "categories": "[ \"accesorios\", \"gamer\" ]"
+ },
+ {
+  "id": "4",
+  "name": "Coolers para CPU Redragon Effect RGB Air 120mm CC-2000",
+  "price": "44000",
+  "description": "Coolers para CPU Redragon Effect RGB Air 120mm CC-2000",
+  "image": "producto-4.webp",
+  "discount": "0",
+  "brand": "Redragon",
+  "status": "featured",
+  "addToCart": "false",
+  "favorite": "false",
   "categories": "[ \"accesorios\", \"gamer\" ]"
  },
  {
@@ -37,6 +76,19 @@
   "addToCart": "true",
   "favorite": "false",
   "categories": "[ \"oficina\", \"estudiantes\", \"accesorios\" ]"
+ },
+ {
+  "id": "7",
+  "name": "Monitor Philips 272V8LA/55 27'' FULL HD",
+  "price": "130000",
+  "description": "Smartwatch Amazfit Bip 3 Pink",
+  "image": "oferta-3.webp",
+  "discount": "25",
+  "brand": "Philips",
+  "status": "in-sale",
+  "addToCart": "true",
+  "favorite": "false",
+  "categories": "[ \"oficina\", \"estudiantes\" ]"
  },
  {
   "id": "8",
@@ -115,5 +167,35 @@
   "addToCart": "false",
   "favorite": "false",
   "categories": "[ \"accesorios\" ]"
+ },
+ {
+  "id": 14,
+  "name": "Auricular Redragon H510 Zeus X Pink RGB USB MIC",
+  "price": "79000",
+  "description": "Potentes, hermosos, totales. Con retroiluminación RGB, un micrófono excepcional, construcción cómoda y robusta, y —lo más importante— una calidad de sonido arrolladora, los aclamados Zeus vuelven con más: conoce su nueva versión X H510-RGB y experimenta la totalidad.",
+  "image": "image-1705287227865.webp",
+  "discount": "20",
+  "brand": "Redragon",
+  "status": "in-sale",
+  "categories": [
+   "estudiantes",
+   "accesorios",
+   "gamer"
+  ]
+ },
+ {
+  "id": 15,
+  "name": "Auricular Redragon Ire White/Grey Mobile Legends Edition H848G",
+  "price": "54500",
+  "description": "Conectividad : dongle RF, Bluetooth V5.2, cable USB-A a USB-C\r\nControl de volumen : Integrado\r\nLargo de cable : 1,85 m, mallado de tela de alta resistencia, audio/carga\r\nPeso : menor a 190 g",
+  "image": "image-1705287322746.webp",
+  "discount": "28",
+  "brand": "Redragon",
+  "status": "in-sale",
+  "categories": [
+   "estudiantes",
+   "accesorios",
+   "gamer"
+  ]
  }
 ]

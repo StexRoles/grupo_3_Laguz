@@ -124,14 +124,6 @@ const productController = {
         // BUSCAMOS EL PRODUCTO QUE COINCIDA CON EL ID
         let productToEdit = products.find(product => product.id == id);
 
-        // REQUERIMOS LAS CATEGORIAS DEL FORMULARIO
-        let categories = req.body.categories;
-
-        // SI NO ES UN ARRAY LO CONVERTIMOS EN UNO; PARA EVITAR ERRORES EN LA SEPARACION POR CATEGORIAS
-        if (!Array.isArray(categories)) {
-            categories = [categories];
-        }
-
         // ACTUALIZAMOS EL PRODUCTO CON LA INFORMACION QUE NOS LLEGA POR EL FORMULARIO
         productToEdit = {
             id: productToEdit.id,
@@ -142,7 +134,7 @@ const productController = {
             discount: req.body.discount,
             brand: req.body.brand,
             status: req.body.status,
-            categories: categories,
+            categories: req.body.categories,
         }
 
         // BUSCAMOS EL INDICE DEL PRODUCTO QUE COINCIDA CON EL ID
@@ -161,7 +153,32 @@ const productController = {
         res.render('products/newProduct');
     },
     processCreate: (req, res) => {
-        console.log(req.body);
+
+        // TRAE TODOS LOS PRODUCTOS DEL JSON
+        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+
+        // CREAMOS EL NUEVO PRODUCTO
+        const newProduct = {
+            id: parseInt(products[products.length - 1].id) + 1,
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.description,
+            image: req.file.filename,
+            discount: req.body.discount,
+            brand: req.body.brand,
+            status: req.body.status,
+            categories: req.body.categories,
+        }
+
+        // AGREGAR EL PRODUCTO A LA CONSTANTE PRODUCTS
+		products.push(newProduct);
+
+        //SOBREESCRIBIR EL ARCHIVO JSON
+		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
+
+		// REDIRECCIONAR AL DETALLE DEL PRODUCTO
+		res.redirect("/product/allProducts");
+
     },
     destroy : (req, res) => {
 
