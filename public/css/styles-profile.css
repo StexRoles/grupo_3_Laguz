@@ -1,0 +1,277 @@
+/* Fondo del profile */
+section {
+    background-color: white;
+}
+
+/*  Contenedor imagen de portada */
+.profile-cover {
+    width: 100%;
+    height: 45vh;
+}
+
+.profile-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Contenedor de la imagen de perfil (avatar), informacion y boton de logout */
+.user-information {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-top: -17vh !important;
+    z-index: 10;
+    margin: 0 8%;
+}
+
+.user-information::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}
+
+/* Contenedor avatar */
+.avatar {
+    width: 40vmin;
+    height: 40vmin;
+    position: relative;
+    margin-top: -15vh !important;
+    z-index: 20;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+/* Contenedor de la informacion del usuario */
+.information {
+    text-align: center;
+    width: 100%;
+}
+
+.information h1 {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+}
+
+.nombre {
+    font-weight: bold;
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+}
+
+.ubicacion {
+    color: #52DEE5;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+/* Contenedor del boton de logout */
+.button-logout {
+    width: 50%;
+    display: flex;
+}
+
+.button-logout button {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    border: none;
+    height: 2.5rem;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #52DEE5;
+    border-radius: 0.5rem;
+}
+
+.button-logout a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Contenedor para añadir o editar informacion del usuario */
+.user-edit-information {
+    padding: 8%;
+}
+
+.user-edit-information h1 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.user-edit-information div {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-edit-information form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.user-edit-information label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.user-edit-information input, .user-edit-information select {
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ced4da;
+    height: 2.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.user-edit-information input:focus {
+    outline: solid 3px rgba(146, 220, 229, 0.5 );
+}
+
+.button-submit button {
+    border: none;
+    height: 2.5rem;
+    padding: 0.5rem;
+    background-color: #52DEE5;
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+/* MEDIA QUERIES DEL PROFILE */
+
+@media (min-width: 768px) {
+     
+    /*  Contenedor imagen de portada */
+    .profile-cover {
+        height: 60vh;
+    }
+
+    .user-information {
+        margin-top: -30vh !important;
+    }
+
+    /* Contenedor avatar */
+    .avatar {
+        width: 30vmin;
+        height: 30vmin;
+        margin-top: -14vh !important;
+    }
+
+    /* Contenedor de la informacion del usuario */
+    .information h1 {
+        margin-top: 4rem;
+        font-size: 2rem;
+    }
+
+    .nombre {
+        margin: 2rem 0;
+        font-size: 2rem;
+    }
+
+    .ubicacion {
+        margin: 2rem 0;
+        font-size: 1rem;
+    }
+
+    /* Contenedor del boton de logout */
+    .button-logout button {
+        margin-bottom: 4rem;
+    }
+
+    /* Contenedor para añadir o editar informacion del usuario */
+    .user-edit-information form {
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .user-edit-information div {
+        width: 45%;
+    }
+
+    .user-edit-information h1 {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .button-submit button {
+        margin-top: 1rem;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    /*  Contenedor imagen de portada */
+    .profile-cover {
+        height: 80vh;
+    }
+
+    .user-information {
+        margin-top: -40vh !important;
+    }
+
+    /* Contenedor avatar */
+    .avatar {
+        width: 40vmin;
+        height: 40vmin;
+        margin-top: -20vh !important;
+    }
+
+    /* Contenedor de la informacion del usuario */
+    .information h1 {
+        font-size: 2.5rem;
+    }
+
+    .nombre {
+        font-size: 2.5rem;
+    }
+
+    .ubicacion {
+        font-size: 1.5rem;
+    }
+
+    /* Contenedor del boton de logout */
+    .button-logout {
+        width: 40%;
+    }
+
+    .button-logout a {
+        font-size: 1.3rem;
+    }
+
+    .button-logout button {
+        height: 3.5rem;
+        margin-bottom: 5rem;
+        margin-top: 1rem;
+    }
+}

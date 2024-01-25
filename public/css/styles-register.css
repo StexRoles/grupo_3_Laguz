@@ -13,6 +13,17 @@
   justify-content: space-around;
 }
 
+/* CONTENEDOR MENSAJE DE ERROR */
+.error {
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  color: #BF2020;
+  font-style: italic;
+  font-weight: bold;
+
+}
+
 /* CONTENEDOR DEL REGISTER */
 .contenedor-register {
   background-color: white;

@@ -3,19 +3,19 @@
         "id": "1",
         "user": "Stex",
         "email": "ejemplo@gmail.com",
-        "password": "1234",
+        "password": "$2a$10$CKqlkcylmTBs.waYJeVJ/eyi8Z8FStzRaoZZE6fIPgoQAN3s5oOQC",
         "image": "image"
     },
     {
-        "id": "1",
-        "user": "Stex",
+        "id": "2",
+        "user": "join",
         "email": "ejemplo@gmail.com",
         "password": "1234",
         "image": "image"
     },
     {
-        "id": "1",
-        "user": "Stex",
+        "id": "3",
+        "user": "sofia",
         "email": "ejemplo@gmail.com",
         "password": "1234",
         "image": "image"

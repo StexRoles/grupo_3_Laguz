@@ -1,0 +1,80 @@
+<!-- Paritials head -->
+ 
+<%- include('../partials/head.ejs', { extraFont: "https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap", stylesheetPath: "/css/styles-profile.css" }) %>
+
+<body>
+    <!--Partials header -->
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+        <section>
+
+            <!-- FONDO SUPERIOR DEL PROFILE -->
+            <article class="profile-cover">
+                <img src="/img/img-profile-cover/<%= randomNumber %>.jpg" alt="Fondo de portada">
+            </article>
+
+            <!-- INFORMACION DEL PROFILE -->
+            <article class="user-information">
+                <div class="avatar">
+                    <img src="/img/img-profile-cover/1.jpg" alt="">
+                </div>
+
+                <div class="information">
+                    <h1><%= user.user %></h1>
+                    <p class="nombre">Steven Navarro</p>
+                    <p class="ubicacion">Medellin, Colombia</p>
+                </div>
+
+                <div class="button-logout">
+                    <button type="button"><a href="/user/logout">Cerrar sesion</a></button>
+                </div>
+            </article>
+
+            <!-- FONDO INFERIOR DEL PROFILE Y CONFIGURACION -->
+            <article class="user-edit-information">
+                <form action="" method="post">
+
+                    <h1>EDITAR INFORMACION DEL USUARIO</h1>
+
+                    <div>
+                        <label for="name">Nombre:</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+
+                    <div>
+                        <label for="avatar">Avatar:</label>
+                        <input type="file" name="avatar" id="avatar">
+                    </div>
+
+                    <div>
+                        <label for="country">Pais:</label>
+                        <select name="location" id="location">
+                            <option value="" selected disabled >Elegir un pais</option>
+                            <option value="colombia">Colombia</option>
+                            <option value="argentina">Argentina</option>
+                            <option value="canada">Canada</option>
+                            <option value="mexico">Mexico</option>
+                            <option value="peru">Peru</option>
+                            <option value="chile">Chile</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="city">Ciudad:</label>
+                        <input type="text" name="city" id="city">
+                    </div>
+
+                    <div class="button-submit">
+                        <button type="submit">Guardar cambios</button>
+                    </div>
+                </form>
+            </article>
+
+        </section>
+    </main>
+
+    <!--Partials footer  -->
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>

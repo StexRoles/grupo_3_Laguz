@@ -1,23 +1,12 @@
 // REQUERIR EXPRESS Y USAR ROUTER
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
-const path = require('path');
 
 // REQUERIR productController PARA USAR SUS METODOS
 const productController = require('../controllers/productController.js');
 
-// CONFIGURACION DE MULTER
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'public/img/productos');
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    }
-});
-
-const upload = multer({ storage: storage });
+// REQUERIR MULTER PARA USARLO EN LA RUTA
+const upload = require('../middlewares/multerMiddleware.js');
 
 //---------------------------------------------------------------//
 
