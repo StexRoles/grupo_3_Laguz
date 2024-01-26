@@ -39,17 +39,19 @@ const userController = {
         let userFound = users.find(user => user.email === req.body.identifier || user.user === req.body.identifier);
 
         // SE COMPRUEBA QUE EL USUARIO EXISTA
-        if (userFound && userFound.password) {
-
+        if (userFound) {
             // SE COMPRUEBA QUE LA CONTRASEÑA SEA CORRECTA
             let passwordHash = bcryptjs.compareSync(req.body.password, userFound.password);
 
             if (passwordHash) {
-                // ELIMINAMOS LA CONTRASEÑA DEL USUARIO POR SEGURIDAD
-                delete userFound.password;
+                // CREAR UNA COPIA userFound PARA PODER GUARDAR EN SESSION Y ELIMINAR LA CONTRASEÑA
+                let userToLogin = Object.assign({}, userFound);
 
                 // SI LA CONTRASEÑA ES CORRECTA SE CREA UNA SESSION
-                req.session.userLogged = userFound;
+                req.session.userLogged = userToLogin;
+
+                // ELIMINAMOS LA CONTRASEÑA DEL USUARIO POR SEGURIDAD
+                delete req.session.userLogged.password; 
 
                 // CREAMOS UNA COOKIE PARA RECORDAR AL USUARIO
                 res.cookie('userIdentifier', req.body.identifier, { maxAge: (1000 * 60) * 60 });
