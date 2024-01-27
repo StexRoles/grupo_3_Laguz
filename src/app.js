@@ -7,6 +7,7 @@ const session = require('express-session'); // REQUERIMOS EXPRESS-SESSION PARA P
 const cookies = require('cookie-parser'); // REQUERIMOS COOKIE-PARSER PARA PODER USAR COOKIES
 const path = require('path'); // REQUERIMOS PATH PARA UTILIZAR RUTAS COMPLETAS O DE FICHERO 
 const rememberUserMiddleware = require('./middlewares/rememberUserMiddleware.js'); // REQUERIMOS EL MIDDLEWARE PARA RECORDAR AL USUARIO
+const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware.js'); // REQUERIMOS EL MIDDLEWARE PARA ENVIAR LA VARIABLE A REQ.SESSIO.USERLOGGED A TODAS LAS VISTAS
 
 // MIDDLEWARES GLOBALES
 app.use(express.static(path.join(__dirname, '../public'))); // PARA USAR ARCHIVOS ESTATICOS
@@ -20,6 +21,7 @@ app.use(session({
 })); // PARA PODER USAR SESSIONES
 app.use(cookies()); // PARA PODER USAR COOKIES
 app.use(rememberUserMiddleware); // PARA RECORDAR AL USUARIO
+app.use(userLoggedMiddleware); // PARA ENVIAR LA VARIABLE A REQ.SESSIO.USERLOGGED A TODAS LAS VISTAS
 
 // CONFIGURAR MOTOR DE PLANTILLAS ENGINE JAVA SCRIPT
 app.set('view engine', 'ejs');

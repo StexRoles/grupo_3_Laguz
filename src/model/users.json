@@ -1,24 +1,25 @@
 [
-    {
-        "id": "1",
-        "user": "Stex",
-        "email": "ejemplo@gmail.com",
-        "password": "$2a$10$CKqlkcylmTBs.waYJeVJ/eyi8Z8FStzRaoZZE6fIPgoQAN3s5oOQC",
-        "image": "image"
-    },
-    {
-        "id": "2",
-        "user": "join",
-        "email": "ejemplo@gmail.com",
-        "password": "1234",
-        "image": "image"
-    },
-    {
-        "id": "3",
-        "user": "sofia",
-        "email": "ejemplo@gmail.com",
-        "password": "1234",
-        "image": "image"
-    }
-
+ {
+  "id": "1",
+  "user": "Stex",
+  "email": "ejemplo@gmail.com",
+  "password": "$2a$10$CKqlkcylmTBs.waYJeVJ/eyi8Z8FStzRaoZZE6fIPgoQAN3s5oOQC",
+  "admin": true,
+  "name": "Steven Navarro Parrales",
+  "avatar": "",
+  "country": "Colombia",
+  "city": "Bogotá"
+ },
+ {
+  "id": "2",
+  "user": "join",
+  "email": "ejemplo@gmail.com",
+  "password": "1234"
+ },
+ {
+  "id": "3",
+  "user": "sofia",
+  "email": "ejemplo@gmail.com",
+  "password": "1234"
+ }
 ]

@@ -15,6 +15,9 @@ function rememberUserMiddleware(req, res, next) {
 
     // SI EL USUARIO EXISTE SE CREA UNA SESSION
     if (userFromCookie) {
+
+        delete userFromCookie.password;
+
         req.session.userLogged = userFromCookie;
     }
 

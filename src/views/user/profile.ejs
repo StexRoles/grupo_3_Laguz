@@ -21,25 +21,34 @@
                 </div>
 
                 <div class="information">
-                    <h1><%= user.user %></h1>
-                    <p class="nombre">Steven Navarro</p>
-                    <p class="ubicacion">Medellin, Colombia</p>
+                    <h1><%= userInformation.user %></h1>
+                    <p class="nombre"><%= userInformation.name ? userInformation.name : "Usuario" %></p>
+                    <p class="ubicacion">
+                        <%= userInformation.city ? userInformation.city : "Ciudad" %>, <%= userInformation.country ? userInformation.country : "Pais" %>
+                    </p>
                 </div>
+
+                <% if ( userLogged.admin ) { %>
+                    <div class="button-admin">
+                        <button type="button"><a href="/product/allProducts">Administrar productos</a></button>
+                    </div>
+                <% } %>
 
                 <div class="button-logout">
                     <button type="button"><a href="/user/logout">Cerrar sesion</a></button>
                 </div>
+
             </article>
 
             <!-- FONDO INFERIOR DEL PROFILE Y CONFIGURACION -->
             <article class="user-edit-information">
-                <form action="" method="post">
+                <form action="/user/profile?_method=PUT" method="POST">
 
                     <h1>EDITAR INFORMACION DEL USUARIO</h1>
 
                     <div>
                         <label for="name">Nombre:</label>
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" id="name" placeholder="Richard Gonzales">
                     </div>
 
                     <div>
@@ -49,20 +58,20 @@
 
                     <div>
                         <label for="country">Pais:</label>
-                        <select name="location" id="location">
+                        <select name="country" id="country">
                             <option value="" selected disabled >Elegir un pais</option>
-                            <option value="colombia">Colombia</option>
-                            <option value="argentina">Argentina</option>
-                            <option value="canada">Canada</option>
-                            <option value="mexico">Mexico</option>
-                            <option value="peru">Peru</option>
-                            <option value="chile">Chile</option>
+                            <option value="Colombia">Colombia</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Mexico">Mexico</option>
+                            <option value="Peru">Peru</option>
+                            <option value="Chile">Chile</option>
                         </select>
                     </div>
 
                     <div>
                         <label for="city">Ciudad:</label>
-                        <input type="text" name="city" id="city">
+                        <input type="text" name="city" id="city" placeholder="Buenos Aires">
                     </div>
 
                     <div class="button-submit">

@@ -20,7 +20,6 @@ const userController = {
 
         // RENDERIZAMOS LA VISTA LOGIN.EJS
         res.render('user/login');
-
     },
     processLogin: (req, res) => {
 
@@ -35,7 +34,7 @@ const userController = {
             });
         }
 
-        // BUSCAMOS EL USUARIO POR EMAIL
+        // BUSCAMOS EL USUARIO POR EMAIL O USUARIO
         let userFound = users.find(user => user.email === req.body.identifier || user.user === req.body.identifier);
 
         // SE COMPRUEBA QUE EL USUARIO EXISTA
@@ -45,16 +44,16 @@ const userController = {
 
             if (passwordHash) {
                 // CREAR UNA COPIA userFound PARA PODER GUARDAR EN SESSION Y ELIMINAR LA CONTRASEÑA
-                let userToLogin = Object.assign({}, userFound);
+                let userToLogin = JSON.parse(JSON.stringify(userFound));
+
+                // ELIMINAMOS LA CONTRASEÑA DEL USUARIO POR SEGURIDAD
+                delete userToLogin.password;
 
                 // SI LA CONTRASEÑA ES CORRECTA SE CREA UNA SESSION
                 req.session.userLogged = userToLogin;
 
-                // ELIMINAMOS LA CONTRASEÑA DEL USUARIO POR SEGURIDAD
-                delete req.session.userLogged.password; 
-
                 // CREAMOS UNA COOKIE PARA RECORDAR AL USUARIO
-                res.cookie('userIdentifier', req.body.identifier, { maxAge: (1000 * 60) * 60 });
+                res.cookie('userIdentifier', req.body.identifier, { maxAge: (1000 * 60) * 60 * 24 * 7 });
 
                 // SE REDIRIGE AL PERFIL DEL USUARIO
                 return res.redirect('/user/profile');
@@ -83,13 +82,45 @@ const userController = {
     },
     profile: (req, res) => {
 
+        // TRAEMOS TODOS LOS USUARIOS
+        const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+
+        // BUSCAMOS EL USUARIO QUE COINCIDA CON EL ID
+        let userInformation = users.find(user => user.id == req.session.userLogged.id);
+
         // GENERA UN NUMERO ALEATORIO 
         const randomNumber = Math.floor(Math.random() * 9) + 1;
 
         // RENDERIZAMOS LA VISTA PROFILE.EJS
-        res.render('user/profile', { user: req.session.userLogged, randomNumber });
-
+        res.render('user/profile', { randomNumber, userInformation });
     },
+    editProfile: (req, res) => {
+
+        // TRAEMOS TODOS LOS USUARIOS
+        const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+
+        // BUSCAMOS EL USUARIO QUE COINCIDA CON EL ID
+        let userToEdit = users.find(user => user.id == req.session.userLogged.id);
+
+        // AÑADIMOS LA INFORMACION A UNA VARIABLE
+        userToEdit = {
+            ...userToEdit,
+            name: req.body.name,
+            avatar: req.body.avatar,
+            country: req.body.country,
+            city: req.body.city,
+        }
+
+        // BUSCAMOS EL INDICE DEL USUARIO QUE COINCIDA CON EL ID
+        let indice = users.findIndex(user => { return user.id == req.session.userLogged.id });
+
+        // ACTUALIZAMOS Y REESCRIBIMOS EL JSON
+        users[indice] = userToEdit;
+        fs.writeFileSync(usersFilePath, JSON.stringify(users, null, ' '));
+       
+        // REDIRIGIMOS AL PERFIL DEL USUARIO
+        res.redirect('/user/profile');
+    },   
     logout: (req, res) => {
 
         // ELIMINA LA COOKIE

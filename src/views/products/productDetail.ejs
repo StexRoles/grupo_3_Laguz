@@ -38,12 +38,12 @@
             </article>
             
             <!----------------- CONDICIONAL PARA MOSTRAR LOS BOTONES DE ADMIN ------------------------>
-            <% if (admin && req.originalUrl === '/product/allProducts/productDetail/' + singleProduct.id) { %>
+            <% if ( userLogged.admin && req.originalUrl === '/product/allProducts/productDetail/' + singleProduct.id) { %>
                 <article class="botones-admin">
 
-                    <button><a href="/product/editProduct/<%= singleProduct.id %>">Editar</a></button>
+                    <button><a href="/product/allProducts/editProduct/<%= singleProduct.id %>">Editar</a></button>
 
-                    <form action="/product/delete/<%= singleProduct.id %>?_method=DELETE" method="POST">
+                    <form action="/product/allProducts/delete/<%= singleProduct.id %>?_method=DELETE" method="POST">
                         <button type="submit" class="boton-eliminar">Eliminar</button>
                     </form>
                 </article>

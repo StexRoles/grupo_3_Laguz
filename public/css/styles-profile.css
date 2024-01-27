@@ -86,12 +86,12 @@ section {
 }
 
 /* Contenedor del boton de logout */
-.button-logout {
+.button-logout, .button-admin {
     width: 50%;
     display: flex;
 }
 
-.button-logout button {
+.button-logout button, .button-admin button {
     margin-top: 0.5rem;
     margin-bottom: 2rem;
     border: none;
@@ -102,7 +102,7 @@ section {
     border-radius: 0.5rem;
 }
 
-.button-logout a {
+.button-logout a, .button-admin a {
     text-decoration: none;
     color: white;
     font-size: 1rem;
@@ -172,11 +172,11 @@ section {
      
     /*  Contenedor imagen de portada */
     .profile-cover {
-        height: 60vh;
+        height: 65vh;
     }
 
     .user-information {
-        margin-top: -30vh !important;
+        margin-top: -35vh !important;
     }
 
     /* Contenedor avatar */
@@ -193,18 +193,27 @@ section {
     }
 
     .nombre {
-        margin: 2rem 0;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
         font-size: 2rem;
     }
 
     .ubicacion {
-        margin: 2rem 0;
+        margin-bottom: 2rem;
         font-size: 1rem;
     }
 
-    /* Contenedor del boton de logout */
+    /* Contenedor del boton de logout y boton administrador */
+    .button-admin a, .button-logout a {
+        font-size: 1.1rem;
+    }	
     .button-logout button {
         margin-bottom: 4rem;
+
+    }
+
+    .button-admin button {
+        margin-bottom: 2rem;
     }
 
     /* Contenedor para añadir o editar informacion del usuario */
@@ -225,6 +234,7 @@ section {
 
     .button-submit button {
         margin-top: 1rem;
+        font-size: 1.1rem;
     }
 
 }
@@ -238,6 +248,7 @@ section {
 
     .user-information {
         margin-top: -40vh !important;
+        margin: 0 15%;
     }
 
     /* Contenedor avatar */
@@ -260,12 +271,12 @@ section {
         font-size: 1.5rem;
     }
 
-    /* Contenedor del boton de logout */
-    .button-logout {
+    /* Contenedor del boton de logout y boton de administrador */
+    .button-logout, .button-admin {
         width: 40%;
     }
 
-    .button-logout a {
+    .button-logout a, .button-admin a{
         font-size: 1.3rem;
     }
 
@@ -273,5 +284,22 @@ section {
         height: 3.5rem;
         margin-bottom: 5rem;
         margin-top: 1rem;
+    }
+
+    .button-admin button {
+        height: 3.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Contenedor para añadir o editar informacion del usuario */
+    .user-edit-information input, .user-edit-information select {
+        height: 3.5rem;
+        padding: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .button-submit button {
+        height: 3.5rem;
+        font-size: 1.3rem;
     }
 }

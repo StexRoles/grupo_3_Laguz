@@ -19,10 +19,16 @@
         </article>
 
         <!------------------ LOGIN Y REGISTER --------------------->
-        <article class="login-icon">
-            <a href="/user/login"><i class="fa-solid fa-user"></i></a>
-        </article>
-
+        <% if ( locals.userLogged ) { %>
+            <article class="login-icon-logged">
+                <a href="/user/login"><i class="fa-solid fa-user"></i></a>
+            </article>
+        <% } else { %>
+            <article class="login-icon">
+                <a href="/user/login"><i class="fa-solid fa-user"></i></a>
+            </article>
+        <% } %>
+        
         <article class="favorites-icon">
             <a href="/product/productsList/favorites"><i class="fa-solid fa-heart"></i></a>
         </article>

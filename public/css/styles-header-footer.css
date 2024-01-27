@@ -73,7 +73,7 @@ header {
 
     /*------  ICONOS DEL HEADER ---------*/
 
-    .login-icon, .cart-icon, .favorites-icon {
+    .login-icon, .cart-icon, .favorites-icon, .login-icon-logged {
         width: 12.5%;
         display: flex;
         justify-content: center;
@@ -84,6 +84,11 @@ header {
     .login-icon a, .cart-icon a, .favorites-icon a {
         text-decoration: none; 
         color: #001F54;
+    }
+
+    .login-icon-logged a {
+        text-decoration: none;
+        color: #52DEE5;
     }
 
     .favorites-icon {
@@ -119,7 +124,7 @@ header {
 @media (min-width: 768px) {
 
     /*------  ICONOS DEL HEADER ---------*/
-    .login-icon, .cart-icon, .favorites-icon {
+    .login-icon, .cart-icon, .favorites-icon, .login-icon-logged {
         width: 10%;
         font-size: 1.5rem;
     }

@@ -2,11 +2,12 @@
 const express = require('express');
 const router = express.Router();
 
+// MIDLEWARES DE RUTAS
+const upload = require('../middlewares/multerMiddleware.js'); // MULTER
+const manageProductsMiddleware = require('../middlewares/manageProductsMiddleware.js'); // EVITA ENTRAR A ADMINISTAR PRODUCTOS SI NO ERES ADMINISTRADOR
+
 // REQUERIR productController PARA USAR SUS METODOS
 const productController = require('../controllers/productController.js');
-
-// REQUERIR MULTER PARA USARLO EN LA RUTA
-const upload = require('../middlewares/multerMiddleware.js');
 
 //---------------------------------------------------------------//
 
@@ -23,21 +24,21 @@ router.get('/productsList/:status', productController.productsList);
 router.get('/productsCategories/:category', productController.productsCategories);
 
 // RUTA PARA MOSTRAR TODOS LO PRODUCTOS AL ADMINISTRADOR
-router.get('/allProducts', productController.allProducts);
+router.get('/allProducts', manageProductsMiddleware, productController.allProducts);
 
 //RUTA PARA EL DETALLE DE PRODUCTO DE ADMINISTRADOR
-router.get('/allProducts/productDetail/:id?', productController.productDetail);
+router.get('/allProducts/productDetail/:id?', manageProductsMiddleware, productController.productDetail);
 
 //RUTA PARA CREAR NUEVO PRODUCTO
-router.get('/allProducts/newProduct', productController.newProduct);
-router.post('/allProducts/newProduct', upload.single("image") ,productController.processCreate);
+router.get('/allProducts/newProduct', manageProductsMiddleware, productController.newProduct);
+router.post('/allProducts/newProduct', upload.single("image"), manageProductsMiddleware ,productController.processCreate);
 
 // RUTA PARA EDITAR EL PRODUCTO 
-router.get('/editProduct/:id', productController.editProduct);
-router.put('/editProduct/:id', upload.single("image"), productController.processEdit);
+router.get('/allProducts/editProduct/:id', manageProductsMiddleware, productController.editProduct);
+router.put('/allProducts/editProduct/:id', upload.single("image"), manageProductsMiddleware, productController.processEdit);
 
 // RUTA PARA ELIMINAR EL PRODUCTO
-router.delete('/delete/:id', productController.destroy);
+router.delete('/allProducts/delete/:id', productController.destroy);
 
 //---------------------------------------------------------------//
 // EXPORTAR ROUTER
