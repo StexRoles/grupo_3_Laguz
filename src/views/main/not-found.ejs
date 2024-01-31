@@ -1,0 +1,30 @@
+<!-- Paritials head -->
+ 
+<%- include('../partials/head.ejs', { extraFont: false, stylesheetPath: '/css/styles-not-found.css' }) %>
+
+<body>
+    <!--Partials header -->
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+        
+        <section class="msg-not-found">
+            <article class="not-found-text">
+                <h1>404</h1>
+                <h2>La paginá que buscas no existe.</h2>
+                <p>Es posible que te hayas equivocado en la busqueda de la pagina o la misma dejo de existir.</p>
+            </article>
+
+            <article class="not-found-image">
+                <img src="/img/not-found-image.png" alt="">
+            </article>
+            
+        </section>
+
+    </main>
+    
+    <!--Partials footer  -->
+    <%- include('../partials/footer.ejs') %>
+
+</body>
+</html>

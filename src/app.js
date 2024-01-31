@@ -46,6 +46,11 @@ app.use('/product', productRouter);
 
 // ------------------------------------------------------------------------------------------ //
 
+// PARA MOSTRAR UNA PAGINA 404
+app.use((req, res, next) => {
+    res.status(404).render('main/not-found');
+}); 
+
 // SERVIDOR EN PUERTO 3020
 const port = process.env.PORT || 3020;
 app.listen(port, () => {
