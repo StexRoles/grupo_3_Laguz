@@ -7,6 +7,7 @@ const validationsRegister = require('../middlewares/validateRegisterMiddleware.j
 const validationsLogin = require('../middlewares/validateLoginMiddleware.js'); // VALIDACIONES LOGIN
 const guestMiddleware = require('../middlewares/guestMiddleware.js'); // EVITA ENTRAR A LOGIN SI YA ESTAS LOGEADO
 const authMiddleware = require('../middlewares/authMiddleware.js'); // EVITA ENTRAR A PROFILE SI NO ESTAS LOGEADO
+const upload = require('../middlewares/multerProfileMiddleware.js'); // MULTER PARA SUBIR IMAGENES
 
 // REQUERIR userController PARA USAR SUS METODOS
 const userController = require('../controllers/userController.js');
@@ -25,7 +26,7 @@ router.post('/register', validationsRegister, userController.processRegister);
 router.get('/profile', authMiddleware, userController.profile);
 
 // RUTA PARA EL EDITAR PERFIL
-router.put('/profile', authMiddleware, userController.editProfile);
+router.put('/profile', authMiddleware, upload.single("avatar"), userController.editProfile);
 
 // RUTA PARA EL LOGOUT
 router.get('/logout', userController.logout);

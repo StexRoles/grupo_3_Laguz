@@ -105,10 +105,10 @@ const userController = {
         // AÑADIMOS LA INFORMACION A UNA VARIABLE
         userToEdit = {
             ...userToEdit,
-            name: req.body.name,
-            avatar: req.body.avatar,
-            country: req.body.country,
-            city: req.body.city,
+            name: req.body.name != '' ? req.body.name : userToEdit.name,
+            avatar: req.file != undefined ? req.file.filename : userToEdit.avatar,
+            country: req.body.country != '' ? req.body.country : userToEdit.country,
+            city: req.body.city != '' ? req.body.city : userToEdit.city,
         }
 
         // BUSCAMOS EL INDICE DEL USUARIO QUE COINCIDA CON EL ID
@@ -143,7 +143,6 @@ const userController = {
 
         // VALIDAMOS LOS DATOS DEL FORMULARIO
         const resultValidation = validationResult(req);
-
         if (resultValidation.errors.length > 0) {
 
             // SI HAY ERRORES RENDERIZAMOS LA VISTA REGISTER.EJS CON LOS ERRORES
@@ -151,6 +150,55 @@ const userController = {
                 errors: resultValidation.mapped(),
                 oldData: req.body
             });
+        }
+
+        // TRAEMOS TODOS LOS USUARIOS
+        const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+
+        // BUSCAR SI EL USUARIO YA EXISTE
+        const usernameExists = users.find(user => user.user === req.body.user);
+
+        // BUSCAR SI EL EMAIL YA EXISTE
+        const emailExists = users.find(user => user.email === req.body.email);
+
+        if (usernameExists) {
+            // SI EL USUARIO YA EXISTE
+            return res.render('user/register', {
+                errors: {
+                    user: {
+                        msg: 'Este nombre de usuario ya existe'
+                    }
+                },
+                oldData: req.body
+            });
+        } else if (emailExists) {
+            // SI EL EMAIL YA EXISTE
+            return res.render('user/register', {
+                errors: {
+                    email: {
+                        msg: 'Este correo electronico ya existe'
+                    }
+                },
+                oldData: req.body
+            });
+        } else {
+            // AGREGAMOS LA INFO DEL USUARIO A UNA VARIABLE
+            let newUser = {
+                id: users.length > 0 ? parseInt(users[users.length - 1].id) + 1 : 1,
+                email: req.body.email,
+                user: req.body.user,
+                password: bcryptjs.hashSync(req.body.password, 10),
+                avatar: 'default.avif',
+            };
+
+            // AGREGAMOS EL USUARIO A LA LISTA DE USUARIOS
+            users.push(newUser);
+
+            // REESCRIBIMOS EL JSON
+            fs.writeFileSync(usersFilePath, JSON.stringify(users, null, ' '));
+
+            // REDIRIGIMOS AL LOGIN
+            res.redirect('/user/login');
         }
     },
 };

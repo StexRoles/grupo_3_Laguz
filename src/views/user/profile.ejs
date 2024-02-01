@@ -17,12 +17,12 @@
             <!-- INFORMACION DEL PROFILE -->
             <article class="user-information">
                 <div class="avatar">
-                    <img src="/img/img-profile-cover/1.jpg" alt="">
+                    <img src="/img/profiles/<%= userInformation.avatar %>" alt="">
                 </div>
 
                 <div class="information">
                     <h1><%= userInformation.user %></h1>
-                    <p class="nombre"><%= userInformation.name ? userInformation.name : "Usuario" %></p>
+                    <p class="nombre"><%= userInformation.name ? userInformation.name : "Usuario N° " + userInformation.id %></p>
                     <p class="ubicacion">
                         <%= userInformation.city ? userInformation.city : "Ciudad" %>, <%= userInformation.country ? userInformation.country : "Pais" %>
                     </p>
@@ -42,13 +42,13 @@
 
             <!-- FONDO INFERIOR DEL PROFILE Y CONFIGURACION -->
             <article class="user-edit-information">
-                <form action="/user/profile?_method=PUT" method="POST">
+                <form action="/user/profile?_method=PUT" method="POST" enctype="multipart/form-data">
 
                     <h1>EDITAR INFORMACION DEL USUARIO</h1>
 
                     <div>
                         <label for="name">Nombre:</label>
-                        <input type="text" name="name" id="name" placeholder="Richard Gonzales">
+                        <input type="text" name="name" id="name" placeholder="Richard Gonzales" value="<%= userInformation.name %>">
                     </div>
 
                     <div>
@@ -59,19 +59,19 @@
                     <div>
                         <label for="country">Pais:</label>
                         <select name="country" id="country">
-                            <option value="" selected disabled >Elegir un pais</option>
-                            <option value="Colombia">Colombia</option>
-                            <option value="Argentina">Argentina</option>
-                            <option value="Canada">Canada</option>
-                            <option value="Mexico">Mexico</option>
-                            <option value="Peru">Peru</option>
-                            <option value="Chile">Chile</option>
+                            <option value="" <% if ( userInformation.country === "") { %>selected<% } %> disabled >Elegir un pais</option>
+                            <option value="Colombia" <% if ( userInformation.country === "Colombia") { %>selected<% } %>>Colombia</option>
+                            <option value="Argentina" <% if ( userInformation.country === "Argentina") { %>selected<% } %>>Argentina</option>
+                            <option value="Canada" <% if ( userInformation.country === "Canada") { %>selected<% } %>>Canada</option>
+                            <option value="Mexico" <% if ( userInformation.country === "Mexico") { %>selected<% } %>>Mexico</option>
+                            <option value="Peru" <% if ( userInformation.country === "Peru") { %>selected<% } %>>Peru</option>
+                            <option value="Chile" <% if ( userInformation.country === "Chile") { %>selected<% } %>>Chile</option>
                         </select>
                     </div>
 
                     <div>
                         <label for="city">Ciudad:</label>
-                        <input type="text" name="city" id="city" placeholder="Buenos Aires">
+                        <input type="text" name="city" id="city" placeholder="Buenos Aires" value="<%= userInformation.city %>">
                     </div>
 
                     <div class="button-submit">

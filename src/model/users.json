@@ -4,11 +4,11 @@
   "user": "Stex",
   "email": "ejemplo@gmail.com",
   "password": "$2a$10$CKqlkcylmTBs.waYJeVJ/eyi8Z8FStzRaoZZE6fIPgoQAN3s5oOQC",
-  "admin": true,
-  "name": "Steven Navarro Parrales",
-  "avatar": "",
-  "country": "Colombia",
-  "city": "Bogotá"
+  "admin": false,
+  "name": "Steven Navarro",
+  "city": "Orlando",
+  "avatar": "avatar-1706749307102.jpg",
+  "country": "Canada"
  },
  {
   "id": "2",
@@ -21,5 +21,29 @@
   "user": "sofia",
   "email": "ejemplo@gmail.com",
   "password": "1234"
+ },
+ {
+  "id": 4,
+  "email": "navarroparralesvanesa@gmail.com",
+  "user": "Rojo",
+  "password": "$2a$10$C4w3CZ3ru1xleDt8MlAXGuMaFhW09jpEojOp06gBSgbeh3AJn7bpq",
+  "avatar": "default.avif"
+ },
+ {
+  "id": 5,
+  "email": "navarro@jola.com",
+  "user": "Azul",
+  "password": "$2a$10$gn7ISGjV3/bYSonEw6JltOOq65wTL1MdA39b8.VlZC1Bchq1h2yLO",
+  "avatar": "default.avif"
+ },
+ {
+  "id": 6,
+  "email": "asd@sd.com",
+  "user": "Verde",
+  "password": "$2a$10$HxecK7GtMWbB3M8akLW0ou8s3hPCwHMZga2fykwJ.057NRqiOZPiO",
+  "avatar": "avatar-1706828652493.jpg",
+  "name": "Mi nombre es verde",
+  "country": "Argentina",
+  "city": "Buenos aires"
  }
 ]

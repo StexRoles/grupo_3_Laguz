@@ -5,6 +5,7 @@ const router = express.Router();
 // MIDLEWARES DE RUTAS
 const upload = require('../middlewares/multerMiddleware.js'); // MULTER
 const manageProductsMiddleware = require('../middlewares/manageProductsMiddleware.js'); // EVITA ENTRAR A ADMINISTAR PRODUCTOS SI NO ERES ADMINISTRADOR
+const authMiddleware = require('../middlewares/authMiddleware.js'); // EVITA ENTRAR A FAVORITES NI PRODUCTCART SI NO ESTAS LOGEADO
 
 // REQUERIR productController PARA USAR SUS METODOS
 const productController = require('../controllers/productController.js');
@@ -15,7 +16,7 @@ const productController = require('../controllers/productController.js');
 router.get('/productDetail/:id?', productController.productDetail);
 
 // RUTA PARA EL CARRITO DE COMPRAS
-router.get('/productCart', productController.productCart);
+router.get('/productCart', authMiddleware, productController.productCart);
 
 // RUTA PARA LA LISTA DE PRODUCTOS DESTACADOS, EN OFERTA Y FAVORITOS
 router.get('/productsList/:status', productController.productsList);
