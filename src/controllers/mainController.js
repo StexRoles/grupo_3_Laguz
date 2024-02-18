@@ -8,6 +8,8 @@ const fs = require('fs');
 const productsFilePath = path.join(__dirname, '../model/products.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
+const db = require('../database/models');
+
 // CREANDO OBJETO LITERAL CON TODOS LOS METODOS QUE SE USARAN EN LAS RUTAS
 const mainController = {
     index: (req, res) => {

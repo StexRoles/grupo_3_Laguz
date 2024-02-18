@@ -45,5 +45,15 @@
   "name": "Mi nombre es verde",
   "country": "Argentina",
   "city": "Buenos aires"
+ },
+ {
+  "id": 7,
+  "email": "sh4oncas@gmail.com",
+  "user": "Sh4ronn",
+  "password": "$2a$10$zUqwXQp9Qgi/75oAGPQNruNLyIFBBiQittx.adeUCarqaupPGtl5C",
+  "avatar": "avatar-1706907207153.jpg",
+  "name": "Sharon Cardenas",
+  "country": "Colombia",
+  "city": "Bogotá"
  }
 ]
