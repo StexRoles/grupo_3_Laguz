@@ -4,7 +4,7 @@
   "user": "Stex",
   "email": "ejemplo@gmail.com",
   "password": "$2a$10$CKqlkcylmTBs.waYJeVJ/eyi8Z8FStzRaoZZE6fIPgoQAN3s5oOQC",
-  "admin": false,
+  "admin": true,
   "name": "Steven Navarro",
   "city": "Orlando",
   "avatar": "avatar-1706749307102.jpg",

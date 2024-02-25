@@ -1,6 +1,9 @@
 // REQUERIR PATH
 const path = require('path');
 
+// REQUERIR LOS MODELOS DE LA BASE DE DATOS
+const db = require('../database/models');
+
 // REQUERIR FS
 const fs = require('fs');
 
@@ -98,86 +101,85 @@ const productController = {
         }
         
     },
-    editProduct: (req, res) => {
-        
-         // TRAE TODOS LOS PRODUCTOS DEL JSON
-         const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+    editProduct: async (req, res) => {
+        try {
+            // TRAEMOS EL PRODUCTO QUE COINCIDA CON EL ID
+            let productToEdit = await db.Products.findByPk(req.params.id, {
+                include : [{
+                    association : "brands",
+                }, {
+                    association : "status"
+                }, {
+                    association : "categories"
+                }]
+            });
 
-         // TRAEMOS EL ID DE LOS PRODUCTOS
-         let id = req.params.id;
+            // RENDERIZAMOS LA VISTA PRODUCTDETAIL.EJS Y LE PASAMOS LOS PRODUCTOS
+            res.render('products/editProduct', {productToEdit});
 
-         // BUSCAMOS EL PRODUCTO QUE COINCIDA CON EL ID
-        let productToEdit = products.find(product => product.id == id);
 
-        // RENDERIZAMOS LA VISTA PRODUCTDETAIL.EJS Y LE PASAMOS LOS PRODUCTOS
-        res.render('products/editProduct', {productToEdit});
- 
+        } catch (error) {
+            console.log(error);
+            res.status(404).render('main/not-found');
+        }
     },
-    processEdit: (req, res) => {
+    processEdit: async (req, res) => {
+        try {
+            // TRAEMOS EL PRODUCTO QUE COINCIDA CON EL ID
+            let productToEdit = await db.Products.findByPk(req.params.id, {
+                include : [{
+                    association : "brands",
+                }, {
+                    association : "status"
+                }, {
+                    association : "categories"
+                }]
+            });
 
-        // TRAE TODOS LOS PRODUCTOS DEL JSON
-        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+            // RENDERIZAMOS LA VISTA PRODUCTDETAIL.EJS Y LE PASAMOS LOS PRODUCTOS
+            res.render('products/editProduct', {productToEdit});
 
-        // TRAEMOS EL ID DE LOS PRODUCTOS
-        let id = req.params.id;
 
-        // BUSCAMOS EL PRODUCTO QUE COINCIDA CON EL ID
-        let productToEdit = products.find(product => product.id == id);
-
-        // ACTUALIZAMOS EL PRODUCTO CON LA INFORMACION QUE NOS LLEGA POR EL FORMULARIO
-        productToEdit = {
-            id: productToEdit.id,
-            name: req.body.name,
-            price: req.body.price,
-            description: req.body.description,
-            image: req.file != undefined ? req.file.filename : productToEdit.image,
-            discount: req.body.discount,
-            brand: req.body.brand,
-            status: req.body.status,
-            categories: req.body.categories,
+        } catch (error) {
+            console.log(error);
+            res.status(404).render('main/not-found');
         }
 
-        // BUSCAMOS EL INDICE DEL PRODUCTO QUE COINCIDA CON EL ID
-        let indice = products.findIndex(product => { return product.id == id});
-
-        products[indice] = productToEdit;
-
-        fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
-        
-        res.redirect('/product/allProducts/productDetail/' + id);
-
     },
-    newProduct: (req, res) => {
+    newProduct:  async (req, res) => {
+        // TRAEMOS EL ESTADO DE LOS PRODUCTOS
+        let status = await db.Status.findAll();
+
+        // TRAEMOS LAS CATEGORIAS
+        let categories = await db.Categories.findAll();
+
+        // TRAEMOS LAS MARCAS
+        let brands = await db.Brands.findAll();
 
         // RENDERIZAMOS LA VISTA NEWPRODUCT.EJS
-        res.render('products/newProduct');
+        res.render('products/newProduct', {status, categories, brands});
     },
-    processCreate: (req, res) => {
+    processCreate: async (req, res) => {
+        try {
 
-        // TRAE TODOS LOS PRODUCTOS DEL JSON
-        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+            // FILTRAMOS EL PRODUCTO A EDITAR
+            let productCreate = await db.Products.create({
+                name: req.body.name,
+                price: req.body.price,
+                description: req.body.description,
+                image: req.file.filename,
+                discount: req.body.discount,
+                brand_id: req.body.brand,
+                status_id: req.body.status,
+            });
 
-        // CREAMOS EL NUEVO PRODUCTO
-        const newProduct = {
-            id: parseInt(products[products.length - 1].id) + 1,
-            name: req.body.name,
-            price: req.body.price,
-            description: req.body.description,
-            image: req.file.filename,
-            discount: req.body.discount,
-            brand: req.body.brand,
-            status: req.body.status,
-            categories: req.body.categories,
+            // REDIRECCIONAR AL DETALLE DEL PRODUCTO
+            res.redirect("/product/allProducts");
+
+        } catch (error) {
+            console.log(error);
+            res.status(404).render('main/not-found');
         }
-
-        // AGREGAR EL PRODUCTO A LA CONSTANTE PRODUCTS
-		products.push(newProduct);
-
-        //SOBREESCRIBIR EL ARCHIVO JSON
-		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
-
-		// REDIRECCIONAR AL DETALLE DEL PRODUCTO
-		res.redirect("/product/allProducts");
 
     },
     destroy : (req, res) => {

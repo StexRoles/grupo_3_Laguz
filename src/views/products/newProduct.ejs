@@ -36,32 +36,24 @@
 
                         <div>
                             <label for="brand">Marca:</label>
-                            <input type="text" id="brand" name="brand" placeholder="Ej: Lenovo">
+                            <select name="brand" id="brand">
+                                <% brands.forEach(element => { %>
+                                    <option value="<%= element.id %>"><%= element.name %></option>
+                                <% }) %>
+                            </select>
                         </div>
 
                         <!------------ CHECKBOX DE LAS CATEGORIAS ---------------->
                         <div class="contenedor-categorias">
                             <label for="categories">Categorias:</label>
-                            <div>
-                                <input type="checkbox" id="laptops" name="categories" value="laptops">
-                                <label for="laptops">Laptops</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="oficina" name="categories" value="oficina">
-                                <label for="oficina">Oficina</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="estudiantes" name="categories" value="estudiantes">
-                                <label for="estudiantes">Estudiantes</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="accesorios" name="categories" value="accesorios">
-                                <label for="accesorios">Accesorios</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="gamer" name="categories" value="gamer">
-                                <label for="gamer">Gamer</label>
-                            </div>
+                            <% categories.forEach(category => { %>
+
+                                <div>
+                                    <input type="checkbox" id="<%= category.name %>" name="categories" value="<%= category.id %>">
+                                    <label for="<%= category.name %>"><%= category.name %></label>
+                                </div>
+
+                            <% }) %>
                         </div>
 
                         <div class="contenedor-imagen">
@@ -73,8 +65,9 @@
                             <label for="status">Estado:</label>
                             <select name="status" id="status">
                                 <option value="" selected>Ninguno</option>
-                                <option value="featured">Producto destacado</option>
-                                <option value="in-sale">Producto en oferta</option>
+                                <% status.forEach(element => { %>
+                                    <option value="<%= element.id %>"><%= element.name %></option>
+                                <% }) %>
                             </select>
                         </div>
 
