@@ -47,26 +47,35 @@ const productController = {
         // RENDERIZAMOS LA VISTA PRODUCTCART.EJS
         res.render('products/productCart', {cartProducts, precioTotal});
     },
-    productsList: (req, res) => {
+    productsList: async (req, res) => {
+        try {
+            // TRAEMOS EL ESTADO DE LOS PRODUCTOS
+            let status = req.params.status;
 
-        // TRAEMOS EL ESTADO DE LOS PRODUCTOS
-        let status = req.params.status;
+            // SEPARAR LOS PRODUCTOS DEPENDIENDO DEL ESTADO
+            let filteredProducts = await db.Products.findAll({
+                include : [{
+                    model: db.Status,
+                    as: 'status',
+                    where: { name: status}
+                }]
+            });
 
-        // TRAE TODOS LOS PRODUCTOS DEL JSON
-        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+             // VARIABLE PARA EL TITULO
+            let listTitle;
 
-        // SEPARAR LOS PRODUCTOS DESTACADOS
-        const filteredProducts = products.filter((product) => product.status == status);
+            // CONDICIONAL PARA CAMBIAR EL TITULO DE LA PAGINA
+            if (status == "featured") { listTitle = "Productos Destacados"; }
+            else if (status == "in-sale"){ listTitle = "Ofertas Destacadas"; }
 
-        // VARIABLE PARA EL TITULO
-        let listTitle;
+            // RENDERIZAMOS LA VISTA DE PRODUCTLIST.EJS
+            res.render('products/productsList', {filteredProducts, listTitle});
+
+        } catch (error) {
+            console.log(error);
+            res.status(404).render('main/not-found');
+        }
         
-        // CONDICIONAL PARA CAMBIAR EL TITULO DE LA PAGINA
-        if (status == "featured") { listTitle = "Productos Destacados"; }
-        else if (status == "in-sale"){ listTitle = "Ofertas Destacadas"; }
-
-        // RENDERIZAMOS LA VISTA DE PRODUCTLIST.EJS
-        res.render('products/productsList', {filteredProducts, listTitle});
     },
     productsCategories: (req, res) => {
         
@@ -87,17 +96,25 @@ const productController = {
         // RENDERIZAMOS LA VISTA DE PRODUCTLIST.EJS
         res.render('products/productsCategories', {filteredProducts, category});
     }, 
-    allProducts: (req, res) => {
+    allProducts: async (req, res) => {
     
-        // TRAE TODOS LOS PRODUCTOS DEL JSON
-        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+        try {
 
-        // USUARIO ADMINISTRADOR ----> DEBE AJUSTARSE MAS ADELANTE
-        let admin = true;
-    
-        // RENDERIZAMOS LA VISTA DE ALLPRODUCTS.EJS
-        if (admin) {
-            res.render('products/allProducts', {products});
+            // TRAEMOS EL TODOS LOS PRODUCTOS DE LA BASE DE DATOSh
+            let products = await db.Products.findAll();
+
+            // USUARIO ADMINISTRADOR ----> DEBE AJUSTARSE MAS ADELANTE
+            let admin = true;
+
+            // RENDERIZAMOS LA VISTA DE ALLPRODUCTS.EJS
+            if (admin) {
+                res.render('products/allProducts', {products});
+            }
+
+
+        } catch (error) {
+            console.log(error);
+            res.status(404).render('main/not-found');
         }
         
     },
@@ -182,21 +199,26 @@ const productController = {
         }
 
     },
-    destroy : (req, res) => {
+    destroy: async (req, res) => {
 
-        // TRAE TODOS LOS PRODUCTOS DEL JSON
-        let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+        try {
+            // TRAEMOS EL ID DEL PRODUCTO A EDITAR
+            let idProduct = req.params.id;
 
-        // FILTRAMOS LOS PRODUCTOS QUE NO COINCIDAN CON EL ID
-        products = products.filter(product => {
-            return product.id != req.params.id
-        })
+            // ELIMINAMOS EL PRODUCTO QUE COINCIDA CON EL ID
+            let productDestroy = await db.Products.destroy({
+                where: {
+                    id: idProduct
+                }
+            })
 
-        // GUARDAMOS LOS PRODUCTOS EN EL JSON
-        fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '))
+            // REDIRECCIONAMOS A LA LISTA DE PRODUCTOS
+            res.redirect("/product/allProducts");
 
-        // REDIRECCIONAMOS A LA LISTA DE PRODUCTOS
-        res.redirect("/product/allProducts");
+        } catch (error) {
+            console.log(error);
+            res.status(404).render('main/not-found');
+        }
 },
 };
 
