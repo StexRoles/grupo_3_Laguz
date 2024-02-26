@@ -13,22 +13,28 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 // CREANDO OBJETO LITERAL CON TODOS LOS METODOS QUE SE USARAN EN LAS RUTAS
 const productController = {
-    productDetail: (req, res) => {
+    productDetail: async(req, res) => {
+        try {
 
-        // TRAE TODOS LOS PRODUCTOS DEL JSON
-        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+            // TRAEMOS EL PRODUCTO QUE COINCIDA CON EL ID
+            let product = await db.Products.findByPk(req.params.id, {
+                include : [{
+                    association : "brands"
+                }]
+            });
 
-        // TRAEMOS EL ID DE LOS PRODUCTOS
-        let id = req.params.id;
+            // USUARIO ADMINISTRADOR ----> DEBE AJUSTARSE MAS ADELANTE
+            let admin = true;
 
-        // BUSCAMOS EL PRODUCTO QUE COINCIDA CON EL ID
-        let singleProduct = products.find(product => product.id == id);
+            // RENDERIZAMOS LA VISTA PRODUCTDETAIL.EJS Y LE PASAMOS LOS PRODUCTOS
+            res.render('products/productDetail', {product, admin, req});
 
-        // USUARIO ADMINISTRADOR ----> DEBE AJUSTARSE MAS ADELANTE
-        let admin = true;
-    
-        // RENDERIZAMOS LA VISTA PRODUCTDETAIL.EJS Y LE PASAMOS LOS PRODUCTOS
-        res.render('products/productDetail', {singleProduct, admin, req});
+
+        } catch (error) {
+            console.log(error);
+            res.status(404).render('main/not-found');
+        }
+       
     },
     productCart: (req, res) => {
 
@@ -77,24 +83,32 @@ const productController = {
         }
         
     },
-    productsCategories: (req, res) => {
-        
-        // TRAEMOS LA CATEGORIA DE LOS PRODUCTOS
-        let category = req.params.category;
+    productsCategories: async(req, res) => {
 
-        // TRAE TODOS LOS PRODUCTOS DEL JSON
-        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+        try {
+            // TRAEMOS LA CATEGORIA DE LOS PRODUCTOS
+            let category = req.params.category;
 
-        // REVISAR SI LOS PRODUCTOS TIENEN LA CATEGORIA QUE SE REQUIERE
-        const filteredProducts = products.filter((product) => {
-            return product.categories.includes(category);
-        });
+            // SEPARAR LOS PRODUCTOS DEPENDIENDO DEL ESTADO
+            let filteredProducts = await db.Products.findAll({
+                include : [{
+                    model: db.Categories,
+                    as: 'categories',
+                    where: { name: category}
+                }]
+            });
 
-        // CONVIERTE LA PRIMERA LETRA EN MAYUSCULA DEL TITULO DE LA CATEGORIA
-        category = category.charAt(0).toUpperCase() + category.slice(1);
+             // CONVIERTE LA PRIMERA LETRA EN MAYUSCULA DEL TITULO DE LA CATEGORIA
+            category = category.charAt(0).toUpperCase() + category.slice(1);
 
-        // RENDERIZAMOS LA VISTA DE PRODUCTLIST.EJS
-        res.render('products/productsCategories', {filteredProducts, category});
+            // RENDERIZAMOS LA VISTA DE PRODUCTLIST.EJS
+            res.render('products/productsCategories', {filteredProducts, category});
+
+        } catch (error) {
+            console.log(error);
+            res.status(404).render('main/not-found');
+        }
+
     }, 
     allProducts: async (req, res) => {
     
