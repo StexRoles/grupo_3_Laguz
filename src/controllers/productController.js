@@ -156,22 +156,29 @@ const productController = {
     },
     processEdit: async (req, res) => {
         try {
-            // TRAEMOS EL PRODUCTO QUE COINCIDA CON EL ID
-            let productToEdit = await db.Products.findByPk(req.params.id, {
-                include : [{
-                    association : "brands",
-                }, {
-                    association : "status"
-                }, {
-                    association : "categories"
-                }]
-            });
+            // TRAEMOS EL ID DEL PRODUCTO A EDITAR
+            let idProduct = req.params.id;
 
-            // RENDERIZAMOS LA VISTA PRODUCTDETAIL.EJS Y LE PASAMOS LOS PRODUCTOS
-            res.render('products/editProduct', {productToEdit});
+            //TRAEMOS EL PRODUCTO QUE COINCIDA CON EL ID
+            const product = await db.Products.findByPk(idProduct);
 
+            //FILTRAMOS EL PRODUCTO A EDITAR 
+            let productUpdate = await db.Products.update({
+                name: req.body.name,
+                price: req.body.price,
+                description: req.body.description,
+                image: req.body.image,
+                discount: req.body.discount,
+            },{
+                where: {
+                    id: idProduct
+                }
+            })
 
-        } catch (error) {
+            // REDIRIGIMOS A LA VISTA DE PRODUCTDETAIL
+            res.redirect("/product/allProducts/productDetail/" + idProduct);
+            
+           } catch (error) {
             console.log(error);
             res.status(404).render('main/not-found');
         }
