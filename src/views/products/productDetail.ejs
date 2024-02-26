@@ -13,15 +13,15 @@
 
             <!----------------- IMAGENES MINIATURA DEL PRODUCTO ------------------------>
             <article class="contenedor-imagenes-pequeñas">
-                <div><img src="/img/productos/<%= singleProduct.image %>" alt="Imagenes de muestra"></div>
-                <div><img src="/img/productos/<%= singleProduct.image %>" alt="Imagenes de muestra"></div>
-                <div><img src="/img/productos/<%= singleProduct.image %>" alt="Imagenes de muestra"></div>
-                <div><img src="/img/productos/<%= singleProduct.image %>" alt="Imagenes de muestra"></div>
+                <div><img src="/img/productos/<%= product.image %>" alt="Imagenes de muestra"></div>
+                <div><img src="/img/productos/<%= product.image %>" alt="Imagenes de muestra"></div>
+                <div><img src="/img/productos/<%= product.image %>" alt="Imagenes de muestra"></div>
+                <div><img src="/img/productos/<%= product.image %>" alt="Imagenes de muestra"></div>
             </article>
 
             <!----------------- IMAGEN PRINCIPAL DEL PRODUCTO ------------------------>
             <article class="contenedor-imagen-principal">
-                <img src="/img/productos/<%= singleProduct.image %>" alt="Imagen principal">
+                <img src="/img/productos/<%= product.image %>" alt="Imagen principal">
             </article>
         </section>
 
@@ -30,20 +30,20 @@
 
             <!----------------- INFORMACION DEL PRODUCTO ------------------------>
             <article class="informacion-producto">
-                <p class="marca"><%= singleProduct.brand %></p>
-                <h3><%= singleProduct.name %></h3>
-                <p class="precio">$ <%= singleProduct.price %></p>
+                <p class="marca"><%= product.brand %></p>
+                <h3><%= product.name %></h3>
+                <p class="precio">$ <%= product.price %></p>
 
-                <p><%= singleProduct.description %></p>
+                <p><%= product.description %></p>
             </article>
             
             <!----------------- CONDICIONAL PARA MOSTRAR LOS BOTONES DE ADMIN ------------------------>
-            <% if ( locals.userLogged && userLogged.admin && req.originalUrl === '/product/allProducts/productDetail/' + singleProduct.id) { %>
+            <% if ( locals.userLogged && userLogged.admin && req.originalUrl === '/product/allProducts/productDetail/' + product.id) { %>
                 <article class="botones-admin">
 
-                    <button><a href="/product/allProducts/editProduct/<%= singleProduct.id %>">Editar</a></button>
+                    <button><a href="/product/allProducts/editProduct/<%= product.id %>">Editar</a></button>
 
-                    <form action="/product/allProducts/delete/<%= singleProduct.id %>?_method=DELETE" method="POST">
+                    <form action="/product/allProducts/delete/<%= product.id %>?_method=DELETE" method="POST">
                         <button type="submit" class="boton-eliminar">Eliminar</button>
                     </form>
                 </article>

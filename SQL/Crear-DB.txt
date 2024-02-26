@@ -2,9 +2,9 @@ CREATE DATABASE IF NOT EXISTS laguz;
 USE laguz;
 
 CREATE TABLE `brands` (
-   ` id` INT AUTO_INCREMENT,
+   `id` INT AUTO_INCREMENT,
    `name` VARCHAR(100) NOT NULL,
-   PRIMARY KEY (` id`)
+   PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `status` (
