@@ -167,7 +167,7 @@ const productController = {
                 name: req.body.name,
                 price: req.body.price,
                 description: req.body.description,
-                image: req.body.image,
+                image: req.file != undefined ? req.file.filename : product.iamge,
                 discount: req.body.discount,
             },{
                 where: {
@@ -177,7 +177,7 @@ const productController = {
 
             // REDIRIGIMOS A LA VISTA DE PRODUCTDETAIL
             res.redirect("/product/allProducts/productDetail/" + idProduct);
-            
+
            } catch (error) {
             console.log(error);
             res.status(404).render('main/not-found');
