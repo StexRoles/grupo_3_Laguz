@@ -324,3 +324,12 @@
 
     }
 
+/* MEDIA QUERIES DEL BANNER DE MARCAS */
+
+@media (prefers-color-scheme: dark){
+
+    body{
+        background-color: rgb(19, 18, 70);
+        color:white;
+    }
+}
