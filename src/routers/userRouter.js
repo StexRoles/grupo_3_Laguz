@@ -31,6 +31,8 @@ router.put('/profile', authMiddleware, upload.single("avatar"), userController.e
 // RUTA PARA EL LOGOUT
 router.get('/logout', userController.logout);
 
+//// RUTA PARA EL LOGOUT
+router.get('/restPassword', userController.restPassword);
 //---------------------------------------------------------------//
 // EXPORTAR ROUTER
 module.exports = router;

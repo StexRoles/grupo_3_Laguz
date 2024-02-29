@@ -133,6 +133,10 @@ const userController = {
         return res.redirect('/');
 
     },
+    restPassword:(req, res) => {
+        res.render('user/restPassword.ejs');
+
+    },
     register: (req, res) => {
 
         // RENDERIZAMOS LA VISTA REGISTER.EJS
