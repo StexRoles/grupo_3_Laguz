@@ -21,14 +21,14 @@
                 </div>
 
                 <div class="information">
-                    <h1><%= userInformation.user %></h1>
-                    <p class="nombre"><%= userInformation.name ? userInformation.name : "Usuario N° " + userInformation.id %></p>
+                    <h1><%= userInformation.username %></h1>
+                    <p class="nombre"><%= userInformation.nickname ? userInformation.nickname : "Usuario N° " + userInformation.id %></p>
                     <p class="ubicacion">
-                        <%= userInformation.city ? userInformation.city : "Ciudad" %>, <%= userInformation.country ? userInformation.country : "Pais" %>
+                        <%= userInformation.city ? userInformation.city : "Ciudad" %>, <%= userInformation.countries ? userInformation.countries.name : "Pais" %>
                     </p>
                 </div>
 
-                <% if ( userLogged.admin ) { %>
+                <% if ( userLogged.admin == 1 ) { %>
                     <div class="button-admin">
                         <button type="button"><a href="/product/allProducts">Administrar productos</a></button>
                     </div>
@@ -48,7 +48,7 @@
 
                     <div>
                         <label for="name">Nombre:</label>
-                        <input type="text" name="name" id="name" placeholder="Richard Gonzales" value="<%= userInformation.name %>">
+                        <input type="text" name="name" id="name" placeholder="Richard Gonzales" value="<%= userInformation.nickname %>">
                     </div>
 
                     <div>
@@ -59,13 +59,9 @@
                     <div>
                         <label for="country">Pais:</label>
                         <select name="country" id="country">
-                            <option value="" <% if ( userInformation.country === "") { %>selected<% } %> disabled >Elegir un pais</option>
-                            <option value="Colombia" <% if ( userInformation.country === "Colombia") { %>selected<% } %>>Colombia</option>
-                            <option value="Argentina" <% if ( userInformation.country === "Argentina") { %>selected<% } %>>Argentina</option>
-                            <option value="Canada" <% if ( userInformation.country === "Canada") { %>selected<% } %>>Canada</option>
-                            <option value="Mexico" <% if ( userInformation.country === "Mexico") { %>selected<% } %>>Mexico</option>
-                            <option value="Peru" <% if ( userInformation.country === "Peru") { %>selected<% } %>>Peru</option>
-                            <option value="Chile" <% if ( userInformation.country === "Chile") { %>selected<% } %>>Chile</option>
+                            <% countries.forEach(element => { %>
+                                <option value="<%= element.id %>" <% if ( userInformation.country === element.name) { %>selected<% } %>><%= element.name %></option>
+                            <% }) %>
                         </select>
                     </div>
 
