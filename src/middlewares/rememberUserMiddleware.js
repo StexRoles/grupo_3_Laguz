@@ -1,25 +1,36 @@
 // MIDDLEWARE PARA RECORDAR AL USUARIO CON UNA COOKIE Y QUE PUEDA INICIAR SESION AUTOMATICAMENTE
+// REQUERIR LOS MODELOS DE LA BASE DE DATOS
+const db = require('../database/models');
 
-const path = require('path'); //REQUERIR PATH
-const fs = require('fs'); // REQUERIR FS
+// OPERADOR DE SEQUELIZE
+const { Op } = require('sequelize');
 
-// TRAE TODOS LOS USUARIOS DEL JSON Y LOS GUARDA EN UNA VARIABLE
-const usersFilePath = path.join(__dirname, '../model/users.json');
-const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-
-function rememberUserMiddleware(req, res, next) {
+async function rememberUserMiddleware(req, res, next) {
+    try {
+        // LLAMAMOS A LA COOKIE QUE CREAMOS EN EL LOGIN Y BUSCAMOS EL USUARIO QUE CORRESPONDE
+        let identifierCookie = req.cookies.userIdentifier;
+        // BUSCAR SI EL USUARIO YA EXISTE
+        if (identifierCookie) {
+            let userFromCookie = await db.Users.findOne({
+                where: {
+                    [Op.or]: [
+                        { email: identifierCookie },
+                        { username: identifierCookie }
+                    ]
+                }
+            });
     
-    // LLAMAMOS A LA COOKIE QUE CREAMOS EN EL LOGIN Y BUSCAMOS EL USUARIO QUE CORRESPONDE
-    let identifierCookie = req.cookies.userIdentifier;
-    let userFromCookie = users.find(user => user.email === identifierCookie || user.user === identifierCookie);
-
-    // SI EL USUARIO EXISTE SE CREA UNA SESSION
-    if (userFromCookie) {
-
-        delete userFromCookie.password;
-
-        req.session.userLogged = userFromCookie;
+            // SI EL USUARIO EXISTE SE CREA UNA SESSION
+            if (userFromCookie) {
+    
+                req.session.userLogged = userFromCookie;
+            }
+        }
+        
+    } catch (error) {
+        console.log(error)
     }
+
 
     next();
 }
