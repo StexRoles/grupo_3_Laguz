@@ -95,46 +95,59 @@ const userController = {
             res.status(404).render('main/not-found');
         }
     },
-    profile: (req, res) => {
+    profile: async(req, res) => {
 
-        // TRAEMOS TODOS LOS USUARIOS
-        const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+        try {
 
-        // BUSCAMOS EL USUARIO QUE COINCIDA CON EL ID
-        let userInformation = users.find(user => user.id == req.session.userLogged.id);
+            // TRAEMOS LA INFORMACION DEL USUARIO LOGUEADO
+            let userInformation = await db.Users.findByPk(req.session.userLogged.id, {
+                include: [{ association: 'countries', include: [{ association: 'cities' }] }]
+            });
 
-        // GENERA UN NUMERO ALEATORIO 
-        const randomNumber = Math.floor(Math.random() * 9) + 1;
+            // GENERA UN NUMERO ALEATORIO 
+            const randomNumber = Math.floor(Math.random() * 9) + 1;
 
-        // RENDERIZAMOS LA VISTA PROFILE.EJS
-        res.render('user/profile', { randomNumber, userInformation });
-    },
-    editProfile: (req, res) => {
+            // TRAEMOS EL LISTADO DE PAISES
+            let countries = await db.Countries.findAll();
 
-        // TRAEMOS TODOS LOS USUARIOS
-        const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+            // RENDERIZAMOS LA VISTA PROFILE.EJS
+            res.render('user/profile', { randomNumber, userInformation, countries });
 
-        // BUSCAMOS EL USUARIO QUE COINCIDA CON EL ID
-        let userToEdit = users.find(user => user.id == req.session.userLogged.id);
-
-        // AÑADIMOS LA INFORMACION A UNA VARIABLE
-        userToEdit = {
-            ...userToEdit,
-            name: req.body.name != '' ? req.body.name : userToEdit.name,
-            avatar: req.file != undefined ? req.file.filename : userToEdit.avatar,
-            country: req.body.country != '' ? req.body.country : userToEdit.country,
-            city: req.body.city != '' ? req.body.city : userToEdit.city,
+        } catch (error) {
+            console.log(error);
+            res.status(404).render('main/not-found');
         }
 
-        // BUSCAMOS EL INDICE DEL USUARIO QUE COINCIDA CON EL ID
-        let indice = users.findIndex(user => { return user.id == req.session.userLogged.id });
+    },
+    editProfile:async(req, res) => {
+        try {
+            
+            // TRAEMOS EL ID DEL USUARIO A EDITAR
+            let idUser = req.session.userLogged.id;
 
-        // ACTUALIZAMOS Y REESCRIBIMOS EL JSON
-        users[indice] = userToEdit;
-        fs.writeFileSync(usersFilePath, JSON.stringify(users, null, ' '));
-       
-        // REDIRIGIMOS AL PERFIL DEL USUARIO
-        res.redirect('/user/profile');
+            // TRAEMOS EL USUARIO QUE COINCIDA CON EL ID
+            let userToEdit = await db.Users.findByPk(idUser);
+
+            // EDITAR USARIO
+            let editUser = await db.Users.update({
+                nickname: req.body.name != '' ? req.body.name : userToEdit.nickname,
+                avatar: req.file != undefined ? req.file.filename : userToEdit.avatar,
+                country_id: req.body.country != '' ? req.body.country : userToEdit.country_id,
+                /* city: req.body.city != '' ? req.body.city : userToEdit.city, */
+            },{
+                where: {
+                    id: idUser
+                }
+            });
+
+            // REDIRIGIMOS AL PERFIL DEL USUARIO
+            res.redirect('/user/profile');
+
+        } catch (error) {
+            console.log(error);
+            res.status(404).render('main/not-found');
+        }
+  
     },   
     logout: (req, res) => {
 
@@ -158,67 +171,58 @@ const userController = {
         res.render('user/register');
 
     },
-    processRegister: (req, res) => {
+    processRegister:async(req, res) => {
+        try {
+            // VALIDAMOS LOS DATOS DEL FORMULARIO
+            const resultValidation = validationResult(req);
+            if (resultValidation.errors.length > 0) {
 
-        // VALIDAMOS LOS DATOS DEL FORMULARIO
-        const resultValidation = validationResult(req);
-        if (resultValidation.errors.length > 0) {
+                // SI HAY ERRORES RENDERIZAMOS LA VISTA REGISTER.EJS CON LOS ERRORES
+                return res.render('user/register', {
+                    errors: resultValidation.mapped(),
+                    oldData: req.body
+                });
+            }
 
-            // SI HAY ERRORES RENDERIZAMOS LA VISTA REGISTER.EJS CON LOS ERRORES
-            return res.render('user/register', {
-                errors: resultValidation.mapped(),
-                oldData: req.body
+
+            // BUSCAR SI EL USUARIO YA EXISTE
+            let userExist = await db.Users.findOne({
+                where: {
+                    [Op.or]: [
+                        { email: req.body.email},
+                        { username: req.body.user}
+                    ]
+                }
             });
-        }
 
-        // TRAEMOS TODOS LOS USUARIOS
-        const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+            if (userExist) {
+                // SI EL USUARIO YA EXISTE
+                return res.render('user/register', {
+                    errors: {
+                        user: {
+                            msg: 'Este usuario ya existe'
+                        }
+                    },
+                    oldData: req.body
+                });
+            } else {
+                // AGREGAMOS LA INFO DEL USUARIO A UNA VARIABLE
+                let newUser = await db.Users.create({
+                    username: req.body.user,
+                    email: req.body.email,
+                    password: bcryptjs.hashSync(req.body.password, 10),
+                    admin: 0,
+                    avatar: 'default.avif',
+                });
 
-        // BUSCAR SI EL USUARIO YA EXISTE
-        const usernameExists = users.find(user => user.user === req.body.user);
+                // REDIRIGIMOS AL LOGIN
+                res.redirect('/user/login');
+            }
 
-        // BUSCAR SI EL EMAIL YA EXISTE
-        const emailExists = users.find(user => user.email === req.body.email);
-
-        if (usernameExists) {
-            // SI EL USUARIO YA EXISTE
-            return res.render('user/register', {
-                errors: {
-                    user: {
-                        msg: 'Este nombre de usuario ya existe'
-                    }
-                },
-                oldData: req.body
-            });
-        } else if (emailExists) {
-            // SI EL EMAIL YA EXISTE
-            return res.render('user/register', {
-                errors: {
-                    email: {
-                        msg: 'Este correo electronico ya existe'
-                    }
-                },
-                oldData: req.body
-            });
-        } else {
-            // AGREGAMOS LA INFO DEL USUARIO A UNA VARIABLE
-            let newUser = {
-                id: users.length > 0 ? parseInt(users[users.length - 1].id) + 1 : 1,
-                email: req.body.email,
-                user: req.body.user,
-                password: bcryptjs.hashSync(req.body.password, 10),
-                avatar: 'default.avif',
-            };
-
-            // AGREGAMOS EL USUARIO A LA LISTA DE USUARIOS
-            users.push(newUser);
-
-            // REESCRIBIMOS EL JSON
-            fs.writeFileSync(usersFilePath, JSON.stringify(users, null, ' '));
-
-            // REDIRIGIMOS AL LOGIN
-            res.redirect('/user/login');
-        }
+        } catch (error) {
+            console.log(error);
+            res.status(404).render('main/not-found');
+        }               
     },
 };
 
