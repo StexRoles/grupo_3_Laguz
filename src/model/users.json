@@ -55,5 +55,12 @@
   "name": "Sharon Cardenas",
   "country": "Colombia",
   "city": "Bogotá"
+ },
+ {
+  "id": 8,
+  "email": "asdsa@gmail.com",
+  "user": "eze",
+  "password": "$2a$10$oKRwJ9R/QYP5OTbatFUO7euJufkYfgh0zKjrx6ggo0tvvL6KOoLtu",
+  "avatar": "default.avif"
  }
 ]

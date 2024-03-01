@@ -1,28 +1,37 @@
-// REQUERIR PATH
-const path = require('path');
-
-// REQUERIR FS
-const fs = require('fs');
-
-// TRAE TODOS LOS PRODUCTOS DEL JSON Y LOS GUARDA EN UNA VARIABLE
-const productsFilePath = path.join(__dirname, '../model/products.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-
 const db = require('../database/models');
 
 // CREANDO OBJETO LITERAL CON TODOS LOS METODOS QUE SE USARAN EN LAS RUTAS
 const mainController = {
-    index: (req, res) => {
+    index: async (req, res) => {
+        try {
 
-        // TRAE TODOS LOS PRODUCTOS DEL JSON
-        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+            // SEPARAR LOS PRODUCTOS DE DESTACADOS
+            let featuredProducts = await db.Products.findAll({
+                include : [{
+                    model: db.Status,
+                    as: 'status',
+                    where: { name: 'featured'}
+                }]
+            });
 
-        // SEPARAR LOS PRODUCTOS EN OFERTAS Y DESTACADOS
-        const featuredProducts = products.filter((product) => product.status == "featured");
-		const inSaleProducts = products.filter((product) => product.status == "in-sale");
+            // SEPARAR LOS PRODUCTOS DE DESTACADOS
+            let inSaleProducts = await db.Products.findAll({
+                include : [{
+                    model: db.Status,
+                    as: 'status',
+                    where: { name: 'in-sale'}
+                }]
+            });
 
-        // RENDERIZAMOS LA VISTA INDEX.EJS
-        res.render('main/index', {featuredProducts, inSaleProducts});
+            // RENDERIZAMOS LA VISTA INDEX.EJS
+            res.render('main/index', {featuredProducts, inSaleProducts});
+
+
+        } catch (error) {
+            console.log(error);
+            res.status(404).render('main/not-found');
+        }
+      
     },
 };
 

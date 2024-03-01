@@ -10,6 +10,12 @@ const bcryptjs = require('bcryptjs');
 // REQUERIR EXPRESS-VALIDATOR
 const { validationResult } = require('express-validator');
 
+// REQUERIR LOS MODELOS DE LA BASE DE DATOS
+const db = require('../database/models');
+
+// OPERADOR DE SEQUELIZE
+const { Op } = require('sequelize');
+
 // TRAE TODOS LOS USUARIOS DEL JSON Y LOS GUARDA EN UNA VARIABLE
 const usersFilePath = path.join(__dirname, '../model/users.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
@@ -21,64 +27,73 @@ const userController = {
         // RENDERIZAMOS LA VISTA LOGIN.EJS
         res.render('user/login');
     },
-    processLogin: (req, res) => {
+    processLogin: async (req, res) => {
+        try {
+            // VALIDAMOS LOS DATOS DEL FORMULARIO
+            const resultValidation = validationResult(req);
 
-        // VALIDAMOS LOS DATOS DEL FORMULARIO
-        const resultValidation = validationResult(req);
-        if (resultValidation.errors.length > 0) {
-
-            // SI HAY ERRORES RENDERIZAMOS LA VISTA REGISTER.EJS CON LOS ERRORES
-            return res.render('user/login', {
-                errors: resultValidation.mapped(),
-                oldData: req.body
-            });
-        }
-
-        // BUSCAMOS EL USUARIO POR EMAIL O USUARIO
-        let userFound = users.find(user => user.email === req.body.identifier || user.user === req.body.identifier);
-
-        // SE COMPRUEBA QUE EL USUARIO EXISTA
-        if (userFound) {
-            // SE COMPRUEBA QUE LA CONTRASEÑA SEA CORRECTA
-            let passwordHash = bcryptjs.compareSync(req.body.password, userFound.password);
-
-            if (passwordHash) {
-                // CREAR UNA COPIA userFound PARA PODER GUARDAR EN SESSION Y ELIMINAR LA CONTRASEÑA
-                let userToLogin = JSON.parse(JSON.stringify(userFound));
-
-                // ELIMINAMOS LA CONTRASEÑA DEL USUARIO POR SEGURIDAD
-                delete userToLogin.password;
-
-                // SI LA CONTRASEÑA ES CORRECTA SE CREA UNA SESSION
-                req.session.userLogged = userToLogin;
-
-                // CREAMOS UNA COOKIE PARA RECORDAR AL USUARIO
-                res.cookie('userIdentifier', req.body.identifier, { maxAge: (1000 * 60) * 60 * 24 * 7 });
-
-                // SE REDIRIGE AL PERFIL DEL USUARIO
-                return res.redirect('/user/profile');
+            if (resultValidation.errors.length > 0) {
+                // SI HAY ERRORES RENDERIZAMOS LA VISTA REGISTER.EJS CON LOS ERRORES
+                return res.render('user/login', {
+                    errors: resultValidation.mapped(),
+                    oldData: req.body
+                });
             }
 
-            // SI LA CONTRASEÑA ES INCORRECTA
+            let userFound =  await db.Users.findOne({
+                where: {
+                    [Op.or]: [
+                        { email: req.body.identifier },
+                        { username: req.body.identifier }
+                    ]
+                }
+            });
+
+            // SE COMPRUEBA QUE EL USUARIO EXISTA
+            if (userFound) {
+                // SE COMPRUEBA QUE LA CONTRASEÑA SEA CORRECTA
+                let passwordHash = bcryptjs.compareSync(req.body.password, userFound.password);
+
+                if (passwordHash) {
+
+                    // SI LA CONTRASEÑA ES CORRECTA SE CREA UNA SESSION
+                    req.session.userLogged = userFound;
+
+                    // ELIMINAMOS LA CONTRASEÑA DEL USUARIO POR SEGURIDAD
+                    delete req.session.userLogged.password;
+
+                    // CREAMOS UNA COOKIE PARA RECORDAR AL USUARIO
+                    res.cookie('userIdentifier', req.body.identifier, { maxAge: (1000 * 60) * 60 * 24 * 7 });
+
+                    // SE REDIRIGE AL PERFIL DEL USUARIO
+                    return res.redirect('/user/profile');
+                }
+
+                // SI LA CONTRASEÑA ES INCORRECTA
+                return res.render('user/login', {
+                    errors: {
+                        password: {
+                            msg: 'La contraseña es incorrecta'
+                        }
+                    },
+                    oldData: req.body
+                });
+            }
+
+            // SI NO SE ENCONTRO EL USUARIO
             return res.render('user/login', {
                 errors: {
-                    password: {
-                        msg: 'La contraseña es incorrecta'
+                    identifier: {
+                        msg: 'Las credenciales son inválidas'
                     }
                 },
                 oldData: req.body
             });
-        }
 
-        // SI NO SE ENCONTRO EL USUARIO
-        return res.render('user/login', {
-            errors: {
-                identifier: {
-                    msg: 'Las credenciales son inválidas'
-                }
-            }, 
-            oldData: req.body
-        });
+        } catch (error) {
+            console.log(error);
+            res.status(404).render('main/not-found');
+        }
     },
     profile: (req, res) => {
 
