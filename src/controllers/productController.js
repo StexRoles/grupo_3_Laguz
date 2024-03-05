@@ -1,15 +1,5 @@
-// REQUERIR PATH
-const path = require('path');
-
 // REQUERIR LOS MODELOS DE LA BASE DE DATOS
 const db = require('../database/models');
-
-// REQUERIR FS
-const fs = require('fs');
-
-// TRAE TODOS LOS PRODUCTOS DEL JSON Y LOS GUARDA EN UNA VARIABLE
-const productsFilePath = path.join(__dirname, '../model/products.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 // CREANDO OBJETO LITERAL CON TODOS LOS METODOS QUE SE USARAN EN LAS RUTAS
 const productController = {

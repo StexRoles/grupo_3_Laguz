@@ -1,9 +1,3 @@
-//REQUERIR PATH
-const path = require('path');
-
-// REQUERIR FS
-const fs = require('fs');
-
 // REQUERIR BCRYPTJS
 const bcryptjs = require('bcryptjs');
 
@@ -15,10 +9,6 @@ const db = require('../database/models');
 
 // OPERADOR DE SEQUELIZE
 const { Op } = require('sequelize');
-
-// TRAE TODOS LOS USUARIOS DEL JSON Y LOS GUARDA EN UNA VARIABLE
-const usersFilePath = path.join(__dirname, '../model/users.json');
-const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 // CREANDO OBJETO LITERAL CON TODOS LOS METODOS QUE SE USARAN EN LAS RUTAS
 const userController = {

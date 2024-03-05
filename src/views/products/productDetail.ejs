@@ -38,7 +38,7 @@
             </article>
             
             <!----------------- CONDICIONAL PARA MOSTRAR LOS BOTONES DE ADMIN ------------------------>
-            <% if ( locals.userLogged && userLogged.admin && req.originalUrl === '/product/allProducts/productDetail/' + product.id) { %>
+            <% if ( locals.userLogged && userLogged.admin == 1 && req.originalUrl === '/product/allProducts/productDetail/' + product.id) { %>
                 <article class="botones-admin">
 
                     <button><a href="/product/allProducts/editProduct/<%= product.id %>">Editar</a></button>
