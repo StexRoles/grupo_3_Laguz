@@ -5,6 +5,7 @@ const router = express.Router();
 // MIDLEWARES DE RUTAS
 const validationsRegister = require('../middlewares/validateRegisterMiddleware.js'); // VALIDACIONES REGISTRO
 const validationsLogin = require('../middlewares/validateLoginMiddleware.js'); // VALIDACIONES LOGIN
+const validateRestPassword = require('../middlewares/validateRestPasswordMiddleware.js');//VALIDACIONES PARA RESTABLECER CONTRASE;A
 const guestMiddleware = require('../middlewares/guestMiddleware.js'); // EVITA ENTRAR A LOGIN SI YA ESTAS LOGEADO
 const authMiddleware = require('../middlewares/authMiddleware.js'); // EVITA ENTRAR A PROFILE SI NO ESTAS LOGEADO
 const upload = require('../middlewares/multerProfileMiddleware.js'); // MULTER PARA SUBIR IMAGENES
@@ -32,7 +33,8 @@ router.put('/profile', authMiddleware, upload.single("avatar"), userController.e
 router.get('/logout', userController.logout);
 
 //// RUTA PARA EL LOGOUT
-router.get('/restPassword', userController.restPassword);
+router.get('/restPassword',userController.restPassword);
+router.post('/restPassword',validateRestPassword,userController.restPasswordProcess);
 //---------------------------------------------------------------//
 // EXPORTAR ROUTER
 module.exports = router;

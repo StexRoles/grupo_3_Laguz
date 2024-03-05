@@ -151,9 +151,23 @@ const userController = {
         return res.redirect('/');
 
     },
-    restPassword:(req, res) => {
+    restPassword:(req,res)=>{
         res.render('user/restPassword.ejs');
+    },
+    restPasswordProcess:(req, res) => {
 
+            // VALIDAMOS LOS DATOS DEL FORMULARIO
+            const resultValidation = validationResult(req);
+
+            if (resultValidation.errors.length > 0) {
+                // SI HAY ERRORES RENDERIZAMOS LA VISTA REGISTER.EJS CON LOS ERRORES
+                return res.render('user/restPassword', {
+                    errors: resultValidation.mapped(),
+                    oldData: req.body
+                });
+            }
+        // REDIRIGE AL HOME
+        return res.redirect('/');
     },
     register: (req, res) => {
 
