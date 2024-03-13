@@ -14,7 +14,7 @@ CREATE TABLE `status` (
 );
 
 CREATE TABLE `products` (
-   `id` INT,
+   `id` INT AUTO_INCREMENT,
    `name` VARCHAR(100) NOT NULL,
    `price` INT NOT NULL,
    `description` VARCHAR(255) NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE `users` (
    `username` VARCHAR(255) NOT NULL,
    `email` VARCHAR(255) NOT NULL,
    `password` VARCHAR(255) NOT NULL,
-   `admin` BINARY NOT NULL,
+   `admin` INT NOT NULL,
    `nickname` VARCHAR(100),
    `avatar` VARCHAR(255),
    `country_id` INT,
