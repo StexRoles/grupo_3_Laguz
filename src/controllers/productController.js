@@ -165,6 +165,26 @@ const productController = {
                 }
             })
 
+
+            console.log(req.body.categories);
+            /* // ELIMINAMOS LAS CATEGORIAS QUE EXISTIAN
+            let productCategoryDestroy = await db.Product_Category.destroy({
+                where: {
+                    product_id: idProduct
+                }
+            });
+
+            // AÑADIMOS LA CATEGORIA DEL PRODUCTO EDITADO
+            let categoryCreatePromises = req.body.categories.map(async (categoryId) => {
+                return db.Product_Category.create({
+                    product_id: product.id,
+                    category_id: categoryId
+                });
+            });
+            
+            let categoryCreate = await Promise.all(categoryCreatePromises);
+             */
+
             // REDIRIGIMOS A LA VISTA DE PRODUCTDETAIL
             res.redirect("/product/allProducts/productDetail/" + idProduct);
 
@@ -201,6 +221,24 @@ const productController = {
                 status_id: req.body.status,
             });
 
+            // LLAMAMOS EL PRODUCTO CREADO
+            let product = await db.Products.findOne({
+                where: {
+                    name: req.body.name
+                }
+            });
+
+            // AÑADIMOS LA CATEGORIA DEL PRODUCTO
+            let categoryCreatePromises = req.body.categories.map(async (categoryId) => {
+                return db.Product_Category.create({
+                    product_id: product.id,
+                    category_id: categoryId
+                });
+            });
+            
+            let categoryCreate = await Promise.all(categoryCreatePromises);
+            
+
             // REDIRECCIONAR AL DETALLE DEL PRODUCTO
             res.redirect("/product/allProducts");
 
@@ -222,6 +260,13 @@ const productController = {
                     id: idProduct
                 }
             })
+
+            // ELIMINAMOS LA RELACION DE LA TABLA PRODUCT_CATEGORY
+            let productCategoryDestroy = await db.Product_Category.destroy({
+                where: {
+                    product_id: idProduct
+                }
+            });
 
             // REDIRECCIONAMOS A LA LISTA DE PRODUCTOS
             res.redirect("/product/allProducts");
