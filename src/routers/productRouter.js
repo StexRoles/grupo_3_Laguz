@@ -6,6 +6,7 @@ const router = express.Router();
 const upload = require('../middlewares/multerMiddleware.js'); // MULTER
 const manageProductsMiddleware = require('../middlewares/manageProductsMiddleware.js'); // EVITA ENTRAR A ADMINISTAR PRODUCTOS SI NO ERES ADMINISTRADOR
 const authMiddleware = require('../middlewares/authMiddleware.js'); // EVITA ENTRAR A FAVORITES NI PRODUCTCART SI NO ESTAS LOGEADO
+const validateProductMiddleware = require('../middlewares/validateProductMiddleware.js'); // VALIDA LOS CAMPOS DEL FORMULARIO DE PRODUCTOS
 
 // REQUERIR productController PARA USAR SUS METODOS
 const productController = require('../controllers/productController.js');
@@ -32,7 +33,7 @@ router.get('/allProducts/productDetail/:id?', manageProductsMiddleware, productC
 
 //RUTA PARA CREAR NUEVO PRODUCTO
 router.get('/allProducts/newProduct', manageProductsMiddleware, productController.newProduct);
-router.post('/allProducts/newProduct', upload.single("image"), manageProductsMiddleware ,productController.processCreate);
+router.post('/allProducts/newProduct', upload.single("image"), validateProductMiddleware, manageProductsMiddleware ,productController.processCreate);
 
 // RUTA PARA EDITAR EL PRODUCTO 
 router.get('/allProducts/editProduct/:id', manageProductsMiddleware, productController.editProduct);

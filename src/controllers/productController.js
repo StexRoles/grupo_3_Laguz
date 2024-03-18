@@ -1,6 +1,9 @@
 // REQUERIR LOS MODELOS DE LA BASE DE DATOS
 const db = require('../database/models');
 
+// REQUERIR EXPRESS-VALIDATOR
+const { validationResult } = require('express-validator');
+
 // CREANDO OBJETO LITERAL CON TODOS LOS METODOS QUE SE USARAN EN LAS RUTAS
 const productController = {
     productDetail: async (req, res) => {
@@ -189,9 +192,9 @@ const productController = {
                     category_id: categoryId
                 });
             });
-            
+
             let categoryCreate = await Promise.all(categoryCreatePromises);
-            
+
 
             // REDIRIGIMOS A LA VISTA DE PRODUCTDETAIL
             res.redirect("/product/allProducts/productDetail/" + idProduct);
@@ -203,6 +206,7 @@ const productController = {
 
     },
     newProduct: async (req, res) => {
+
         // TRAEMOS EL ESTADO DE LOS PRODUCTOS
         let status = await db.Status.findAll();
 
@@ -217,6 +221,30 @@ const productController = {
     },
     processCreate: async (req, res) => {
         try {
+
+            // TRAEMOS EL ESTADO DE LOS PRODUCTOS
+            let status = await db.Status.findAll();
+
+            // TRAEMOS LAS CATEGORIAS
+            let categories = await db.Categories.findAll();
+
+            // TRAEMOS LAS MARCAS
+            let brands = await db.Brands.findAll();
+
+            // VALIDAMOS LOS DATOS DEL FORMULARIO
+            const resultValidation = validationResult(req);
+
+            if (resultValidation.errors.length > 0) {
+                // SI HAY ERRORES RENDERIZAMOS LA VISTA REGISTER.EJS CON LOS ERRORES
+                return res.render('products/newProduct', {
+                    status,
+                    categories,
+                    brands,
+                    errors: resultValidation.mapped(),
+                    oldData: req.body
+                });
+            }
+
 
             // FILTRAMOS EL PRODUCTO A EDITAR
             let productCreate = await db.Products.create({
@@ -236,8 +264,11 @@ const productController = {
                 }
             });
 
+            // VERIFICAMOS SI EL ARRAY DE CATEGORIAS ES UN ARRAY O UN SOLO VALOR
+            let newCategories = Array.isArray(req.body.categories) ? req.body.categories : [req.body.categories];
+    
             // AÑADIMOS LA CATEGORIA DEL PRODUCTO
-            let categoryCreatePromises = req.body.categories.map(async (categoryId) => {
+            let categoryCreatePromises = newCategories.map(async (categoryId) => {
                 return db.Product_Category.create({
                     product_id: product.id,
                     category_id: categoryId
