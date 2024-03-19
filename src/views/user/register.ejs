@@ -41,6 +41,16 @@
                         <div class="error">* <%= errors.repassword.msg %></div>
                     <% } %>
 
+                    <!----------------- BOTON PARA AGREGAR IMAGEN ------------------------>
+
+            <div class="contenedor-imagen">
+                <label for="image">Imagen:</label>
+                <input type="file" id="image" name="image">
+                <% if (locals.errors && errors.image) { %>
+                    <div class="error">* <%= errors.image.msg %></div>
+                <% } %>
+            </div>
+
                     <!----------------- VOLVER A LA PAGINA DE LOGIN ------------------------>
                     <a href="/user/login">¿Ya tienes cuenta? Ingresa</a>
 

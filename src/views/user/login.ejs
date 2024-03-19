@@ -16,7 +16,7 @@
                     <label class="titulo-login">Acceder</label>
 
                     <!----------------- CAMPOS DEL FORMULARIO ------------------------>
-                    <label for="identifier">Usuario o email</label>
+                    <label for="identifier">Email</label>
                     <input type="text" id="identifier" name="identifier" value="<%= locals.oldData ? oldData.identifier : null %>">
                     <% if (locals.errors && errors.identifier) { %>
                         <div class="error">* <%= errors.identifier.msg %></div>
