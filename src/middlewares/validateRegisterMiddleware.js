@@ -12,13 +12,7 @@ const validations = [
             throw new Error('Las contraseñas no coinciden');
         }
         return true;
-    }),
-    body('image')
-        .custom((value, { req }) => {
-            let file = req.file;
-            let ext = ['.png', '.jpg', '.jpeg', '.GIF'];
-            return true;
-        })
+    })
 ];
 
 module.exports = validations;
