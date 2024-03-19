@@ -1,15 +1,18 @@
 // REQUERIR LOS MODELOS DE LA BASE DE DATOS
 const db = require('../database/models');
 
+// REQUERIR EXPRESS-VALIDATOR
+const { validationResult } = require('express-validator');
+
 // CREANDO OBJETO LITERAL CON TODOS LOS METODOS QUE SE USARAN EN LAS RUTAS
 const productController = {
-    productDetail: async(req, res) => {
+    productDetail: async (req, res) => {
         try {
 
             // TRAEMOS EL PRODUCTO QUE COINCIDA CON EL ID
             let product = await db.Products.findByPk(req.params.id, {
-                include : [{
-                    association : "brands"
+                include: [{
+                    association: "brands"
                 }]
             });
 
@@ -17,14 +20,14 @@ const productController = {
             let admin = true;
 
             // RENDERIZAMOS LA VISTA PRODUCTDETAIL.EJS Y LE PASAMOS LOS PRODUCTOS
-            res.render('products/productDetail', {product, admin, req});
+            res.render('products/productDetail', { product, admin, req });
 
 
         } catch (error) {
             console.log(error);
             res.status(404).render('main/not-found');
         }
-       
+
     },
     productCart: (req, res) => {
 
@@ -41,7 +44,7 @@ const productController = {
         }
 
         // RENDERIZAMOS LA VISTA PRODUCTCART.EJS
-        res.render('products/productCart', {cartProducts, precioTotal});
+        res.render('products/productCart', { cartProducts, precioTotal });
     },
     productsList: async (req, res) => {
         try {
@@ -50,30 +53,30 @@ const productController = {
 
             // SEPARAR LOS PRODUCTOS DEPENDIENDO DEL ESTADO
             let filteredProducts = await db.Products.findAll({
-                include : [{
+                include: [{
                     model: db.Status,
                     as: 'status',
-                    where: { name: status}
+                    where: { name: status }
                 }]
             });
 
-             // VARIABLE PARA EL TITULO
+            // VARIABLE PARA EL TITULO
             let listTitle;
 
             // CONDICIONAL PARA CAMBIAR EL TITULO DE LA PAGINA
             if (status == "featured") { listTitle = "Productos Destacados"; }
-            else if (status == "in-sale"){ listTitle = "Ofertas Destacadas"; }
+            else if (status == "in-sale") { listTitle = "Ofertas Destacadas"; }
 
             // RENDERIZAMOS LA VISTA DE PRODUCTLIST.EJS
-            res.render('products/productsList', {filteredProducts, listTitle});
+            res.render('products/productsList', { filteredProducts, listTitle });
 
         } catch (error) {
             console.log(error);
             res.status(404).render('main/not-found');
         }
-        
+
     },
-    productsCategories: async(req, res) => {
+    productsCategories: async (req, res) => {
 
         try {
             // TRAEMOS LA CATEGORIA DE LOS PRODUCTOS
@@ -81,27 +84,27 @@ const productController = {
 
             // SEPARAR LOS PRODUCTOS DEPENDIENDO DEL ESTADO
             let filteredProducts = await db.Products.findAll({
-                include : [{
+                include: [{
                     model: db.Categories,
                     as: 'categories',
-                    where: { name: category}
+                    where: { name: category }
                 }]
             });
 
-             // CONVIERTE LA PRIMERA LETRA EN MAYUSCULA DEL TITULO DE LA CATEGORIA
+            // CONVIERTE LA PRIMERA LETRA EN MAYUSCULA DEL TITULO DE LA CATEGORIA
             category = category.charAt(0).toUpperCase() + category.slice(1);
 
             // RENDERIZAMOS LA VISTA DE PRODUCTLIST.EJS
-            res.render('products/productsCategories', {filteredProducts, category});
+            res.render('products/productsCategories', { filteredProducts, category });
 
         } catch (error) {
             console.log(error);
             res.status(404).render('main/not-found');
         }
 
-    }, 
+    },
     allProducts: async (req, res) => {
-    
+
         try {
 
             // TRAEMOS EL TODOS LOS PRODUCTOS DE LA BASE DE DATOSh
@@ -112,7 +115,7 @@ const productController = {
 
             // RENDERIZAMOS LA VISTA DE ALLPRODUCTS.EJS
             if (admin) {
-                res.render('products/allProducts', {products});
+                res.render('products/allProducts', { products });
             }
 
 
@@ -120,23 +123,32 @@ const productController = {
             console.log(error);
             res.status(404).render('main/not-found');
         }
-        
+
     },
     editProduct: async (req, res) => {
         try {
             // TRAEMOS EL PRODUCTO QUE COINCIDA CON EL ID
             let productToEdit = await db.Products.findByPk(req.params.id, {
-                include : [{
-                    association : "brands",
+                include: [{
+                    association: "brands",
                 }, {
-                    association : "status"
+                    association: "status"
                 }, {
-                    association : "categories"
+                    association: "categories"
                 }]
             });
 
+            // TRAEMOS EL ESTADO DE LOS PRODUCTOS
+            let status = await db.Status.findAll();
+
+            // TRAEMOS LAS CATEGORIAS
+            let categories = await db.Categories.findAll();
+
+            // TRAEMOS LAS MARCAS
+            let brands = await db.Brands.findAll();
+
             // RENDERIZAMOS LA VISTA PRODUCTDETAIL.EJS Y LE PASAMOS LOS PRODUCTOS
-            res.render('products/editProduct', {productToEdit});
+            res.render('products/editProduct', { productToEdit, status, categories, brands });
 
 
         } catch (error) {
@@ -159,22 +171,42 @@ const productController = {
                 description: req.body.description,
                 image: req.file != undefined ? req.file.filename : product.iamge,
                 discount: req.body.discount,
-            },{
+            }, {
                 where: {
                     id: idProduct
                 }
             })
 
+
+            // ELIMINAMOS LAS CATEGORIAS QUE EXISTIAN
+            let productCategoryDestroy = await db.Product_Category.destroy({
+                where: {
+                    product_id: idProduct
+                }
+            });
+
+            // AÑADIMOS LA CATEGORIA DEL PRODUCTO EDITADO
+            let categoryCreatePromises = req.body.categories.map(async (categoryId) => {
+                return db.Product_Category.create({
+                    product_id: product.id,
+                    category_id: categoryId
+                });
+            });
+
+            let categoryCreate = await Promise.all(categoryCreatePromises);
+
+
             // REDIRIGIMOS A LA VISTA DE PRODUCTDETAIL
             res.redirect("/product/allProducts/productDetail/" + idProduct);
 
-           } catch (error) {
+        } catch (error) {
             console.log(error);
             res.status(404).render('main/not-found');
         }
 
     },
-    newProduct:  async (req, res) => {
+    newProduct: async (req, res) => {
+
         // TRAEMOS EL ESTADO DE LOS PRODUCTOS
         let status = await db.Status.findAll();
 
@@ -185,10 +217,34 @@ const productController = {
         let brands = await db.Brands.findAll();
 
         // RENDERIZAMOS LA VISTA NEWPRODUCT.EJS
-        res.render('products/newProduct', {status, categories, brands});
+        res.render('products/newProduct', { status, categories, brands });
     },
     processCreate: async (req, res) => {
         try {
+
+            // TRAEMOS EL ESTADO DE LOS PRODUCTOS
+            let status = await db.Status.findAll();
+
+            // TRAEMOS LAS CATEGORIAS
+            let categories = await db.Categories.findAll();
+
+            // TRAEMOS LAS MARCAS
+            let brands = await db.Brands.findAll();
+
+            // VALIDAMOS LOS DATOS DEL FORMULARIO
+            const resultValidation = validationResult(req);
+
+            if (resultValidation.errors.length > 0) {
+                // SI HAY ERRORES RENDERIZAMOS LA VISTA REGISTER.EJS CON LOS ERRORES
+                return res.render('products/newProduct', {
+                    status,
+                    categories,
+                    brands,
+                    errors: resultValidation.mapped(),
+                    oldData: req.body
+                });
+            }
+
 
             // FILTRAMOS EL PRODUCTO A EDITAR
             let productCreate = await db.Products.create({
@@ -200,6 +256,27 @@ const productController = {
                 brand_id: req.body.brand,
                 status_id: req.body.status,
             });
+
+            // LLAMAMOS EL PRODUCTO CREADO
+            let product = await db.Products.findOne({
+                where: {
+                    name: req.body.name
+                }
+            });
+
+            // VERIFICAMOS SI EL ARRAY DE CATEGORIAS ES UN ARRAY O UN SOLO VALOR
+            let newCategories = Array.isArray(req.body.categories) ? req.body.categories : [req.body.categories];
+    
+            // AÑADIMOS LA CATEGORIA DEL PRODUCTO
+            let categoryCreatePromises = newCategories.map(async (categoryId) => {
+                return db.Product_Category.create({
+                    product_id: product.id,
+                    category_id: categoryId
+                });
+            });
+
+            let categoryCreate = await Promise.all(categoryCreatePromises);
+
 
             // REDIRECCIONAR AL DETALLE DEL PRODUCTO
             res.redirect("/product/allProducts");
@@ -223,6 +300,13 @@ const productController = {
                 }
             })
 
+            // ELIMINAMOS LA RELACION DE LA TABLA PRODUCT_CATEGORY
+            let productCategoryDestroy = await db.Product_Category.destroy({
+                where: {
+                    product_id: idProduct
+                }
+            });
+
             // REDIRECCIONAMOS A LA LISTA DE PRODUCTOS
             res.redirect("/product/allProducts");
 
@@ -230,7 +314,7 @@ const productController = {
             console.log(error);
             res.status(404).render('main/not-found');
         }
-},
+    },
 };
 
 // EXPORTANDO EL OBJETO LITERAL PARA PODER USAR LAS FUNCIONES EN EL ROUTER
