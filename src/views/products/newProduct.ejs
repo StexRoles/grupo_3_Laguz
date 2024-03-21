@@ -79,7 +79,7 @@
                         <div>
                             <label for="status">Estado:</label>
                             <select name="status" id="status">
-                                <option value="" selected>Ninguno</option>
+                                <option value="0" selected>Ninguno</option>
                                 <% status.forEach(element => { %>
                                     <option value="<%= element.id %>"><%= element.name %></option>
                                 <% }) %>

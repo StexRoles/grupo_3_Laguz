@@ -23,14 +23,14 @@ const userController = {
             const resultValidation = validationResult(req);
 
             if (resultValidation.errors.length > 0) {
-                // SI HAY ERRORES RENDERIZAMOS LA VISTA REGISTER.EJS CON LOS ERRORES
+                // SI HAY ERRORES RENDERIZAMOS LA VISTA LOGIN.EJS CON LOS ERRORES
                 return res.render('user/login', {
                     errors: resultValidation.mapped(),
                     oldData: req.body
                 });
             }
 
-            let userFound =  await db.Users.findOne({
+            let userFound = await db.Users.findOne({
                 where: {
                     [Op.or]: [
                         { email: req.body.identifier },
@@ -85,7 +85,7 @@ const userController = {
             res.status(404).render('main/not-found');
         }
     },
-    profile: async(req, res) => {
+    profile: async (req, res) => {
 
         try {
 
@@ -93,6 +93,8 @@ const userController = {
             let userInformation = await db.Users.findByPk(req.session.userLogged.id, {
                 include: [{ association: 'countries', include: [{ association: 'cities' }] }]
             });
+
+            console.log(userInformation.countries);
 
             // GENERA UN NUMERO ALEATORIO 
             const randomNumber = Math.floor(Math.random() * 9) + 1;
@@ -109,9 +111,34 @@ const userController = {
         }
 
     },
-    editProfile:async(req, res) => {
+    editProfile: async (req, res) => {
         try {
-            
+
+            // TRAEMOS LA INFORMACION DEL USUARIO LOGUEADO
+            let userInformation = await db.Users.findByPk(req.session.userLogged.id, {
+                include: [{ association: 'countries', include: [{ association: 'cities' }] }]
+            });
+
+            // GENERA UN NUMERO ALEATORIO 
+            const randomNumber = Math.floor(Math.random() * 9) + 1;
+
+            // TRAEMOS EL LISTADO DE PAISES
+            let countries = await db.Countries.findAll();
+
+            // VALIDAMOS LOS DATOS DEL FORMULARIO
+            const resultValidation = validationResult(req);
+
+            if (resultValidation.errors.length > 0) {
+                // SI HAY ERRORES RENDERIZAMOS LA VISTA REGISTER.EJS CON LOS ERRORES
+                return res.render('user/profile', {
+                    randomNumber,
+                    countries,
+                    userInformation,
+                    errors: resultValidation.mapped(),
+                    oldData: req.body
+                });
+            }
+
             // TRAEMOS EL ID DEL USUARIO A EDITAR
             let idUser = req.session.userLogged.id;
 
@@ -124,7 +151,7 @@ const userController = {
                 avatar: req.file != undefined ? req.file.filename : userToEdit.avatar,
                 country_id: req.body.country != '' ? req.body.country : userToEdit.country_id,
                 /* city: req.body.city != '' ? req.body.city : userToEdit.city, */
-            },{
+            }, {
                 where: {
                     id: idUser
                 }
@@ -137,8 +164,8 @@ const userController = {
             console.log(error);
             res.status(404).render('main/not-found');
         }
-  
-    },   
+
+    },
     logout: (req, res) => {
 
         // ELIMINA LA COOKIE
@@ -146,26 +173,26 @@ const userController = {
 
         // DESTRUYE LA SESSION
         req.session.destroy();
-    
+
         // REDIRIGE AL HOME
         return res.redirect('/');
 
     },
-    restPassword:(req,res)=>{
+    restPassword: (req, res) => {
         res.render('user/restPassword.ejs');
     },
-    restPasswordProcess:(req, res) => {
+    restPasswordProcess: (req, res) => {
 
-            // VALIDAMOS LOS DATOS DEL FORMULARIO
-            const resultValidation = validationResult(req);
+        // VALIDAMOS LOS DATOS DEL FORMULARIO
+        const resultValidation = validationResult(req);
 
-            if (resultValidation.errors.length > 0) {
-                // SI HAY ERRORES RENDERIZAMOS LA VISTA REGISTER.EJS CON LOS ERRORES
-                return res.render('user/restPassword', {
-                    errors: resultValidation.mapped(),
-                    oldData: req.body
-                });
-            }
+        if (resultValidation.errors.length > 0) {
+            // SI HAY ERRORES RENDERIZAMOS LA VISTA REGISTER.EJS CON LOS ERRORES
+            return res.render('user/restPassword', {
+                errors: resultValidation.mapped(),
+                oldData: req.body
+            });
+        }
         // REDIRIGE AL HOME
         return res.redirect('/');
     },
@@ -175,7 +202,7 @@ const userController = {
         res.render('user/register');
 
     },
-    processRegister:async(req, res) => {
+    processRegister: async (req, res) => {
         try {
             // VALIDAMOS LOS DATOS DEL FORMULARIO
             const resultValidation = validationResult(req);
@@ -193,8 +220,8 @@ const userController = {
             let userExist = await db.Users.findOne({
                 where: {
                     [Op.or]: [
-                        { email: req.body.email},
-                        { username: req.body.user}
+                        { email: req.body.email },
+                        { username: req.body.user }
                     ]
                 }
             });
@@ -226,7 +253,7 @@ const userController = {
         } catch (error) {
             console.log(error);
             res.status(404).render('main/not-found');
-        }               
+        }
     },
 };
 

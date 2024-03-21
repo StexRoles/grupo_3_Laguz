@@ -8,6 +8,7 @@ const validationsLogin = require('../middlewares/validateLoginMiddleware.js'); /
 const validateRestPassword = require('../middlewares/validateRestPasswordMiddleware.js');//VALIDACIONES PARA RESTABLECER CONTRASE;A
 const guestMiddleware = require('../middlewares/guestMiddleware.js'); // EVITA ENTRAR A LOGIN SI YA ESTAS LOGEADO
 const authMiddleware = require('../middlewares/authMiddleware.js'); // EVITA ENTRAR A PROFILE SI NO ESTAS LOGEADO
+const validateUserInformationMiddleware = require('../middlewares/validateUserInformationMiddleware.js'); // VALIDACIONES PARA EDITAR PERFIL
 const upload = require('../middlewares/multerProfileMiddleware.js'); // MULTER PARA SUBIR IMAGENES
 
 // REQUERIR userController PARA USAR SUS METODOS
@@ -27,12 +28,12 @@ router.post('/register', validationsRegister, userController.processRegister);
 router.get('/profile', authMiddleware, userController.profile);
 
 // RUTA PARA EL EDITAR PERFIL
-router.put('/profile', authMiddleware, upload.single("avatar"), userController.editProfile);
+router.put('/profile', upload.single("avatar"), authMiddleware, validateUserInformationMiddleware, userController.editProfile);
 
 // RUTA PARA EL LOGOUT
 router.get('/logout', userController.logout);
 
-//// RUTA PARA EL LOGOUT
+// RUTA PARA RESTABLECER LA CONTRASEÑA
 router.get('/restPassword',userController.restPassword);
 router.post('/restPassword',validateRestPassword,userController.restPasswordProcess);
 //---------------------------------------------------------------//

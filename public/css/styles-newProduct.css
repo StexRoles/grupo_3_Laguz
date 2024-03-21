@@ -3,7 +3,7 @@
     background-color: white;
     margin: 2rem;
     padding: 2rem;
-    box-shadow: 0 0 0.5rem rgba(0, 0,0, 0.3);
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
     border-radius: 0.5rem;
 }
 
@@ -15,7 +15,7 @@
     font-style: italic;
     font-weight: bold;
     width: 100% !important;
-  }
+}
 
 /* ESTILOS DEL TITULO */
 .contenedor-titulo h2 {
@@ -35,8 +35,9 @@
 
 }
 
-/* ESTILOS DE LOS INPUTS Y TEXTAREA */	
-.contenedor-inputs input, .contenedor-inputs select {
+/* ESTILOS DE LOS INPUTS Y TEXTAREA */
+.contenedor-inputs input,
+.contenedor-inputs select {
     border-radius: 0.5rem;
     margin: 0.5rem 0;
     height: 2.5rem;
@@ -55,8 +56,10 @@
 
 }
 
-.contenedor-inputs input:focus, .contenedor-inputs textarea:focus, .contenedor-inputs select:focus {
-    outline: solid 3px rgba(146, 220, 229, 0.5 );
+.contenedor-inputs input:focus,
+.contenedor-inputs textarea:focus,
+.contenedor-inputs select:focus {
+    outline: solid 3px rgba(146, 220, 229, 0.5);
 }
 
 textarea {
@@ -105,6 +108,7 @@ textarea {
     0% {
         box-shadow: 0 0 0 rgba(138, 227, 252, 0.89);
     }
+
     100% {
         box-shadow: 0 0 0 20px rgba(0, 0, 255, 0);
     }
@@ -118,7 +122,7 @@ textarea {
         margin: 3rem;
     }
 
-    /* ESTILOS DE LOS INPUTS */	
+    /* ESTILOS DE LOS INPUTS */
     .contenedor-inputs {
         display: flex;
         flex-wrap: wrap;
@@ -136,7 +140,7 @@ textarea {
         flex-direction: row !important;
         justify-content: space-between;
     }
-    
+
     .contenedor-categorias label {
         width: 100%;
     }
@@ -164,6 +168,7 @@ textarea {
 }
 
 @media (min-width: 1200px) {
+
     /* ESTILOS DEL CONTENEDOR PRINCIPAL */
     .contenedor-principal {
         margin: 3rem 10rem;

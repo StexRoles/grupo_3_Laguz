@@ -15,6 +15,16 @@ section {
     object-fit: cover;
 }
 
+/* CONTENEDOR MENSAJE DE ERROR */
+.error {
+    margin-left: 0.5rem !important;
+    font-size: 0.8rem;
+    color: #BF2020;
+    font-style: italic;
+    font-weight: bold;
+    width: 100% !important;
+}
+
 /* Contenedor de la imagen de perfil (avatar), informacion y boton de logout */
 .user-information {
     display: flex;

@@ -48,11 +48,17 @@
 
                     <div>
                         <label for="name">Nombre:</label>
+                        <% if (locals.errors && errors.name) { %>
+                            <div class="error">* <%= errors.name.msg %></div>
+                        <% } %>
                         <input type="text" name="name" id="name" placeholder="Richard Gonzales" value="<%= userInformation.nickname %>">
                     </div>
 
                     <div>
                         <label for="avatar">Avatar:</label>
+                        <% if (locals.errors && errors.avatar) { %>
+                            <div class="error">* <%= errors.avatar.msg %></div>
+                        <% } %>
                         <input type="file" name="avatar" id="avatar">
                     </div>
 
@@ -60,14 +66,18 @@
                         <label for="country">Pais:</label>
                         <select name="country" id="country">
                             <% countries.forEach(element => { %>
-                                <option value="<%= element.id %>" <% if ( userInformation.country === element.name) { %>selected<% } %>><%= element.name %></option>
+                                <option value="<%= element.id %>" <% if ( userInformation.countries.name === element.name) { %>selected<% } %>><%= element.name %></option>
                             <% }) %>
                         </select>
                     </div>
 
                     <div>
                         <label for="city">Ciudad:</label>
-                        <input type="text" name="city" id="city" placeholder="Buenos Aires" value="<%= userInformation.city %>">
+                        <select name="city" id="city">
+                            <% userInformation.countries.cities.forEach(element => { %>
+                                <option value="<%= element.id %>" <% if ( userInformation.countries.cities.name === element.name) { %>selected<% } %>><%= element.name %></option>
+                            <% }) %>
+                        </select>
                     </div>
 
                     <div class="button-submit">
