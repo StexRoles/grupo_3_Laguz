@@ -7,6 +7,16 @@
     border-radius: 0.5rem;
 }
 
+/* CONTENEDOR MENSAJE DE ERROR */
+.error {
+    margin-left: 0.5rem !important;
+    font-size: 0.8rem;
+    color: #BF2020;
+    font-style: italic;
+    font-weight: bold;
+    width: 100% !important;
+}
+
 /* ESTILOS DEL TITULO */
 .contenedor-titulo h2 {
     font-family: 'Fjalla One', sans-serif;

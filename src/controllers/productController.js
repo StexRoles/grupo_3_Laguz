@@ -158,6 +158,41 @@ const productController = {
     },
     processEdit: async (req, res) => {
         try {
+            // TRAEMOS EL PRODUCTO QUE COINCIDA CON EL ID
+            let productToEdit = await db.Products.findByPk(req.params.id, {
+                include: [{
+                    association: "brands",
+                }, {
+                    association: "status"
+                }, {
+                    association: "categories"
+                }]
+            });
+
+            // TRAEMOS EL ESTADO DE LOS PRODUCTOS
+            let status = await db.Status.findAll();
+
+            // TRAEMOS LAS CATEGORIAS
+            let categories = await db.Categories.findAll();
+
+            // TRAEMOS LAS MARCAS
+            let brands = await db.Brands.findAll();
+
+            // VALIDAMOS LOS DATOS DEL FORMULARIO
+            const resultValidation = validationResult(req);
+
+            if (resultValidation.errors.length > 0) {
+                // SI HAY ERRORES RENDERIZAMOS LA VISTA NEWPRODUCT.EJS CON LOS ERRORES
+                return res.render('products/editProduct', {
+                    productToEdit,
+                    status,
+                    categories,
+                    brands,
+                    errors: resultValidation.mapped(),
+                    oldData: req.body
+                });
+            }
+
             // TRAEMOS EL ID DEL PRODUCTO A EDITAR
             let idProduct = req.params.id;
 
@@ -235,7 +270,7 @@ const productController = {
             const resultValidation = validationResult(req);
 
             if (resultValidation.errors.length > 0) {
-                // SI HAY ERRORES RENDERIZAMOS LA VISTA REGISTER.EJS CON LOS ERRORES
+                // SI HAY ERRORES RENDERIZAMOS LA VISTA NEWPRODUCT.EJS CON LOS ERRORES
                 return res.render('products/newProduct', {
                     status,
                     categories,

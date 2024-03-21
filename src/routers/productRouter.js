@@ -7,6 +7,7 @@ const upload = require('../middlewares/multerMiddleware.js'); // MULTER
 const manageProductsMiddleware = require('../middlewares/manageProductsMiddleware.js'); // EVITA ENTRAR A ADMINISTAR PRODUCTOS SI NO ERES ADMINISTRADOR
 const authMiddleware = require('../middlewares/authMiddleware.js'); // EVITA ENTRAR A FAVORITES NI PRODUCTCART SI NO ESTAS LOGEADO
 const validateNewProductMiddleware = require('../middlewares/validateNewProductMiddleware.js'); // VALIDA LOS CAMPOS DEL FORMULARIO DE PRODUCTOS
+const validateEditProductMiddleware = require('../middlewares/validateEditProductMiddleware.js'); // VALIDA LOS CAMPOS DEL FORMULARIO DE EDICION DE PRODUCTOS
 
 // REQUERIR productController PARA USAR SUS METODOS
 const productController = require('../controllers/productController.js');
@@ -37,7 +38,7 @@ router.post('/allProducts/newProduct', upload.single("image"), validateNewProduc
 
 // RUTA PARA EDITAR EL PRODUCTO 
 router.get('/allProducts/editProduct/:id', manageProductsMiddleware, productController.editProduct);
-router.put('/allProducts/editProduct/:id', upload.single("image"), manageProductsMiddleware, productController.processEdit);
+router.put('/allProducts/editProduct/:id', upload.single("image"), validateEditProductMiddleware, manageProductsMiddleware, productController.processEdit);
 
 // RUTA PARA ELIMINAR EL PRODUCTO
 router.delete('/allProducts/delete/:id', productController.destroy);

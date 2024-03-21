@@ -25,19 +25,31 @@
                                     <label for="name">Nombre del producto:</label>
                                     <input type="text" id="name" name="name"
                                         placeholder="Ej: Smartwatch Amazfit Bip 3 Pink"
-                                        value="<%= productToEdit.name %>">
+                                        value="<%= locals.oldData ? oldData.name : productToEdit.name %>">
+                                    <% if (locals.errors && errors.name) { %>
+                                        <div class="error">* <%= errors.name.msg %>
+                                        </div>
+                                        <% } %>
                                 </div>
 
                                 <div>
                                     <label for="price">Precio del producto:</label>
                                     <input type="text" id="price" name="price" placeholder="Ej: 5678"
-                                        value="<%= productToEdit.price %>">
+                                        value="<%= locals.oldData ? oldData.price : productToEdit.price %>">
+                                    <% if (locals.errors && errors.price) { %>
+                                        <div class="error">* <%= errors.price.msg %>
+                                        </div>
+                                        <% } %>
                                 </div>
 
                                 <div>
                                     <label for="discount">Descuento:</label>
                                     <input type="text" id="discount" name="discount" placeholder="Ej: 15"
-                                        value="<%= productToEdit.discount %>">
+                                        value="<%= locals.oldData ? oldData.discount : productToEdit.discount %>">
+                                    <% if (locals.errors && errors.discount) { %>
+                                        <div class="error">* <%= errors.discount.msg %>
+                                        </div>
+                                        <% } %>
                                 </div>
 
                                 <div>
@@ -58,23 +70,33 @@
                                         <div>
                                             <input type="checkbox" id="<%= category.name %>" name="categories"
                                                 value="<%= category.id %>" <% if
-                                                (productToEdit.categories.some(productCategory=> productCategory.id == category.id)) { %> checked <% } %>>
+                                                (productToEdit.categories.some(productCategory=> productCategory.id ==
+                                            category.id)) { %> checked <% } %>>
                                                 <label for="<%= category.name %>">
                                                     <%= category.name %>
                                                 </label>
                                         </div>
                                         <% }) %>
+                                            <% if (locals.errors && errors.categories) { %>
+                                                <div class="error">* <%= errors.categories.msg %>
+                                                </div>
+                                                <% } %>
                                 </div>
 
                                 <div class="contenedor-imagen">
                                     <label for="image">Imagen:</label>
                                     <input type="file" id="image" name="image">
+                                    <% if (locals.errors && errors.image) { %>
+                                        <div class="error">* <%= errors.image.msg %>
+                                        </div>
+                                        <% } %>
                                 </div>
 
 
                                 <div>
                                     <label for="status">Estado:</label>
                                     <select name="status" id="status">
+                                        <option value="0">Ninguno</option>
                                         <% status.forEach(element=> { %>
                                             <option value="<%= element.id %>" <% if
                                                 (element.id==productToEdit.status_id) { %>selected<% } %>><%=
@@ -87,7 +109,11 @@
                                 <div>
                                     <label for="description">Descripción:</label>
                                     <textarea name="description"
-                                        id="description"><%= productToEdit.description %></textarea>
+                                        id="description"><%= locals.oldData ? oldData.description : productToEdit.description %></textarea>
+                                    <% if (locals.errors && errors.description) { %>
+                                        <div class="error">* <%= errors.description.msg %>
+                                        </div>
+                                        <% } %>
                                 </div>
 
                                 <div class="boton-guardar">
