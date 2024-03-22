@@ -10,7 +10,7 @@
         <!----------------- FORMULARIO DE LOGIN ------------------------>
         <section class="fondo-login">
             <article class="contenedor-login">
-                <form action="/user/login" method="post">
+                <form action="/user/login" method="post" id="loginForm">
 
                     <!----------------- TITULO DEL FORMULARIO ------------------------>
                     <label class="titulo-login">Acceder</label>
@@ -21,12 +21,14 @@
                     <% if (locals.errors && errors.identifier) { %>
                         <div class="error">* <%= errors.identifier.msg %></div>
                     <% } %>
+                    <div class="error" id="errorIndetifier"></div>
 
                     <label for="password">Contraseña</label>
                     <input type="password" id="password" name="password">
                     <% if (locals.errors && errors.password) { %>
                         <div class="error">* <%= errors.password.msg %></div>
                     <% } %>
+                    <div class="error" id="errorPassword"></div>
 
                     <!----------------- LINKS DEL FORMULARIO ------------------------>
                     <p><a href="/user/restPassword">¿Olvidaste tu contraseña?</a> | <a href="/user/register">Crear cuenta</a></p>
@@ -46,4 +48,5 @@
     <!--Partials footer  -->
     <%- include('../partials/footer.ejs') %>
 </body>
+<script src="/scripts/Validations/login.js"></script>
 </html>
