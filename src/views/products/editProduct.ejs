@@ -19,7 +19,7 @@
                     <!-------------- FORMULARIO --------------------->
                     <div class="contenedor-formulario">
                         <form action="/product/allProducts/editProduct/<%= productToEdit.id %>?_method=PUT"
-                            method="POST" enctype="multipart/form-data">
+                            method="POST" enctype="multipart/form-data" id="editProductForm">
                             <div class="contenedor-inputs">
                                 <div>
                                     <label for="name">Nombre del producto:</label>
@@ -30,6 +30,7 @@
                                         <div class="error">* <%= errors.name.msg %>
                                         </div>
                                         <% } %>
+                                        <div class="error" id="errorName"></div>
                                 </div>
 
                                 <div>
@@ -40,6 +41,7 @@
                                         <div class="error">* <%= errors.price.msg %>
                                         </div>
                                         <% } %>
+                                        <div class="error" id="errorPrice"></div>
                                 </div>
 
                                 <div>
@@ -50,6 +52,7 @@
                                         <div class="error">* <%= errors.discount.msg %>
                                         </div>
                                         <% } %>
+                                        <div class="error" id="errorDiscount"></div>
                                 </div>
 
                                 <div>
@@ -90,6 +93,7 @@
                                         <div class="error">* <%= errors.image.msg %>
                                         </div>
                                         <% } %>
+                                        <div class="error" id="errorImage"></div>
                                 </div>
 
 
@@ -114,6 +118,7 @@
                                         <div class="error">* <%= errors.description.msg %>
                                         </div>
                                         <% } %>
+                                        <div class="error" id="errorDescription"></div>
                                 </div>
 
                                 <div class="boton-guardar">
@@ -129,5 +134,5 @@
             <%- include('../partials/footer.ejs') %>
 
     </body>
-
+    <script src="/scripts/Validations/editProduct.js"></script>
     </html>

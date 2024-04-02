@@ -1,95 +1,117 @@
 <!-- Paritials head -->
- 
-<%- include('../partials/head.ejs', { extraFont: "https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap", stylesheetPath: "/css/styles-profile.css" }) %>
 
-<body>
-    <!--Partials header -->
-    <%- include('../partials/header.ejs') %>
+<%- include('../partials/head.ejs', { extraFont: "https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" ,
+    stylesheetPath: "/css/styles-profile.css" }) %>
 
-    <main>
-        <section>
+    <body>
+        <!--Partials header -->
+        <%- include('../partials/header.ejs') %>
 
-            <!-- FONDO SUPERIOR DEL PROFILE -->
-            <article class="profile-cover">
-                <img src="/img/img-profile-cover/<%= randomNumber %>.jpg" alt="Fondo de portada">
-            </article>
+            <main>
+                <section>
 
-            <!-- INFORMACION DEL PROFILE -->
-            <article class="user-information">
-                <div class="avatar">
-                    <img src="/img/profiles/<%= userInformation.avatar %>" alt="">
-                </div>
+                    <!-- FONDO SUPERIOR DEL PROFILE -->
+                    <article class="profile-cover">
+                        <img src="/img/img-profile-cover/<%= randomNumber %>.jpg" alt="Fondo de portada">
+                    </article>
 
-                <div class="information">
-                    <h1><%= userInformation.username %></h1>
-                    <p class="nombre"><%= userInformation.nickname ? userInformation.nickname : "Usuario N° " + userInformation.id %></p>
-                    <p class="ubicacion">
-                        <%= userInformation.city ? userInformation.city : "Ciudad" %>, <%= userInformation.countries ? userInformation.countries.name : "Pais" %>
-                    </p>
-                </div>
+                    <!-- INFORMACION DEL PROFILE -->
+                    <article class="user-information">
+                        <div class="avatar">
+                            <img src="/img/profiles/<%= userInformation.avatar %>" alt="">
+                        </div>
 
-                <% if ( userLogged.admin == 1 ) { %>
-                    <div class="button-admin">
-                        <button type="button"><a href="/product/allProducts">Administrar productos</a></button>
-                    </div>
-                <% } %>
+                        <div class="information">
+                            <h1>
+                                <%= userInformation.username %>
+                            </h1>
+                            <p class="nombre">
+                                <%= userInformation.nickname ? userInformation.nickname : "Usuario N° " +
+                                    userInformation.id %>
+                            </p>
+                            <p class="ubicacion">
+                                <%= userInformation.city ? userInformation.city : "Ciudad" %>, <%=
+                                        userInformation.countries ? userInformation.countries.name : "Pais" %>
+                            </p>
+                        </div>
 
-                <div class="button-logout">
-                    <button type="button"><a href="/user/logout">Cerrar sesion</a></button>
-                </div>
+                        <% if ( userLogged.admin==1 ) { %>
+                            <div class="button-admin">
+                                <button type="button"><a href="/product/allProducts">Administrar productos</a></button>
+                            </div>
+                            <% } %>
 
-            </article>
+                                <div class="button-logout">
+                                    <button type="button"><a href="/user/logout">Cerrar sesion</a></button>
+                                </div>
 
-            <!-- FONDO INFERIOR DEL PROFILE Y CONFIGURACION -->
-            <article class="user-edit-information">
-                <form action="/user/profile?_method=PUT" method="POST" enctype="multipart/form-data">
+                    </article>
 
-                    <h1>EDITAR INFORMACION DEL USUARIO</h1>
+                    <!-- FONDO INFERIOR DEL PROFILE Y CONFIGURACION -->
+                    <article class="user-edit-information">
+                        <form action="/user/profile?_method=PUT" method="POST" enctype="multipart/form-data" id="profileForm">
 
-                    <div>
-                        <label for="name">Nombre:</label>
-                        <% if (locals.errors && errors.name) { %>
-                            <div class="error">* <%= errors.name.msg %></div>
-                        <% } %>
-                        <input type="text" name="name" id="name" placeholder="Richard Gonzales" value="<%= userInformation.nickname %>">
-                    </div>
+                            <h1>EDITAR INFORMACION DEL USUARIO</h1>
 
-                    <div>
-                        <label for="avatar">Avatar:</label>
-                        <% if (locals.errors && errors.avatar) { %>
-                            <div class="error">* <%= errors.avatar.msg %></div>
-                        <% } %>
-                        <input type="file" name="avatar" id="avatar">
-                    </div>
+                            <div>
+                                <label for="name">Nombre:</label>
+                                <div class="error" id="errorName"></div>
+                                <% if (locals.errors && errors.name) { %>
+                                    <div class="error">* <%= errors.name.msg %>
+                                    </div>
+                                    <% } %>
+                                        <input type="text" name="name" id="name" placeholder="Richard Gonzales"
+                                            value="<%= userInformation.nickname %>">
+                            </div>
 
-                    <div>
-                        <label for="country">Pais:</label>
-                        <select name="country" id="country">
-                            <% countries.forEach(element => { %>
-                                <option value="<%= element.id %>" <% if ( userInformation.countries.name === element.name) { %>selected<% } %>><%= element.name %></option>
-                            <% }) %>
-                        </select>
-                    </div>
+                            <div>
+                                <label for="avatar">Avatar:</label>
+                                <div class="error" id="errorAvatar"></div>
+                                <% if (locals.errors && errors.avatar) { %>
+                                    <div class="error">* <%= errors.avatar.msg %>
+                                    </div>
+                                    <% } %>
+                                        <input type="file" name="avatar" id="avatar">
+                            </div>
 
-                    <div>
-                        <label for="city">Ciudad:</label>
-                        <select name="city" id="city">
-                            <% userInformation.countries.cities.forEach(element => { %>
-                                <option value="<%= element.id %>" <% if ( userInformation.countries.cities.name === element.name) { %>selected<% } %>><%= element.name %></option>
-                            <% }) %>
-                        </select>
-                    </div>
+                            <div>
+                                <label for="country">Pais:</label>
+                                <select name="country" id="country">
+                                    <% countries.forEach(element=> { %>
+                                        <option value="<%= element.id %>" <% if (userInformation.countries &&
+                                            userInformation.countries.name===element.name) { %>selected<% } %>><%=
+                                                    element.name %>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </div>
 
-                    <div class="button-submit">
-                        <button type="submit">Guardar cambios</button>
-                    </div>
-                </form>
-            </article>
+                            <div>
+                                <label for="city">Ciudad:</label>
+                                <select name="city" id="city">
+                                    <% if (userInformation.countries){ %>
+                                        <% userInformation.countries.cities.forEach(element=> { %>
+                                            <option value="<%= element.id %>" <% if
+                                                (userInformation.countries.cities.name===element.name) { %>selected<% }
+                                                    %>><%= element.name %>
+                                            </option>
+                                            <% }) %>
+                                                <% } %>
+                                </select>
+                            </div>
 
-        </section>
-    </main>
+                            <div class="button-submit">
+                                <button type="submit">Guardar cambios</button>
+                            </div>
+                        </form>
+                    </article>
 
-    <!--Partials footer  -->
-    <%- include('../partials/footer.ejs') %>
-</body>
-</html>
+                </section>
+            </main>
+
+            <!--Partials footer  -->
+            <%- include('../partials/footer.ejs') %>
+    </body>
+    <script src="/scripts/Validations/profile.js"></script>
+
+    </html>

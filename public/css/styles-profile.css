@@ -18,6 +18,7 @@ section {
 /* CONTENEDOR MENSAJE DE ERROR */
 .error {
     margin-left: 0.5rem !important;
+    margin-bottom: 0.3rem;
     font-size: 0.8rem;
     color: #BF2020;
     font-style: italic;
