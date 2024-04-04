@@ -1,7 +1,7 @@
 window.addEventListener("load", function () {
 
     // VALIDACION DE LOS INPUTS PARA ENVIAR EL FORMULARIO
-    let formIsValid = false;
+    let formIsValid = true;
 
     // OBTENEMOS LOS INPUTS
     let nameInput = document.querySelector("#name");

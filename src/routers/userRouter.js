@@ -16,6 +16,12 @@ const userController = require('../controllers/userController.js');
 
 //---------------------------------------------------------------//
 
+// RUTA PARA LA API DE USUARIOS ---> http://localhost:3020/user/api/users
+router.get('/api/users', userController.apiUsers);
+
+// RUTA PARA LA API DE DETALLE DE USUARIO ---> http://localhost:3020/user/api/users/:id
+router.get('/api/users/:id', userController.apiUserDetail);
+
 // RUTA PARA EL LOGIN
 router.get('/login', guestMiddleware, userController.login);
 router.post('/login', validationsLogin, userController.processLogin);

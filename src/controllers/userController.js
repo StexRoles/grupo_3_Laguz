@@ -12,6 +12,47 @@ const { Op } = require('sequelize');
 
 // CREANDO OBJETO LITERAL CON TODOS LOS METODOS QUE SE USARAN EN LAS RUTAS
 const userController = {
+    apiUsers: async (req, res) => {
+        try {
+            let users = await db.Users.findAll()
+            res.status(200).send({
+                count: users.length,
+                users:
+                    users.map(user => {
+                        return {
+                            id: user.id,
+                            username: user.username,
+                            email: user.email,
+                            detail: `http://localhost:3020/user/api/users/${user.id}`
+                        }
+                    }),
+                status: 200
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    apiUserDetail: async (req, res) => {
+        try {
+            let users = await db.Users.findByPk(req.params.id, {
+                include: [{ association: 'countries' }]
+            })
+
+            res.status(200).send({
+                id: users.id,
+                username: users.username,
+                email: users.email,
+                nickname: users.nickname,
+                country: users.countries.name,
+                avatar: `http://localhost:3020/img/profiles/${users.avatar}`,
+                status: 200
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+    },
     login: (req, res) => {
 
         // RENDERIZAMOS LA VISTA LOGIN.EJS
@@ -93,8 +134,6 @@ const userController = {
             let userInformation = await db.Users.findByPk(req.session.userLogged.id, {
                 include: [{ association: 'countries', include: [{ association: 'cities' }] }]
             });
-
-            console.log(userInformation.countries);
 
             // GENERA UN NUMERO ALEATORIO 
             const randomNumber = Math.floor(Math.random() * 9) + 1;
@@ -237,13 +276,15 @@ const userController = {
                     oldData: req.body
                 });
             } else {
-                // AGREGAMOS LA INFO DEL USUARIO A UNA VARIABLE
+                // AGREGAMOS LA INFO DEL USUARIO A LA BASE DE DATOS
                 let newUser = await db.Users.create({
                     username: req.body.user,
                     email: req.body.email,
                     password: bcryptjs.hashSync(req.body.password, 10),
                     admin: 0,
                     avatar: 'default.avif',
+                    nickname: 'Nickname',
+                    country_id: 1,
                 });
 
                 // REDIRIGIMOS AL LOGIN

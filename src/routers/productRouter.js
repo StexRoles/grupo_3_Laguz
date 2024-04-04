@@ -13,6 +13,11 @@ const validateEditProductMiddleware = require('../middlewares/validateEditProduc
 const productController = require('../controllers/productController.js');
 
 //---------------------------------------------------------------//
+// RUTA PARA LA API DE PRODUCTOS ---> http://localhost:3020/product/api/products
+router.get('/api/products', productController.apiProducts);
+
+// RUTA PARA LA API DE DETALLE DE PRODUCTO ---> http://localhost:3020/product/api/products/:id
+router.get('/api/products/:id', productController.apiProductDetail);
 
 //RUTA PARA EL DETALLE DE PRODUCTO
 router.get('/productDetail/:id?', productController.productDetail);

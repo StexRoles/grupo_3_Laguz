@@ -6,6 +6,71 @@ const { validationResult } = require('express-validator');
 
 // CREANDO OBJETO LITERAL CON TODOS LOS METODOS QUE SE USARAN EN LAS RUTAS
 const productController = {
+    apiProducts: async (req, res) => {
+        try {
+            let categories = await db.Categories.findAll({
+                include: [{
+                    model: db.Products,
+                    as: 'products',
+                    attributes: []
+                }],
+                attributes: [
+                    'name',
+                    [db.sequelize.fn('COUNT', db.sequelize.col('products.id')), 'productCount']
+                ],
+                group: ['Categories.id']
+            });
+
+            let countByCategory = categories.map(category => ({
+                category: category.name,
+                count: parseInt(category.dataValues.productCount)
+            }));
+
+            let products = await db.Products.findAll({ include: ['categories', 'brands', 'status'] });
+
+            res.status(200).send({
+                count: products.length,
+                countByCategory: countByCategory,
+                products:
+                    products.map(product => {
+                        return {
+                            id: product.id,
+                            name: product.name,
+                            description: product.description,
+                            categories: product.categories.map(category => category.name),
+                            detail: `http://localhost:3020/product/api/products/${product.id}`
+                        }
+                    }),
+                status: 200
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    },
+    apiProductDetail: async (req, res) => {
+        try {
+            let product = await db.Products.findByPk(req.params.id, { include: ['categories', 'brands', 'status'] });
+
+            res.status(200).send({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                description: product.description,
+                discount: product.discount,
+                categories: product.categories.map(category => category.name),
+                brand: product.brands.name,
+                statusProduct: product.status.name,
+                image: `http://localhost:3020/img/productos/${product.image}`,
+                status: 200
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    },
     productDetail: async (req, res) => {
         try {
 
@@ -301,7 +366,7 @@ const productController = {
 
             // VERIFICAMOS SI EL ARRAY DE CATEGORIAS ES UN ARRAY O UN SOLO VALOR
             let newCategories = Array.isArray(req.body.categories) ? req.body.categories : [req.body.categories];
-    
+
             // AÑADIMOS LA CATEGORIA DEL PRODUCTO
             let categoryCreatePromises = newCategories.map(async (categoryId) => {
                 return db.Product_Category.create({
