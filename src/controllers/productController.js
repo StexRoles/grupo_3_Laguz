@@ -96,7 +96,7 @@ const productController = {
     },
     productCart: (req, res) => {
 
-        // TRAE TODOS LOS PRODUCTOS DEL JSON
+        /* // TRAE TODOS LOS PRODUCTOS DEL JSON
         const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
         // FILTRAMOS EL PRODUCTO QUE LA PROPIEDAD ADD-CART SEA TRUE
@@ -106,7 +106,7 @@ const productController = {
         let precioTotal = 0;
         for (let i = 0; i < cartProducts.length; i++) {
             precioTotal += parseInt(cartProducts[i].price);
-        }
+        } */
 
         // RENDERIZAMOS LA VISTA PRODUCTCART.EJS
         res.render('products/productCart', { cartProducts, precioTotal });
@@ -285,8 +285,11 @@ const productController = {
                 }
             });
 
+            // VERIFICAMOS SI EL ARRAY DE CATEGORIAS ES UN ARRAY O UN SOLO VALOR
+            let editCategories = Array.isArray(req.body.categories) ? req.body.categories : [req.body.categories];
+
             // AÑADIMOS LA CATEGORIA DEL PRODUCTO EDITADO
-            let categoryCreatePromises = req.body.categories.map(async (categoryId) => {
+            let categoryCreatePromises = editCategories.map(async (categoryId) => {
                 return db.Product_Category.create({
                     product_id: product.id,
                     category_id: categoryId

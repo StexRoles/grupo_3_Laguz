@@ -24,6 +24,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: black;
+    transition: all 1s ease;
+}
+
+.titulo-contenedor.dark-mode {
+    color: white;
 }
 
 .crear-producto {
@@ -134,6 +140,11 @@
     width: 100%;
     overflow: hidden;
     background-color: white;
+    transition: all 1s ease;
+}
+
+.slider-box-marcas.dark-mode {
+    background-color: #6A6D6F;
 }
 
 .slider-box-marcas ul {

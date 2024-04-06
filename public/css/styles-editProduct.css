@@ -5,13 +5,19 @@
     padding: 2rem;
     box-shadow: 0 0 0.5rem rgba(0, 0,0, 0.3);
     border-radius: 0.5rem;
+    transition: all 1s ease;
+}
+
+.contenedor-principal.dark-mode {
+    background-color: #6A6D6F;
+    color: white;
 }
 
 /* CONTENEDOR MENSAJE DE ERROR */
 .error {
     margin-left: 0.5rem !important;
     font-size: 0.8rem;
-    color: #BF2020;
+    color: #E44242;
     font-style: italic;
     font-weight: bold;
     width: 100% !important;
@@ -21,7 +27,14 @@
 .contenedor-titulo h2 {
     font-family: 'Fjalla One', sans-serif;
     text-align: center;
+    color: black;
+    transition: all 1s ease;
 }
+
+.contenedor-titulo h2.dark-mode {
+    color: white;
+}
+
 
 .contenedor-titulo {
     margin-bottom: 1rem;

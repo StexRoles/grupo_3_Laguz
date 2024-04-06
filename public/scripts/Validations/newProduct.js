@@ -34,10 +34,10 @@ window.addEventListener("load", function () {
         // MOSTRAMOS LOS ERRORES O EL MENSAJE DE EXITO
         if (nameErrors.length > 0) {
             divErrorName.innerHTML = nameErrors;
-            divErrorName.style.color = "#BF2020";
+            divErrorName.style.color = "#E44242";
         } else {
             divErrorName.innerHTML = "El nombre es válido";
-            divErrorName.style.color = "green";
+            divErrorName.style.color = "#2ACF41";
         }
     });
 
@@ -61,10 +61,10 @@ window.addEventListener("load", function () {
         // MOSTRAMOS LOS ERRORES O EL MENSAJE DE EXITO
         if (priceErrors.length > 0) {
             divErrorPrice.innerHTML = priceErrors;
-            divErrorPrice.style.color = "#BF2020";
+            divErrorPrice.style.color = "#E44242";
         } else {
             divErrorPrice.innerHTML = "El precio es válido";
-            divErrorPrice.style.color = "green";
+            divErrorPrice.style.color = "#2ACF41";
         }
     });
 
@@ -91,10 +91,10 @@ window.addEventListener("load", function () {
         // MOSTRAMOS LOS ERRORES O EL MENSAJE DE EXITO
         if (discountErrors.length > 0) {
             divErrorDiscount.innerHTML = discountErrors;
-            divErrorDiscount.style.color = "#BF2020";
+            divErrorDiscount.style.color = "#E44242";
         } else {
             divErrorDiscount.innerHTML = "El descuento es válido";
-            divErrorDiscount.style.color = "green";
+            divErrorDiscount.style.color = "#2ACF41";
         }
     });
 
@@ -113,10 +113,10 @@ window.addEventListener("load", function () {
         // MOSTRAMOS LOS ERRORES O EL MENSAJE DE EXITO
         if (imageErrors.length > 0) {
             divErrorImage.innerHTML = imageErrors;
-            divErrorImage.style.color = "#BF2020";
+            divErrorImage.style.color = "#E44242";
         } else {
             divErrorImage.innerHTML = "El formato de imagen es válido";
-            divErrorImage.style.color = "green";
+            divErrorImage.style.color = "#2ACF41";
         }
     });
 
@@ -135,10 +135,10 @@ window.addEventListener("load", function () {
         // MOSTRAMOS LOS ERRORES O EL MENSAJE DE EXITO
         if (descriptionErrors.length > 0) {
             divErrorDescription.innerHTML = descriptionErrors;
-            divErrorDescription.style.color = "#BF2020";
+            divErrorDescription.style.color = "#E44242";
         } else {
             divErrorDescription.innerHTML = "La descripción es válida";
-            divErrorDescription.style.color = "green";
+            divErrorDescription.style.color = "#2ACF41";
         }
     });
 

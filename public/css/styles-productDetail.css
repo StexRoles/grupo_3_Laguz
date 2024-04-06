@@ -26,6 +26,12 @@
 
 .informacion-producto p, h3 {
     margin: 3rem 0;
+    color: black;
+    transition: all 1s ease;
+}
+
+.informacion-producto p.dark-mode, h3.dark-mode {
+    color: white;
 }
 
 .informacion-producto h3 {
@@ -63,6 +69,12 @@
     display: inline;
     margin-right: 1rem;
     font-weight: bold;
+    color: black;
+    transition: all 1s ease;
+}
+
+.boton-cantidad p.dark-mode {
+    color: white;
 }
 
 .boton-cantidad button, input {
@@ -90,6 +102,12 @@
     display: inline;
     font-size: 1.2rem;
     font-weight: bold;
+    color: black;
+    transition: all 1s ease;
+}
+
+.boton-favoritos p.dark-mode {
+    color: white;
 }
 
 .boton-favoritos button {
@@ -98,6 +116,12 @@
     border: none;
     background-color: transparent;
     font-size: 1.2rem;
+    color: black;
+    transition: all 1s ease;
+}
+
+.boton-favoritos button.dark-mode {
+    color: white;
 }
 
 /* BOTONES COMPRAR Y CARRITO */
@@ -213,6 +237,11 @@
         margin-top: 1rem;
         background-color: white;
         border-radius: 0.5rem;
+        transition: all 1s ease;
+    }
+
+    .contenedor-detalles-producto.dark-mode {
+        background-color: #6A6D6F;
     }
 
     .informacion-producto p, h3 {

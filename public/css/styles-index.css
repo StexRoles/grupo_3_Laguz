@@ -1,5 +1,5 @@
-/* ESTILOS DEL BANNER DE IMAGENES */
 
+/* ESTILOS DEL BANNER DE IMAGENES */
 .slider-box {
     width: 100%;
     overflow: hidden;
@@ -89,6 +89,8 @@
 
 .titulo-contenedor {
     margin: 0.3rem;
+    color: black;
+    transition: all 1s ease;
 }
 
 /* PRODUCTOS */
@@ -180,6 +182,10 @@
             font-size: 1.3rem;
         }
 
+        .titulo-contenedor.dark-mode {
+            color: white;
+        }
+
         .producto {
             margin: 0.5rem;
             border-radius: 0.5rem;
@@ -268,6 +274,11 @@
     width: 100%;
     overflow: hidden;
     background-color: white;
+    transition: all 1s ease;
+}
+
+.slider-box-marcas.dark-mode {
+    background-color: #6A6D6F;
 }
 
 .slider-box-marcas ul {

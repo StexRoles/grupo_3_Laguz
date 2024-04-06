@@ -15,6 +15,12 @@
     margin: 10%;
     border-radius: 1rem;
     box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.1);
+    transition: all 1s ease;
+}
+
+.not-found-text.dark-mode {
+    background-color: #6A6D6F;
+    color: white;
 }
 
 .not-found-text h1 {

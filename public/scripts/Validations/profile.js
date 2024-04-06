@@ -25,10 +25,10 @@ window.addEventListener("load", function () {
         // MOSTRAMOS LOS ERRORES O EL MENSAJE DE EXITO
         if (nameErrors.length > 0) {
             divErrorName.innerHTML = nameErrors;
-            divErrorName.style.color = "#BF2020";
+            divErrorName.style.color = "#E44242";
         } else {
             divErrorName.innerHTML = "El nombre es válido";
-            divErrorName.style.color = "green";
+            divErrorName.style.color = "#2ACF41";
         }
     });
 
@@ -47,10 +47,10 @@ window.addEventListener("load", function () {
         // MOSTRAMOS LOS ERRORES O EL MENSAJE DE EXITO
         if (avatarErrors.length > 0) {
             divErrorAvatar.innerHTML = avatarErrors;
-            divErrorAvatar.style.color = "#BF2020";
+            divErrorAvatar.style.color = "#E44242";
         } else {
             divErrorAvatar.innerHTML = "El formato de imagen es válido";
-            divErrorAvatar.style.color = "green";
+            divErrorAvatar.style.color = "#2ACF41";
         }
     });
 

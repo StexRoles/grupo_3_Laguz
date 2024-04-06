@@ -26,10 +26,10 @@ window.addEventListener("load", function () {
             // MOSTRAMOS LOS ERRORES O EL MENSAJE DE EXITO
             if (identifierErrors.length > 0) {
                 divErrorIdentifier.innerHTML = identifierErrors;
-                divErrorIdentifier.style.color = "#BF2020";
+                divErrorIdentifier.style.color = "#E44242";
             } else {
                 divErrorIdentifier.innerHTML = "El usuario o email es válido";
-                divErrorIdentifier.style.color = "green";
+                divErrorIdentifier.style.color = "#2ACF41";
             }
         });
 
@@ -48,10 +48,10 @@ window.addEventListener("load", function () {
             // MOSTRAMOS LOS ERRORES O EL MENSAJE DE EXITO
             if (passwordErrors.length > 0) {
                 divErrorPassword.innerHTML = passwordErrors;
-                divErrorPassword.style.color = "#BF2020";
+                divErrorPassword.style.color = "#E44242";
             } else {
                 divErrorPassword.innerHTML = "La contraseña es válida";
-                divErrorPassword.style.color = "green";
+                divErrorPassword.style.color = "#2ACF41";
             }
         });
 

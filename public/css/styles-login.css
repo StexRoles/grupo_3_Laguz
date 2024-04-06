@@ -18,7 +18,7 @@
     margin-bottom: 1rem;
     margin-left: 0.5rem;
     font-size: 0.8rem;
-    color: #BF2020;
+    color: #E44242;
     font-style: italic;
     font-weight: bold;
   
@@ -30,6 +30,12 @@
     border-radius: 0.5rem;
     padding: 1.5rem;
     width: 80vw;
+    transition: all 1s ease;
+}
+
+.contenedor-login.dark-mode {
+    background-color: #6A6D6F;
+    color: white;
 }
 
 .contenedor-login form {
@@ -59,6 +65,11 @@
 .contenedor-login a {
     text-decoration: none;
     color: #001F54;
+    transition: all 1s ease;
+}
+
+.contenedor-login a.dark-mode {
+    color: white;
 }
 
 .contenedor-login p {
@@ -73,7 +84,13 @@
     font-size: 2rem;
     font-family: 'Fjalla One', sans-serif;
     color: black !important;
+    transition: all 1s ease;
 }
+
+.titulo-login.dark-mode {
+    color: white !important;
+}
+
 
 /* BOTON DE ACCEDER */
 .acceder {
