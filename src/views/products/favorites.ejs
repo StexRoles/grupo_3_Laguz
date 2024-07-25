@@ -1,0 +1,47 @@
+<!-- Paritials head -->
+ 
+<%- include('../partials/head.ejs', { extraFont: false, stylesheetPath: '/css/styles-productsList.css' }) %>
+
+<body>
+    <!--Partials header -->
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+        <!----------------- AQUI ESTAN LOS PRODUCTOS DESTACADOS DEL USUARIO ------------------------>
+        <section class="contenedor-productos-destacados">
+            <article class="titulo-contenedor">
+                <h3>Productos Favoritos</h3>
+            </article>
+
+            <!----------------- AQUI ESTAN LOS PRODUCTOS DESTACADOS, EN OFERTA Y FAVORITOS PARA MOSTRAR ------------------------>
+            <article>
+                <article class="contenedor-productos">
+                    <!----------------- CICLO FOR PARA MOSTRAR LOS PRODUCTOS  ------------------------>
+                    <% for( let i = 0; i < favoritesProducts.length; i++ ) { %>
+                        <div class="producto">
+                            <a href="/product/productDetail/<%= favoritesProducts[i].id %>">
+                                <div>
+                                    <img src="/img/productos/<%= favoritesProducts[i].image %>" alt="Imagen de los productos destacados">
+                                </div>
+        
+                                <div>
+                                    <h4>$ <%= favoritesProducts[i].price %> <div class="descuento"><%= favoritesProducts[i].discount %>% Off</div></h4>
+                                    <p><%= favoritesProducts[i].name %></p>
+                                </div>
+                            </a>
+                        </div>
+                    <% } %>
+
+                </article>
+            </article>
+        </section>
+
+
+        <!----------------- AQUI ESTAN LAS MARCAS DE LOS PRODUCTOS; SOLO SE MUEVE EN VERSION MOVIL ------------------------>
+        <%- include('../partials/banner-marcas.ejs') %>
+    </main>
+
+    <!--Partials footer  -->
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>

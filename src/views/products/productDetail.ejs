@@ -54,12 +54,12 @@
     
                     <!----------------- BOTONES PARA AÑADIR LA CANTIDAD DESEADA ------------------------>
                     <article class="boton-cantidad">
-                        <p>Cantidad:</p> <button>-</button><input type="text" value="1"><button>+</button> 
+                        <p>Cantidad:</p> <button id="minus">-</button><input type="text" value="1" id="count"><button id="plus">+</button> 
                     </article>
     
                     <!----------------- BOTON PARA AGREGAR A FAVORITOS; FALTA AÑADIR ESA SECCION ------------------------>
                     <article class="boton-favoritos">
-                        <button><i class="fa-regular fa-heart"></i></button><p>Favoritos</p>
+                        <button id="favorite"><i class="fa-solid fa-heart"></i></button><p>Favoritos</p>
                     </article>
                 </article>
     
@@ -77,4 +77,5 @@
     <!--Partials footer-->
     <%- include('../partials/footer.ejs') %>
 </body>
+<script src="/scripts/detailButtons.js"></script>
 </html>

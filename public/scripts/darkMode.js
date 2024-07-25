@@ -32,6 +32,8 @@ window.addEventListener('load', () => {
     let registerContainer = document.querySelector('.contenedor-register');
     let registerContainerA = document.querySelectorAll('.contenedor-register a');
     let titleRegister = document.querySelector('.titulo-register');
+    let titleEditProfile = document.querySelector('.titleEditProfile');
+    let labelsEditProfile = document.querySelectorAll('.user-edit-information label');
 
     // Desactivar temporalmente las transiciones
     header.style.transition = 'none';
@@ -74,6 +76,10 @@ window.addEventListener('load', () => {
         if(a) a.style.transition = 'none';
     });
     if(titleRegister) titleRegister.style.transition = 'none';
+    if(titleEditProfile) titleEditProfile.style.transition = 'none';
+    if(labelsEditProfile) labelsEditProfile.forEach((label) => {
+        label.style.transition = 'none';
+    });
 
     // Verificar si hay un estado almacenado en localStorage
     const isDarkMode = localStorage.getItem('darkMode') === 'true';
@@ -130,6 +136,10 @@ window.addEventListener('load', () => {
             if(a) a.style.transition = '';
         });
         if(titleRegister) titleRegister.style.transition = '';
+        if(titleEditProfile) titleEditProfile.style.transition = '';
+        if(labelsEditProfile) labelsEditProfile.forEach((label) => {
+            label.style.transition = '';
+        });
     }, 0);
 
     // Activar/desactivar el modo oscuro
@@ -299,5 +309,18 @@ function toggleDarkMode() {
     if(titleRegister) {
         titleRegister.classList.toggle('dark-mode');
     }
+
+    // ********************************************* PERFIL ***********************************************+
+    // titulo de editar perfil
+    let titleEditProfile = document.querySelector('.titleEditProfile');
+    if(titleEditProfile) {
+        titleEditProfile.classList.toggle('dark-mode');
+    }
+
+    // etiquetas de editar perfil
+    let labelsEditProfile = document.querySelectorAll('.user-edit-information label');
+    labelsEditProfile.forEach((label) => {
+        label.classList.toggle('dark-mode');
+    });
 }
 

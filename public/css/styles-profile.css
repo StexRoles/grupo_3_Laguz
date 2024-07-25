@@ -123,6 +123,15 @@
 
 
 /* Contenedor para añadir o editar informacion del usuario */
+.titleEditProfile {
+    color: black;
+    transition: all 1s ease;
+}
+
+.titleEditProfile.dark-mode {
+    color: white;
+}
+
 .user-edit-information {
     padding: 8%;
 }
@@ -146,6 +155,12 @@
 .user-edit-information label {
     margin-bottom: 0.5rem;
     font-weight: bold;
+    color: black;
+    transition: all 1s ease;
+}
+
+.user-edit-information label.dark-mode {
+    color: white;
 }
 
 .user-edit-information input, .user-edit-information select {

@@ -12,13 +12,13 @@ const validations = [
     body('image')
         .custom((value, { req }) => {
             let file = req.file;
-            let ext = ['.png', '.jpg', '.jpeg', '.gif'];
+            let ext = ['.png', '.jpg', '.jpeg', '.gif', '.webp'];
             if (!file) {
                 throw new Error('Debes subir una imagen');
             } else {
                 let fileExt = path.extname(file.originalname);
                 if (!ext.includes(fileExt)) {
-                    throw new Error('Los formatos permitidos son .png, .jpg, .jpeg, .gif');
+                    throw new Error('Los formatos permitidos son .png, .jpg, .jpeg, .gif, .webp');
                 }
             }
             return true;

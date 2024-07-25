@@ -25,6 +25,9 @@ router.get('/productDetail/:id?', productController.productDetail);
 // RUTA PARA EL CARRITO DE COMPRAS
 router.get('/productCart', authMiddleware, productController.productCart);
 
+// RUTA PARA LOS PRODUCTOS FAVORITOS
+router.get('/favorites', authMiddleware, productController.favorites);
+
 // RUTA PARA LA LISTA DE PRODUCTOS DESTACADOS, EN OFERTA Y FAVORITOS
 router.get('/productsList/:status', productController.productsList);
 

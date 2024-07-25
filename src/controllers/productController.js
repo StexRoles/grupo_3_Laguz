@@ -94,22 +94,34 @@ const productController = {
         }
 
     },
-    productCart: (req, res) => {
+    productCart: async (req, res) => {
+        try {
+            // TRAEMOS EL TODOS LOS PRODUCTOS DE LA BASE DE DATOSh
+            let cartProducts = await db.Products.findAll();
 
-        /* // TRAE TODOS LOS PRODUCTOS DEL JSON
-        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+            // ACUMULAMOS EL PRECIO DE LOS PRODUCTOS 
+            let precioTotal = cartProducts.reduce((total, product) => total + product.price, 0);
 
-        // FILTRAMOS EL PRODUCTO QUE LA PROPIEDAD ADD-CART SEA TRUE
-        let cartProducts = products.filter(product => product.addToCart == "true");
+            // RENDERIZAMOS LA VISTA PRODUCTCART.EJS
+            res.render('products/productCart', { cartProducts, precioTotal });
 
-        // AQUI REALIZAMOS LA CUENTA DEL PRECIO TOTAL DE LOS PRODUCTOS
-        let precioTotal = 0;
-        for (let i = 0; i < cartProducts.length; i++) {
-            precioTotal += parseInt(cartProducts[i].price);
-        } */
+        } catch (error) {
+            console.log(error);
+            res.status(404).render('main/not-found');
+        }
+    },
+    favorites: async (req, res) => {
+        try {
+            // TRAEMOS EL TODOS LOS PRODUCTOS DE LA BASE DE DATOSh
+            let favoritesProducts = await db.Products.findAll();
 
-        // RENDERIZAMOS LA VISTA PRODUCTCART.EJS
-        res.render('products/productCart', { cartProducts, precioTotal });
+            // RENDERIZAMOS LA VISTA FAVORITES.EJS
+            res.render('products/favorites', { favoritesProducts });
+
+        } catch (error) {
+            console.log(error);
+            res.status(404).render('main/not-found');
+        }
     },
     productsList: async (req, res) => {
         try {
