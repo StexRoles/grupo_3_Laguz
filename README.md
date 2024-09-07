@@ -1,7 +1,41 @@
-Link render:
-https://grupo-3-laguz.onrender.com
+<h1 align="left">PROYECTO LAGUZ</h1>
 
-Buen dia, esta es la tematica decidida por nuestro grupo:
+![Badge](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![Badge](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Badge](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=whit)
+![Badge](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![Badge](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Badge](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+![Badge](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
+![Badge](https://img.shields.io/badge/website-000000?style=for-the-badge&logo=About.me&logoColor=white)
+
+![portfolio (1)](https://github.com/user-attachments/assets/e2ca091a-1f49-4e0f-873b-57eb1b2120ef)
+
+
+<h2 align="left">DESCRIPCIÓN</h2>
+
+Laguz es un proyecto desarrollado como parte del bootcamp de desarrollo web full stack con el instituto Digital House, realizado durante 8 meses. Este e-commerce está enfocado en la venta de productos tecnológicos, proporcionando una plataforma completa para gestionar tanto la experiencia del cliente como el manejo de inventario. Los usuarios pueden navegar por un catálogo de productos, crear una cuenta, iniciar sesión y realizar compras. Además, el sistema permite a los administradores gestionar los productos de manera eficiente, con la capacidad de crear nuevos artículos, editarlos o eliminarlos según sea necesario. Este proyecto pone en práctica tanto el desarrollo frontend como backend, aplicando conceptos de arquitectura web, manejo de bases de datos y autenticación de usuarios.
+
+
+<h2 align="left">¿CÓMO SE REALIZÓ?</h2>
+El desarrollo de "Laguz" fue un esfuerzo colaborativo llevado a cabo por un equipo de cuatro personas, incluyéndome. Utilizamos Node.js como entorno de trabajo y Express para la gestión de rutas y servidores. En el frontend, optamos por EJS como motor de plantillas, junto con CSS y JavaScript, para crear una interfaz dinámica y un diseño responsive que se adapta a diferentes dispositivos.
+
+En el backend, además de Node.js y Express, implementamos varias tecnologías y herramientas clave, como bcryptjs para el manejo seguro de contraseñas, multer para la carga de archivos, express-validator para la validación de formularios, express-session y cookies para la gestión de sesiones y autenticación de usuarios. La base de datos fue gestionada con MySQL, utilizando el ORM Sequelize para facilitar las interacciones con la base de datos. El proyecto también incluyó el uso de middlewares personalizados para mejorar la modularidad y funcionalidad del sistema.
+
+<h2 align="left">INSTALACIÓN</h2>
+
+1. Clonar el proyecto: git clone https://github.com/StexRoles/grupo_3_Laguz.git
+
+2. Descargar dependencias: npm i
+
+3. Crear la base de datos con los archivos en la carpeta SQL
+
+4. Ajustar el archivo config dentro de la carpeta database
+
+5. Iniciar el proyecto: npm test
+
+
+<h2 align="left">PREGUNTAS INICIALES</h2>
 
 1. ¿Qué productos o servicios brindara nuestro sitio?  
 -Nuestro sitio se centra en la venta de computadores de distintos ambitos,  
@@ -17,20 +51,18 @@ herramientas ya sea para ocio, trabajo o estudio.
 -Nuestro sitio tiene como objetivo ser lo mas accesible posible para poder recibir  
 cualquier tipo de audiencia la cual necesite una computadora.
 
-Integrantes del grupo:
+<h2 align="left">INTEGRANTES</h2>
 
-1. Steven Navarro: Hola, soy estudiante de ingenieria, me gustan los juegos y anime, y mi meta actual es poder
-ser un buen desarrollador web.
+1. Steven Navarro
 
-2. Antonela Gomez: Hola, soy Tecnica en Desarrollo de Software, recibida hace casi un año. Mi objetivo es poder finalizar el curso con muchos conocimientos y buenas practicas.
+2. Antonela Gomez
 
-3. Ezequiel Lazzara: Hola, actualemnte estoy estudiando la carrera de ingenieria en sistemas en la UAI, trabajo en soporte e implementacion en la parte de Retail para la empresa NCR hace una año y medio, me gusta mucho el futbol y mi intencion es capacitarme y evolucionar en el mundo de la programacion.
+3. Ezequiel Lazzara
 
-4. Eduardo Rodriguez: Hola, actualmente me encuentro realizando una tecnicatura en programacion en la Universidad Tecnologica de Cordoba. A su vez he realizado algunos cursos ya que me gusta aprender cosas nuevas y mejorar mis habilidades.
+4. Tomás Weimberg
 
-5. Tomás Weimberg: Hola! soy estudiante de Informática y Desarrollo de software. Me gusta el futbol, la musica y el mundo de la programación.
+<h2 align="left">REFERENCIAS DEL MERCADO</h2>
 
-Inspiración en referentes del mercado:  
 1. https://www.ryrcomputacion.com/  
 Este sitio presenta un orden muy similar a lo que planeamos para nuestra pagina y algo que nos llamo la  atencion fue que presentara las marcas con las que trabaja en la parte inferior de la pagina de inicio con un estilo bastante utilizado el cual es un slider y/o carrusel. Ademas tambien notamos que al pasar por arriba de cada una de esas marcas aparece el color de cada logo. 
 
